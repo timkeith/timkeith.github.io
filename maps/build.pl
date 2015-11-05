@@ -14,7 +14,7 @@ sub get_info_from_kmz($);
 
 my $template = join('', <DATA>);
 
-my @links = [];
+my @links = ();
 for my $dir (grep(-d, glob('*'))) {
   push(@links, do_dir($dir));
 }
