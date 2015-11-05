@@ -70,7 +70,7 @@ sub finish($) {
   my($links) = @_;
   gen_page(
     'index.html', 'Maps',
-    "<ul>\n" . join('', map { "  <li>$_</li>\n" } @$links) . "</ul>\n");
+    "<h2>Maps</h2>\n<ul>\n" . join('', map { "  <li>$_</li>\n" } @$links) . "</ul>\n");
 }
 
 sub gen_page($$$) {
