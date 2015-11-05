@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style type='text/css'>
+  </style>
+  <title>Mountaindale &amp; Roy</title>
+</head>
+<body>
   <style type="text/css">
     html, body { height: 100%; margin: 0; padding: 0; }
     #map { height: 100%; }
   </style>
-</head>
-<body>
   <div id='map'></div>
   <script type="text/javascript">
     function initMap() {
@@ -17,14 +20,15 @@
       });
       console.log('map', map);
       var layer = new google.maps.KmlLayer({
-        url: 'http://www.timkeith.tk/maps/LarchMountainCrater.kmz',
+        url: 'http://www.timkeith.tk/maps/Mountaindale%20%20Roy.kmz',
         map: map,
       });
       console.log('layer', layer);
     }
   </script>
-  <script async defer
+  <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
   </script>
+
 </body>
 </html>
