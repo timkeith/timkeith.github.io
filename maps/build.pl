@@ -3,9 +3,11 @@ use strict;
 use warnings;
 use File::Basename qw(basename);
 use File::Spec::Functions qw(catfile catdir);
+use Date::Parse ();
 use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
 sub do_dir($);
+sub gen_contents($$);
 sub finish($);
 sub gen_page($$$);
 sub get_info_from_kmz($);
@@ -28,29 +30,41 @@ sub do_dir($) {
     my $base = basename($kmz, '.kmz');
     my $base2 = Misc::subst($base, ' ' => '');
     my $base3 = Misc::subst($base, ' ' => '%20');
-    my $h = Misc::subst($template, 'BASE' => $base3);
+    my $h = Misc::subst($template, '\b_PATH_\b' => "$dir/$base3");
     my $info = get_info_from_kmz($kmz);
     $all{$base2} = $info;
     gen_page("$dir/$base2.html", $info->{name}, $h);
     print "$dir/$base2.html\n";
-exit;
   }
+  my %info = get_info_txt($dir);
+  my $h = "<h2>$info{name}</h2>\n";
+  for my $key (sort {$all{$b}->{date} cmp $all{$a}->{date}} keys %all) {
+    $h .= gen_contents($key, $all{$key});
+  }
+  gen_page("$dir/index.html", $info{name}, $h);
+  return "<a href='$dir/index.html'>$info{name}</a>";
 }
 
+sub get_info_txt() {
+  my($dir) = @_;
+  my $txt = Misc::get("$dir/info.txt");
+  return $txt =~ /^(\S+): *(.*)/gm;
+}
 
-#for my $base (sort keys %all) {
-#  my %info = %{$all{$base}};
-#  $index .= "<h3>$info{name}</h3>\n";
-#  if (my $snippet = $info{snippet}) {
-#    $index .= "<p>$snippet</p>\n";
-#  }
-#  $index .= "<p><a href='$base.html'>map</a></p>\n";
-#  $index .= "<table>\n";
-#  for my $key ('Date', 'Distance', 'Min Altitude', 'Max Altitude') {
-#    $index .= "  <tr><td>$key:</td><td>$info{$key}</td></tr>\n";
-#  }
-#  $index .= "</table>\n";
-#}
+sub gen_contents($$) {
+  my($base, $info) = @_;
+  my $h = "<h3>$info->{name}</h3>\n";
+  if (my $snippet = $info->{snippet}) {
+    $h .= "<p>$snippet</p>\n";
+  }
+  $h .= "<div><a href='$base.html'>map</a></div>\n";
+  $h .= "<table>\n";
+  for my $key ('Date', 'Distance', 'Min Altitude', 'Max Altitude') {
+    $h .= "  <tr><td>$key:</td><td>$info->{$key}</td></tr>\n";
+  }
+  $h .= "</table>\n";
+  return $h;
+}
 
 sub finish($) {
   my($links) = @_;
@@ -99,6 +113,8 @@ sub get_info_from_kmz($) {
       }
     }
   }
+  my(undef,undef,undef,$day,$month,$year) = Date::Parse::strptime($info{'Start Time'});
+  $info{date} = sprintf('%04d/%02d/%02d', $year+1900, $month+1, $day);
   return \%info;
 }
 
@@ -117,7 +133,7 @@ __END__
     });
     console.log('map', map);
     var layer = new google.maps.KmlLayer({
-      url: 'http://www.timkeith.tk/maps/BASE.kmz',
+      url: 'http://www.timkeith.tk/maps/_PATH_.kmz',
       map: map,
     });
     console.log('layer', layer);
