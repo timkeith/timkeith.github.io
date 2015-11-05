@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 100%; }
+  </style>
+</head>
+<body>
+  <div id='map'></div>
+  <script type="text/javascript">
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {lat: 45.602, lng: -122.892},
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+      });
+      console.log('map', map);
+      var layer = new google.maps.KmlLayer({
+        url: 'http://www.timkeith.tk/maps/Trolley trail etc .kmz',
+        map: map,
+      });
+      console.log('layer', layer);
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
+  </script>
+</body>
+</html>
