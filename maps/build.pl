@@ -7,6 +7,7 @@ use Date::Parse ();
 use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
 sub do_dir($);
+sub get_info_txt($);
 sub gen_contents($$);
 sub finish($);
 sub gen_page($$$);
@@ -45,7 +46,7 @@ sub do_dir($) {
   return "<a href='$dir/index.html'>$info{name}</a>";
 }
 
-sub get_info_txt() {
+sub get_info_txt($) {
   my($dir) = @_;
   my $txt = Misc::get("$dir/info.txt");
   return $txt =~ /^(\S+): *(.*)/gm;
@@ -59,7 +60,7 @@ sub gen_contents($$) {
   }
   $h .= "<div><a href='$base.html'>map</a></div>\n";
   $h .= "<table>\n";
-  for my $key ('Date', 'Distance', 'Min Altitude', 'Max Altitude') {
+  for my $key ('Date', 'Time', 'Distance', 'Min Altitude', 'Max Altitude') {
     $h .= "  <tr><td>$key:</td><td>$info->{$key}</td></tr>\n";
   }
   $h .= "</table>\n";
@@ -110,6 +111,12 @@ sub get_info_from_kmz($) {
       while ($x =~ m{<tr>\s*<td[^<>]*>(.*?):?</td>\s*<td[^<>]*>(.*?)</td>}gs) {
         my($key, $value) = ($1, $2);
         $info{$key} = $value;
+      }
+    }
+    if (my $date = $info{Date}) {
+      if ($date =~ s/^(.*?)  *(\d+:\d+ [ap]m)$//) {
+        $info{Date} = $1;
+        $info{Time} = $2;
       }
     }
   }
