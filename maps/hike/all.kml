@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Folder>
+    <name>Network Links</name>
+    <visibility>0</visibility>
+    <open>0</open>
+    <description>All Hikes</description>
+
+    <NetworkLink>
+      <name>Angel's Rest Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>
+        Description of Angel's Rest
+      </description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/hike/Angels%20Rest.kmz</href>
+      </Link>
+    </NetworkLink>
+
+    <NetworkLink>
+      <name>Falls Creek Falls</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>
+        Description of Falls Creek Falls
+      </description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>
+          http://www.timkeith.tk/maps/hike/FallsCreekFalls.kmz
+        </href>
+      </Link>
+    </NetworkLink>
+
+  </Folder>
+</kml>
