@@ -11,7 +11,9 @@ sub get_info_txt($);
 sub gen_contents($$);
 sub finish($);
 sub gen_page($$$);
+sub gen_all_kml($$);
 sub get_info_from_kmz($);
+sub path_to_url($);
 
 my $template = join('', <DATA>);
 
@@ -27,22 +29,28 @@ exit;
 sub do_dir($) {
   my($dir) = @_;
   my %all = ();
+  my @urls = ();
   for my $kmz (glob("$dir/*.kmz")) {
     my $base = basename($kmz, '.kmz');
     my $base2 = Misc::subst($base, ' ' => '');
     my $base3 = Misc::subst($base, ' ' => '%20');
-    my $h = Misc::subst($template, '\b_PATH_\b' => "$dir/$base3");
+    my $url = path_to_url("$dir/$base3.kmz");
+    push(@urls, $url);
+    my $h = Misc::subst($template, '\b_URL_\b' => $url);
     my $info = get_info_from_kmz($kmz);
     $all{$base2} = $info;
     gen_page("$dir/$base2.html", $info->{name}, $h);
     print "$dir/$base2.html\n";
   }
   my %info = get_info_txt($dir);
-  my $h = "<h2>$info{name}</h2>\n";
+  my $index_html = "<h2>$info{name}</h2>\n";
   for my $key (sort {$all{$b}->{date} cmp $all{$a}->{date}} keys %all) {
-    $h .= gen_contents($key, $all{$key});
+    $index_html .= gen_contents($key, $all{$key});
   }
-  gen_page("$dir/index.html", $info{name}, $h);
+  gen_all_kml("$dir/all.kml", \@urls);
+  gen_page("$dir/all.html", $info{name},
+    Misc::subst($template, '\b_URL_\b' => path_to_url("$dir/all.kml")));
+  gen_page("$dir/index.html", $info{name}, $index_html);
   return "<a href='$dir/index.html'>$info{name}</a>";
 }
 
@@ -93,6 +101,39 @@ END
   Misc::put($outfile, $html);
 }
 
+sub gen_all_kml($$) {
+  my($file, $urls) = @_;
+  my $kml = <<END;
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Folder>
+    <name>Network Links</name>
+    <visibility>0</visibility>
+    <open>0</open>
+    <description>All</description>
+END
+  for my $url (@$urls) {
+    $kml .= <<END;
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>$url</href>
+      </Link>
+    </NetworkLink>
+END
+  }
+  $kml .= <<END;
+  </Folder>
+</kml>
+END
+  Misc::put($file, $kml);
+}
+
 sub get_info_from_kmz($) {
   my($kmz) = @_;
   my $xml = do {
@@ -125,6 +166,11 @@ sub get_info_from_kmz($) {
   return \%info;
 }
 
+sub path_to_url($) {
+  my($path) = @_;
+  return Misc::subst('http://www.timkeith.tk/maps/_PATH_', '_PATH_' => $path);
+}
+
 __END__
 <style type="text/css">
   html, body { height: 100%; margin: 0; padding: 0; }
@@ -140,7 +186,7 @@ __END__
     });
     console.log('map', map);
     var layer = new google.maps.KmlLayer({
-      url: 'http://www.timkeith.tk/maps/_PATH_.kmz',
+      url: '_URL_',
       map: map,
     });
     console.log('layer', layer);

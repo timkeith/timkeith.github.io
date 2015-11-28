@@ -4,37 +4,72 @@
     <name>Network Links</name>
     <visibility>0</visibility>
     <open>0</open>
-    <description>All Hikes</description>
-
+    <description>All</description>
     <NetworkLink>
-      <name>Angel's Rest Name</name>
+      <name>Name</name>
       <visibility>0</visibility>
       <open>0</open>
-      <description>
-        Description of Angel's Rest
-      </description>
+      <description>Description</description>
       <refreshVisibility>0</refreshVisibility>
       <flyToView>0</flyToView>
       <Link>
         <href>http://www.timkeith.tk/maps/hike/Angels%20Rest.kmz</href>
       </Link>
     </NetworkLink>
-
     <NetworkLink>
-      <name>Falls Creek Falls</name>
+      <name>Name</name>
       <visibility>0</visibility>
       <open>0</open>
-      <description>
-        Description of Falls Creek Falls
-      </description>
+      <description>Description</description>
       <refreshVisibility>0</refreshVisibility>
       <flyToView>0</flyToView>
       <Link>
-        <href>
-          http://www.timkeith.tk/maps/hike/FallsCreekFalls.kmz
-        </href>
+        <href>http://www.timkeith.tk/maps/hike/Cape%20Horn%20Trail%2011215%20.kmz</href>
       </Link>
     </NetworkLink>
-
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/hike/FallsCreekFalls.kmz</href>
+      </Link>
+    </NetworkLink>
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/hike/Fenway.kmz</href>
+      </Link>
+    </NetworkLink>
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/hike/LarchMountainCrater.kmz</href>
+      </Link>
+    </NetworkLink>
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/hike/Lithia%20Park%20%20Bandersnatch.kmz</href>
+      </Link>
+    </NetworkLink>
   </Folder>
 </kml>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Folder>
+    <name>Network Links</name>
+    <visibility>0</visibility>
+    <open>0</open>
+    <description>All</description>
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/bike/Mountaindale%20%20Roy.kmz</href>
+      </Link>
+    </NetworkLink>
+    <NetworkLink>
+      <name>Name</name>
+      <visibility>0</visibility>
+      <open>0</open>
+      <description>Description</description>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Link>
+        <href>http://www.timkeith.tk/maps/bike/Trolley%20trail%20etc%20.kmz</href>
+      </Link>
+    </NetworkLink>
+  </Folder>
+</kml>
