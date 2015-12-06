@@ -3,32 +3,44 @@
 <head>
   <style type='text/css'>
   </style>
-  <title>Bike Rides</title>
+  <title>All ???</title>
 </head>
 <body>
-  <style type="text/css">
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #map { height: 100%; }
-  </style>
-  <div id='map'></div>
-  <script type="text/javascript">
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: {lat: 45.602, lng: -122.892},
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
+<style type='text/css'>
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: 100%; }
+</style>
+<div id='map'></div>
+<script type='text/javascript'>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: { lng: -123.2311091, lat: 45.8107231 },
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+    });
+    map.fitBounds(new google.maps.LatLngBounds({ lng: -123.9570780, lat: 45.5139004 }, { lng: -122.6673670, lat: 46.1734169 }));
+    console.log('map', map);
+    function addMarker(map, position, title, content) {
+      var m = new google.maps.Marker({ map: map, position: position, title: title });
+      m.addListener('click', function() {
+        var iw = new google.maps.InfoWindow({ content: '<b>' + title + '</b>' + content });
+        iw.open(map, m);
       });
-      console.log('map', map);
-      var layer = new google.maps.KmlLayer({
-        url: 'http://www.timkeith.tk/maps/bike/all.kml',
-        map: map,
-      });
-      console.log('layer', layer);
     }
-  </script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
-  </script>
+    addMarker(map, { lng: -123.2311091, lat: 45.8107231 }, "B-V with Adam K 8-19-15", "<br>Aug 19, 2015 <br>Distance: 11.9 miles <br>Altitude: 599 ft - 694 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/BVwithAdamK81915.html'>http://www.timkeith.tk/maps/bike/BVwithAdamK81915.html</a> ");
+    addMarker(map, { lng: -123.9219265, lat: 46.1555000 }, "Ft. Stevens", "<br>Aug 27, 2014 <br>Distance: 28.5 miles <br>Altitude: 0 ft - 77 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/FtStevens.html'>http://www.timkeith.tk/maps/bike/FtStevens.html</a> ");
+    addMarker(map, { lng: -122.8916758, lat: 45.6018409 }, "Meek Rd 6-1-14", "<br>Jun 1, 2014 <br>Distance: 14.6 miles <br>Altitude: 144 ft - 429 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/MeekRd6114.html'>http://www.timkeith.tk/maps/bike/MeekRd6114.html</a> ");
+    addMarker(map, { lng: -123.9570780, lat: 46.1734169 }, "Ft. Stevens 8-25-14", "<br>Aug 25, 2014 <br>Distance: 15.6 miles <br>Altitude: 0 ft - 100 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/FtStevens82514.html'>http://www.timkeith.tk/maps/bike/FtStevens82514.html</a> ");
+    addMarker(map, { lng: -123.1837000, lat: 45.6983436 }, "Banks-vernonia", "<br>May 8, 2015 <br>Distance: 32.2 miles <br>Altitude: 389 ft - 963 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/Banksvernonia.html'>http://www.timkeith.tk/maps/bike/Banksvernonia.html</a> ");
+    addMarker(map, { lng: -122.8915199, lat: 45.6018633 }, "Mountaindale &amp; Roy", "<br>Aug 9, 2015 <br>Distance: 28.9 miles <br>Altitude: 158 ft - 418 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/MountaindaleRoy.html'>http://www.timkeith.tk/maps/bike/MountaindaleRoy.html</a> ");
+    addMarker(map, { lng: -122.6673670, lat: 45.5139004 }, "Trolley trail etc.", "<br>Sep 21, 2015 <br>Distance: 27.3 miles <br>Altitude: 0 ft - 181 ft <br>Map: <a href='http://www.timkeith.tk/maps/bike/Trolleytrailetc.html'>http://www.timkeith.tk/maps/bike/Trolleytrailetc.html</a> ");
+
+  }
+
+</script>
+<script
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+</script>
 
 </body>
 </html>

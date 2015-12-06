@@ -7,6 +7,7 @@ use Date::Parse ();
 use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
 sub do_dir($);
+sub gen_all_map($$);
 sub get_info_txt($);
 sub gen_contents($$);
 sub finish($);
@@ -14,6 +15,9 @@ sub gen_page($$$);
 sub gen_all_kml($$);
 sub get_info_from_kmz($);
 sub path_to_url($);
+sub gen_html($$);
+sub gen_initMap($$$$$);
+sub gen_map_html($);
 
 my $template = join('', <DATA>);
 
@@ -38,6 +42,7 @@ sub do_dir($) {
     push(@urls, $url);
     my $h = Misc::subst($template, '\b_URL_\b' => $url);
     my $info = get_info_from_kmz($kmz);
+    $info->{url} = path_to_url("$dir/$base2.html");
     $all{$base2} = $info;
     gen_page("$dir/$base2.html", $info->{name}, $h);
     print "$dir/$base2.html\n";
@@ -47,11 +52,54 @@ sub do_dir($) {
   for my $key (sort {$all{$b}->{date} cmp $all{$a}->{date}} keys %all) {
     $index_html .= gen_contents($key, $all{$key});
   }
-  gen_all_kml("$dir/all.kml", \@urls);
-  gen_page("$dir/all.html", $info{name},
-    Misc::subst($template, '\b_URL_\b' => path_to_url("$dir/all.kml")));
+  gen_all_map("$dir/all.html", \%all);
+  #gen_all_kml("$dir/all.kml", \@urls);
+  #gen_page("$dir/all.html", $info{name},
+  #  Misc::subst($template, '\b_URL_\b' => path_to_url("$dir/all.kml")));
   gen_page("$dir/index.html", $info{name}, $index_html);
-  return "<a href='$dir/index.html'>$info{name}</a>";
+  #return "<a href='$dir/index.html'>$info{name}</a>";
+  return "<a href='$dir/all.html'>$info{name}</a>";
+}
+
+sub gen_all_map($$) {
+  my($outfile, $all) = @_;
+  my $body = <<END;
+function addMarker(map, position, title, content) {
+  var m = new google.maps.Marker({ map: map, position: position, title: title });
+  m.addListener('click', function() {
+    var iw = new google.maps.InfoWindow({ content: '<b>' + title + '</b>' + content });
+    iw.open(map, m);
+  });
+}
+END
+  my $center = undef;
+  my($lng0, $lng1, $lat0, $lat1) = (180, -180, 90, -90);
+  while (my($base, $info) = each %$all) {
+    my $name = Misc::subst($info->{name}, '^\s+' => '', '\s+$' => '');
+    my $coord = $info->{StartCoord};
+    my $lng = $coord->[0];
+    my $lat = $coord->[1];
+    $lng0 = $lng if $lng < $lng0;
+    $lat0 = $lat if $lat < $lat0;
+    $lng1 = $lng if $lng > $lng1;
+    $lat1 = $lat if $lat > $lat1;
+    my $pos = "{ lng: $lng, lat: $lat }";
+    $center = $pos unless defined $center;
+    my $content = Misc::subst(<<END, "\n" => ' ');
+<br>$info->{Date}
+<br>Distance: $info->{Distance}
+<br>Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
+<br>Map: <a href='$info->{url}'>$info->{url}</a>
+END
+    $body .= "addMarker(map, $pos, \"$name\", \"$content\");\n";
+  }
+  if (defined $center) {
+    my $ne = "{ lng: $lng1, lat: $lat1 }";
+    my $sw = "{ lng: $lng0, lat: $lat0 }";
+    my $initMap = gen_initMap(7, $center, $sw, $ne, $body);
+    my $html = gen_map_html($initMap);
+    Misc::put($outfile, gen_html("All ???", $html));
+  }
 }
 
 sub get_info_txt($) {
@@ -85,20 +133,7 @@ sub finish($) {
 sub gen_page($$$) {
   my($outfile, $title, $contents) = @_;
   $contents =~ s/^/  /gm;
-  my $html = <<END;
-<!DOCTYPE html>
-<html>
-<head>
-  <style type='text/css'>
-  </style>
-  <title>$title</title>
-</head>
-<body>
-$contents
-</body>
-</html>
-END
-  Misc::put($outfile, $html);
+  Misc::put($outfile, gen_html($title, $contents));
 }
 
 sub gen_all_kml($$) {
@@ -163,12 +198,67 @@ sub get_info_from_kmz($) {
   }
   my(undef,undef,undef,$day,$month,$year) = Date::Parse::strptime($info{'Start Time'});
   $info{date} = sprintf('%04d/%02d/%02d', $year+1900, $month+1, $day);
+  if ($xml =~ m{<coordinates>\s*(.*?),(.*?),}) {
+    $info{StartCoord} = [$1, $2];
+  }
   return \%info;
 }
 
 sub path_to_url($) {
   my($path) = @_;
   return Misc::subst('http://www.timkeith.tk/maps/_PATH_', '_PATH_' => $path);
+}
+
+sub gen_html($$) {
+  my($title, $contents) = @_;
+  return <<END;
+<!DOCTYPE html>
+<html>
+<head>
+  <style type='text/css'>
+  </style>
+  <title>$title</title>
+</head>
+<body>
+$contents
+</body>
+</html>
+END
+}
+
+sub gen_initMap($$$$$) {
+  my($zoom, $center, $sw, $ne, $body) = @_;
+  $body =~ s/^/    /gm;
+  return <<END;
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: $zoom,
+      center: $center,
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+    });
+    map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
+    console.log('map', map);
+$body
+  }
+END
+}
+
+# Gen html for map page around initMap function
+sub gen_map_html($) {
+  my($initMap) = @_;
+  return <<END;
+<style type='text/css'>
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: 100%; }
+</style>
+<div id='map'></div>
+<script type='text/javascript'>
+$initMap
+</script>
+<script
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+</script>
+END
 }
 
 __END__

@@ -3,32 +3,38 @@
 <head>
   <style type='text/css'>
   </style>
-  <title>Canoe Trips</title>
+  <title>All ???</title>
 </head>
 <body>
-  <style type="text/css">
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #map { height: 100%; }
-  </style>
-  <div id='map'></div>
-  <script type="text/javascript">
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: {lat: 45.602, lng: -122.892},
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
+<style type='text/css'>
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: 100%; }
+</style>
+<div id='map'></div>
+<script type='text/javascript'>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: { lng: -122.8055286, lat: 45.3919306 },
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+    });
+    map.fitBounds(new google.maps.LatLngBounds({ lng: -122.8055286, lat: 45.3919306 }, { lng: -122.8055286, lat: 45.3919306 }));
+    console.log('map', map);
+    function addMarker(map, position, title, content) {
+      var m = new google.maps.Marker({ map: map, position: position, title: title });
+      m.addListener('click', function() {
+        var iw = new google.maps.InfoWindow({ content: '<b>' + title + '</b>' + content });
+        iw.open(map, m);
       });
-      console.log('map', map);
-      var layer = new google.maps.KmlLayer({
-        url: 'http://www.timkeith.tk/maps/canoe/all.kml',
-        map: map,
-      });
-      console.log('layer', layer);
     }
-  </script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
-  </script>
+    addMarker(map, { lng: -122.8055286, lat: 45.3919306 }, "Canoeing On The Tuallitan From The 99W Bridge Upstream", "<br>Jul 4, 2015 <br>Distance: 6.83 miles <br>Altitude: 65 ft - 158 ft <br>Map: <a href='http://www.timkeith.tk/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html'>http://www.timkeith.tk/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html</a> ");
+
+  }
+
+</script>
+<script
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+</script>
 
 </body>
 </html>

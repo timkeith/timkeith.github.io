@@ -3,32 +3,45 @@
 <head>
   <style type='text/css'>
   </style>
-  <title>Hikes</title>
+  <title>All ???</title>
 </head>
 <body>
-  <style type="text/css">
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #map { height: 100%; }
-  </style>
-  <div id='map'></div>
-  <script type="text/javascript">
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: {lat: 45.602, lng: -122.892},
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
+<style type='text/css'>
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: 100%; }
+</style>
+<div id='map'></div>
+<script type='text/javascript'>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: { lng: -122.0915553, lat: 45.5491722 },
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+    });
+    map.fitBounds(new google.maps.LatLngBounds({ lng: -122.7137539, lat: 37.8601611 }, { lng: -71.1158826, lat: 45.9061294 }));
+    console.log('map', map);
+    function addMarker(map, position, title, content) {
+      var m = new google.maps.Marker({ map: map, position: position, title: title });
+      m.addListener('click', function() {
+        var iw = new google.maps.InfoWindow({ content: '<b>' + title + '</b>' + content });
+        iw.open(map, m);
       });
-      console.log('map', map);
-      var layer = new google.maps.KmlLayer({
-        url: 'http://www.timkeith.tk/maps/hike/all.kml',
-        map: map,
-      });
-      console.log('layer', layer);
     }
-  </script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
-  </script>
+    addMarker(map, { lng: -122.0915553, lat: 45.5491722 }, "Larch Mountain Crater", "<br>Oct 5, 2015 <br>Distance: 7.19 miles <br>Altitude: 2,813 ft - 4,003 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/LarchMountainCrater.html'>http://www.timkeith.tk/maps/hike/LarchMountainCrater.html</a> ");
+    addMarker(map, { lng: -122.1727020, lat: 45.5605892 }, "Angel's Rest", "<br>Nov 23, 2015 <br>Distance: 4.46 miles <br>Altitude: 106 ft - 1,601 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/AngelsRest.html'>http://www.timkeith.tk/maps/hike/AngelsRest.html</a> ");
+    addMarker(map, { lng: -71.1158826, lat: 42.3270505 }, "Fenway", "<br>Sep 25, 2015 <br>Distance: 6.29 miles <br>Altitude: 0 ft - 100 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/Fenway.html'>http://www.timkeith.tk/maps/hike/Fenway.html</a> ");
+    addMarker(map, { lng: -121.9402400, lat: 45.9061294 }, "Falls Creek Falls", "<br>Oct 26, 2015 <br>Distance: 5.95 miles <br>Altitude: 1,307 ft - 2,357 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/FallsCreekFalls.html'>http://www.timkeith.tk/maps/hike/FallsCreekFalls.html</a> ");
+    addMarker(map, { lng: -122.1785313, lat: 45.5893475 }, "Cape Horn Trail 11-2-15", "<br>Nov 2, 2015 <br>Distance: 7.06 miles <br>Altitude: 162 ft - 1,278 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/CapeHornTrail11215.html'>http://www.timkeith.tk/maps/hike/CapeHornTrail11215.html</a> ");
+    addMarker(map, { lng: -121.6536302, lat: 44.4450139 }, "Lake creek lodge to lower bridge", "<br>Aug 24, 2015 <br>Distance: 20.1 miles <br>Altitude: 2,725 ft - 3,026 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/Lakecreeklodgetolowerbridge.html'>http://www.timkeith.tk/maps/hike/Lakecreeklodgetolowerbridge.html</a> ");
+    addMarker(map, { lng: -122.2762021, lat: 37.8601611 }, "Berkeley to University", "<br>Nov 30, 2015 <br>Distance: 4.55 miles <br>Altitude: 101 ft - 374 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/BerkeleytoUniversity.html'>http://www.timkeith.tk/maps/hike/BerkeleytoUniversity.html</a> ");
+    addMarker(map, { lng: -122.7137539, lat: 42.2026597 }, "Lithia Park &amp; Bandersnatch", "<br>Jun 2, 2015 <br>Distance: 7.27 miles <br>Altitude: 1,828 ft - 2,924 ft <br>Map: <a href='http://www.timkeith.tk/maps/hike/LithiaParkBandersnatch.html'>http://www.timkeith.tk/maps/hike/LithiaParkBandersnatch.html</a> ");
+
+  }
+
+</script>
+<script
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+</script>
 
 </body>
 </html>
