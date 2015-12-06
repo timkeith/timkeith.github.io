@@ -1,1 +1,1 @@
-name: Hikes
+name: Hikes and Walks

@@ -7,7 +7,7 @@ use Date::Parse ();
 use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
 sub do_dir($);
-sub gen_all_map($$);
+sub gen_all_map($$$);
 sub get_info_txt($);
 sub gen_contents($$);
 sub finish($);
@@ -34,6 +34,9 @@ sub do_dir($) {
   my($dir) = @_;
   my %all = ();
   my @urls = ();
+  for my $html (glob("$dir/*.html")) {
+    unlink($html);
+  }
   for my $kmz (glob("$dir/*.kmz")) {
     my $base = basename($kmz, '.kmz');
     my $base2 = Misc::subst($base, ' ' => '');
@@ -52,7 +55,7 @@ sub do_dir($) {
   for my $key (sort {$all{$b}->{date} cmp $all{$a}->{date}} keys %all) {
     $index_html .= gen_contents($key, $all{$key});
   }
-  gen_all_map("$dir/all.html", \%all);
+  gen_all_map("$dir/all.html", $info{name}, \%all);
   #gen_all_kml("$dir/all.kml", \@urls);
   #gen_page("$dir/all.html", $info{name},
   #  Misc::subst($template, '\b_URL_\b' => path_to_url("$dir/all.kml")));
@@ -61,8 +64,8 @@ sub do_dir($) {
   return "<a href='$dir/all.html'>$info{name}</a>";
 }
 
-sub gen_all_map($$) {
-  my($outfile, $all) = @_;
+sub gen_all_map($$$) {
+  my($outfile, $dir_name, $all) = @_;
   my $body = <<END;
 function addMarker(map, position, title, content) {
   var m = new google.maps.Marker({ map: map, position: position, title: title });
@@ -98,7 +101,7 @@ END
     my $sw = "{ lng: $lng0, lat: $lat0 }";
     my $initMap = gen_initMap(7, $center, $sw, $ne, $body);
     my $html = gen_map_html($initMap);
-    Misc::put($outfile, gen_html("All ???", $html));
+    Misc::put($outfile, gen_html("All $dir_name", $html));
   }
 }
 
