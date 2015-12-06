@@ -15,10 +15,10 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 7,
-      center: { lng: -122.8055286, lat: 45.3919306 },
+      center: { lng: -71.1185527, lat: 42.3269562 },
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
-    map.fitBounds(new google.maps.LatLngBounds({ lng: -122.9514189, lat: 45.3919306 }, { lng: -122.8055286, lat: 45.4903327 }));
+    map.fitBounds(new google.maps.LatLngBounds({ lng: -74.8618318, lat: 42.3269562 }, { lng: -71.1185527, lat: 43.8309472 }));
     console.log('map', map);
     function addMarker(map, position, title, content) {
       var m = new google.maps.Marker({ map: map, position: position, title: title });
@@ -27,8 +27,8 @@
         iw.open(map, m);
       });
     }
-    addMarker(map, { lng: -122.8055286, lat: 45.3919306 }, "Canoeing On The Tuallitan From The 99W Bridge Upstream", "<br>Jul 4, 2015 <br>Distance: 6.83 miles <br>Altitude: 65 ft - 158 ft <br>Map: <a href='http://www.timkeith.tk/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html'>http://www.timkeith.tk/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html</a> ");
-    addMarker(map, { lng: -122.9514189, lat: 45.4903327 }, "Canoeing from Rood Bridge Park", "<br>Jun 27, 2015 <br>Distance: 2.77 miles <br>Altitude: 120 ft - 175 ft <br>Map: <a href='http://www.timkeith.tk/maps/canoe/CanoeingfromRoodBridgePark.html'>http://www.timkeith.tk/maps/canoe/CanoeingfromRoodBridgePark.html</a> ");
+    addMarker(map, { lng: -71.1185527, lat: 42.3269562 }, "Jamaica Pond", "<br>Oct 19, 2013 <br>Distance: 3.34 miles <br>Altitude: 39 ft - 221 ft <br>Map: <a href='http://www.timkeith.tk/maps/jog/JamaicaPond.html'>http://www.timkeith.tk/maps/jog/JamaicaPond.html</a> ");
+    addMarker(map, { lng: -74.8618318, lat: 43.8309472 }, "Waldheim jog", "<br>Jul 9, 2014 <br>Distance: 3.18 miles <br>Altitude: 1,894 ft - 2,101 ft <br>Map: <a href='http://www.timkeith.tk/maps/jog/Waldheimjog.html'>http://www.timkeith.tk/maps/jog/Waldheimjog.html</a> ");
 
   }
 
