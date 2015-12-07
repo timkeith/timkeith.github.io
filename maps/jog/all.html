@@ -15,7 +15,7 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 7,
-      center: { lng: -71.1185527, lat: 42.3269562 },
+      center: { lng: -71.1182417, lat: 42.3267329 },
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
     map.fitBounds(new google.maps.LatLngBounds({ lng: -74.8618318, lat: 42.3267329 }, { lng: -71.1158826, lat: 43.8309472 }));
@@ -29,10 +29,10 @@
         infowindow.open(map, marker);
       });
     }
-    addMarker(map, { lng: -71.1185527, lat: 42.3269562 }, "Jamaica Pond", "<br>Oct 19, 2013 <br>Distance: 3.34 miles <br>Altitude: 39 ft - 221 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/JamaicaPond.html'>http://www.timkeith.tk/maps/jog/JamaicaPond.html</a> ");
-    addMarker(map, { lng: -74.8618318, lat: 43.8309472 }, "Waldheim jog", "<br>Jul 9, 2014 <br>Distance: 3.18 miles <br>Altitude: 1,894 ft - 2,101 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/Waldheimjog.html'>http://www.timkeith.tk/maps/jog/Waldheimjog.html</a> ");
     addMarker(map, { lng: -71.1182417, lat: 42.3267329 }, "Jamaica pond 9-26-15", "<br>Sep 26, 2015 <br>Distance: 3.04 miles <br>Altitude: 8 ft - 102 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/Jamaicapond92615.html'>http://www.timkeith.tk/maps/jog/Jamaicapond92615.html</a> ");
     addMarker(map, { lng: -71.1158826, lat: 42.3270505 }, "Fenway", "<br>Sep 25, 2015 <br>Distance: 6.29 miles <br>Altitude: 0 ft - 100 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/Fenway.html'>http://www.timkeith.tk/maps/jog/Fenway.html</a> ");
+    addMarker(map, { lng: -71.1185527, lat: 42.3269562 }, "Jamaica Pond", "<br>Oct 19, 2013 <br>Distance: 3.34 miles <br>Altitude: 39 ft - 221 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/JamaicaPond.html'>http://www.timkeith.tk/maps/jog/JamaicaPond.html</a> ");
+    addMarker(map, { lng: -74.8618318, lat: 43.8309472 }, "Waldheim jog", "<br>Jul 9, 2014 <br>Distance: 3.18 miles <br>Altitude: 1,894 ft - 2,101 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/jog/Waldheimjog.html'>http://www.timkeith.tk/maps/jog/Waldheimjog.html</a> ");
 
   }
 
