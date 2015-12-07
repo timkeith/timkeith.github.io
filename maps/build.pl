@@ -15,11 +15,12 @@ sub gen_page($$$);
 sub gen_all_kml($$);
 sub get_info_from_kmz($);
 sub path_to_url($);
-sub gen_html($$);
-sub gen_initMap($$$$$);
-sub gen_map_html($);
-
-my $template = join('', <DATA>);
+sub t_page_html($$);
+sub t_initMap($$$$$);
+sub t_addMarker();
+sub t_infowindow_contents($);
+sub t_kml_page($);
+sub t_map_html($);
 
 my @links = ();
 for my $dir (grep(-d, glob('*'))) {
@@ -43,12 +44,11 @@ sub do_dir($) {
     my $base3 = Misc::subst($base, ' ' => '%20');
     my $url = path_to_url("$dir/$base3.kmz");
     push(@urls, $url);
-    my $h = Misc::subst($template, '\b_URL_\b' => $url);
     my $info = get_info_from_kmz($kmz);
     $info->{url} = path_to_url("$dir/$base2.html");
     $all{$base2} = $info;
-    gen_page("$dir/$base2.html", $info->{name}, $h);
-    print "$dir/$base2.html\n";
+    gen_page("$dir/$base2.html", $info->{name}, t_kml_page($url));
+    #print "$dir/$base2.html\n";
   }
   my %info = get_info_txt($dir);
   my $index_html = "<h2>$info{name}</h2>\n";
@@ -66,15 +66,7 @@ sub do_dir($) {
 
 sub gen_all_map($$$) {
   my($outfile, $dir_name, $all) = @_;
-  my $body = <<END;
-function addMarker(map, position, title, content) {
-  var m = new google.maps.Marker({ map: map, position: position, title: title });
-  m.addListener('click', function() {
-    var iw = new google.maps.InfoWindow({ content: '<b>' + title + '</b>' + content });
-    iw.open(map, m);
-  });
-}
-END
+  my $body = t_addMarker();
   my $center = undef;
   my($lng0, $lng1, $lat0, $lat1) = (180, -180, 90, -90);
   while (my($base, $info) = each %$all) {
@@ -88,20 +80,15 @@ END
     $lat1 = $lat if $lat > $lat1;
     my $pos = "{ lng: $lng, lat: $lat }";
     $center = $pos unless defined $center;
-    my $content = Misc::subst(<<END, "\n" => ' ');
-<br>$info->{Date}
-<br>Distance: $info->{Distance}
-<br>Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
-<br>Map: <a href='$info->{url}'>$info->{url}</a>
-END
+    my $content = t_infowindow_contents($info);
     $body .= "addMarker(map, $pos, \"$name\", \"$content\");\n";
   }
   if (defined $center) {
     my $ne = "{ lng: $lng1, lat: $lat1 }";
     my $sw = "{ lng: $lng0, lat: $lat0 }";
-    my $initMap = gen_initMap(7, $center, $sw, $ne, $body);
-    my $html = gen_map_html($initMap);
-    Misc::put($outfile, gen_html("All $dir_name", $html));
+    my $initMap = t_initMap(7, $center, $sw, $ne, $body);
+    my $html = t_map_html($initMap);
+    Misc::put($outfile, t_page_html("All $dir_name", $html));
   }
 }
 
@@ -136,7 +123,8 @@ sub finish($) {
 sub gen_page($$$) {
   my($outfile, $title, $contents) = @_;
   $contents =~ s/^/  /gm;
-  Misc::put($outfile, gen_html($title, $contents));
+  $contents =~ s/ +$//gm;
+  Misc::put($outfile, t_page_html($title, $contents));
 }
 
 sub gen_all_kml($$) {
@@ -212,7 +200,9 @@ sub path_to_url($) {
   return Misc::subst('http://www.timkeith.tk/maps/_PATH_', '_PATH_' => $path);
 }
 
-sub gen_html($$) {
+### Code templates
+
+sub t_page_html($$) {
   my($title, $contents) = @_;
   return <<END;
 <!DOCTYPE html>
@@ -229,7 +219,8 @@ $contents
 END
 }
 
-sub gen_initMap($$$$$) {
+# initMap function
+sub t_initMap($$$$$) {
   my($zoom, $center, $sw, $ne, $body) = @_;
   $body =~ s/^/    /gm;
   return <<END;
@@ -246,8 +237,52 @@ $body
 END
 }
 
-# Gen html for map page around initMap function
-sub gen_map_html($) {
+sub t_addMarker() {
+  return <<END;
+var infowindow = new google.maps.InfoWindow();
+function addMarker(map, position, title, content) {
+  var marker = new google.maps.Marker({ map: map, position: position, title: title });
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.close();
+    infowindow.setContent('<b>' + title + '</b>' + content);
+    infowindow.open(map, marker);
+  });
+}
+END
+}
+
+sub t_infowindow_contents($) {
+  my($info) = @_;
+  return Misc::subst(<<END, "\n" => ' ');
+<br>$info->{Date}
+<br>Distance: $info->{Distance}
+<br>Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
+<br>Map: <a target='_blank' href='$info->{url}'>$info->{url}</a>
+END
+}
+
+sub t_kml_page($) {
+  my($url) = @_;
+  my $js = <<END;
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: {lat: 45.602, lng: -122.892},
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+    });
+    console.log('map', map);
+    var layer = new google.maps.KmlLayer({
+      url: $url,
+      map: map,
+    });
+    console.log('layer', layer);
+  }
+END
+  return t_map_html($js);
+}
+
+# html for map page around initMap function
+sub t_map_html($) {
   my($initMap) = @_;
   return <<END;
 <style type='text/css'>
@@ -263,28 +298,3 @@ $initMap
 </script>
 END
 }
-
-__END__
-<style type="text/css">
-  html, body { height: 100%; margin: 0; padding: 0; }
-  #map { height: 100%; }
-</style>
-<div id='map'></div>
-<script type="text/javascript">
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: {lat: 45.602, lng: -122.892},
-      mapTypeId: google.maps.MapTypeId.TERRAIN,
-    });
-    console.log('map', map);
-    var layer = new google.maps.KmlLayer({
-      url: '_URL_',
-      map: map,
-    });
-    console.log('layer', layer);
-  }
-</script>
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap">
-</script>
