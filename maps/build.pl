@@ -8,6 +8,7 @@ use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
 sub do_dir($);
 sub gen_all_map($$$);
+sub get_bounds($);
 sub get_info_txt($);
 sub gen_contents($$);
 sub finish($);
@@ -19,6 +20,8 @@ sub t_page_html($$);
 sub t_initMap($$$$$);
 sub t_addMarker();
 sub t_infowindow_contents($);
+sub to_point($);
+sub t_polyline_initMap($$);
 sub t_kml_page($);
 sub t_map_html($);
 
@@ -35,6 +38,7 @@ sub do_dir($) {
   my($dir) = @_;
   my %all = ();
   my @urls = ();
+  my %dir_info = get_info_txt($dir);
   for my $html (glob("$dir/*.html")) {
     unlink($html);
   }
@@ -45,57 +49,74 @@ sub do_dir($) {
     my $url = path_to_url("$dir/$base3.kmz");
     push(@urls, $url);
     my $info = get_info_from_kmz($kmz);
-    $info->{url} = path_to_url("$dir/$base2.html");
+    #$info->{url} = path_to_url("$dir/$base2.html");
+    $info->{url} = "/maps/$dir/$base2.html";
     $all{$base2} = $info;
-    gen_page("$dir/$base2.html", $info->{name}, t_kml_page($url));
+    if (0) {
+      gen_page("$dir/$base2.html", $info->{name}, t_kml_page($url));
+    } else {
+      my $omit = $dir_info{"omit-$base2"} || 0;
+      my $x = t_map_html(t_polyline_initMap($info->{Coords}, $omit));
+      gen_page("$dir/$base2.html", $info->{name}, $x);
+    }
     #print "$dir/$base2.html\n";
   }
-  my %info = get_info_txt($dir);
-  my $index_html = "<h2>$info{name}</h2>\n";
+  my $index_html = "<h2>$dir_info{name}</h2>\n";
   for my $key (sort {$all{$b}->{date} cmp $all{$a}->{date}} keys %all) {
     $index_html .= gen_contents($key, $all{$key});
   }
-  gen_all_map("$dir/all.html", $info{name}, \%all);
+  gen_all_map("$dir/all.html", $dir_info{name}, \%all);
   #gen_all_kml("$dir/all.kml", \@urls);
-  #gen_page("$dir/all.html", $info{name},
+  #gen_page("$dir/all.html", $dir_info{name},
   #  Misc::subst($template, '\b_URL_\b' => path_to_url("$dir/all.kml")));
-  gen_page("$dir/index.html", $info{name}, $index_html);
-  #return "<a href='$dir/index.html'>$info{name}</a>";
-  return "<a href='$dir/all.html'>$info{name}</a>";
+  gen_page("$dir/index.html", $dir_info{name}, $index_html);
+  #return "<a href='$dir/index.html'>$dir_info{name}</a>";
+  return "<a href='$dir/all.html'>$dir_info{name}</a>";
 }
 
 sub gen_all_map($$$) {
   my($outfile, $dir_name, $all) = @_;
   my $body = t_addMarker();
-  my $center = undef;
-  my($lng0, $lng1, $lat0, $lat1) = (180, -180, 90, -90);
+  my @coords = ();
   while (my($base, $info) = each %$all) {
     my $name = Misc::subst($info->{name}, '^\s+' => '', '\s+$' => '');
     my $coord = $info->{StartCoord};
-    my $lng = $coord->[0];
-    my $lat = $coord->[1];
-    $lng0 = $lng if $lng < $lng0;
-    $lat0 = $lat if $lat < $lat0;
-    $lng1 = $lng if $lng > $lng1;
-    $lat1 = $lat if $lat > $lat1;
-    my $pos = "{ lng: $lng, lat: $lat }";
-    $center = $pos unless defined $center;
+    push(@coords, $coord);
+    my $pos = to_point($coord);
     my $content = t_infowindow_contents($info);
     $body .= "addMarker(map, $pos, \"$name\", \"$content\");\n";
   }
-  if (defined $center) {
-    my $ne = "{ lng: $lng1, lat: $lat1 }";
-    my $sw = "{ lng: $lng0, lat: $lat0 }";
+  if (@coords > 0) {
+    my $bounds = get_bounds(\@coords);
+    my $ne = to_point($bounds->{ne});
+    my $sw = to_point($bounds->{sw});
+    my $center = to_point($coords[0]);
+    #??? does zoom and center even matter?
     my $initMap = t_initMap(7, $center, $sw, $ne, $body);
     my $html = t_map_html($initMap);
     Misc::put($outfile, t_page_html("All $dir_name", $html));
   }
 }
 
+# Return hash ref with sw and ne representing the corners of the rectangle containing all points
+sub get_bounds($) {
+  my($coords) = @_;
+  my($lng0, $lng1, $lat0, $lat1) = (180, -180, 90, -90);
+  for my $coord (@$coords) {
+    my $lng = $coord->[0];
+    my $lat = $coord->[1];
+    $lng0 = $lng if $lng < $lng0;
+    $lat0 = $lat if $lat < $lat0;
+    $lng1 = $lng if $lng > $lng1;
+    $lat1 = $lat if $lat > $lat1;
+  }
+  return { ne => [$lng1, $lat1], sw => [$lng0, $lat0] };
+}
+
 sub get_info_txt($) {
   my($dir) = @_;
   my $txt = Misc::get("$dir/info.txt");
-  return $txt =~ /^(\S+): *(.*)/gm;
+  return $txt =~ /^([^:\n]+): *(.*)/gm;
 }
 
 sub gen_contents($$) {
@@ -189,9 +210,24 @@ sub get_info_from_kmz($) {
   }
   my(undef,undef,undef,$day,$month,$year) = Date::Parse::strptime($info{'Start Time'});
   $info{date} = sprintf('%04d/%02d/%02d', $year+1900, $month+1, $day);
-  if ($xml =~ m{<coordinates>\s*(.*?),(.*?),}) {
-    $info{StartCoord} = [$1, $2];
+
+  my @coordinates = ();
+  if ($xml =~ m{.*<coordinates>\s*(.*?)\s*</coordinates>}s) {
+    my $coordinates = $1;
+    my @prev = (0, 0);
+    while ($coordinates =~ /([-.\d]+),([-.\d]+),/g) {
+      my @curr = ($1, $2);
+      if ($curr[0] ne $prev[0] || $curr[1] ne $prev[1]) {
+        push(@coordinates, \@curr);
+        @prev = @curr;
+      }
+    }
+    $info{StartCoord} = $coordinates[0];
   }
+  $info{Coords} = \@coordinates;
+  #if ($xml =~ m{<coordinates>\s*(.*?),(.*?),}) {
+  #  $info{StartCoord} = [$1, $2];
+  #}
   return \%info;
 }
 
@@ -226,8 +262,6 @@ sub t_initMap($$$$$) {
   return <<END;
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: $zoom,
-      center: $center,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
     map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
@@ -258,6 +292,43 @@ sub t_infowindow_contents($) {
 <br>Distance: $info->{Distance}
 <br>Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
 <br>Map: <a target='_blank' href='$info->{url}'>$info->{url}</a>
+END
+}
+
+sub to_point($) {
+  my($coordinates) = @_;
+  return "{lng: $coordinates->[0], lat: $coordinates->[1]}";
+}
+
+sub t_polyline_initMap($$) {
+  my($coords, $omit) = @_;
+  splice($coords, @$coords - $omit);
+  my $bounds = get_bounds($coords);
+  my $sw = to_point($bounds->{sw});
+  my $ne = to_point($bounds->{ne});
+  my $coordinates = join("\n", map { to_point($_) . ',' } @{$coords});
+  return <<END;
+  function initMap() {
+    var coordinates = [
+$coordinates
+    ];
+    var start = coordinates[0];
+    var end = coordinates[coordinates.length-1];
+    var map = new google.maps.Map(document.getElementById('map'), {
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    });
+    map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
+    var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
+    var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
+    var polyline = new google.maps.Polyline({
+      path: coordinates,
+      geodesic: true,
+      strokeColor: '#0000FF',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    polyline.setMap(map);
+  }
 END
 }
 

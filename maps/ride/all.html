@@ -14,11 +14,9 @@
 <script type='text/javascript'>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 7,
-      center: { lng: -122.3633037, lat: 45.2894485 },
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
-    map.fitBounds(new google.maps.LatLngBounds({ lng: -123.3383490, lat: 45.2894485 }, { lng: -122.3633037, lat: 45.7473650 }));
+    map.fitBounds(new google.maps.LatLngBounds({lng: -123.3383490, lat: 45.2894485}, {lng: -122.3633037, lat: 45.7473650}));
     console.log('map', map);
     var infowindow = new google.maps.InfoWindow();
     function addMarker(map, position, title, content) {
@@ -29,10 +27,10 @@
         infowindow.open(map, marker);
       });
     }
-    addMarker(map, { lng: -122.3633037, lat: 45.2894485 }, "Milo McIver", "<br>Sep 10, 2014 <br>Distance: 9.27 miles <br>Altitude: 306 ft - 790 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/ride/MiloMcIver.html'>http://www.timkeith.tk/maps/ride/MiloMcIver.html</a> ");
-    addMarker(map, { lng: -123.3383490, lat: 45.7070021 }, "Reehers w/Christine", "<br>May 9, 2015 <br>Distance: 5.97 miles <br>Altitude: 1,089 ft - 1,605 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/ride/ReeherswChristine.html'>http://www.timkeith.tk/maps/ride/ReeherswChristine.html</a> ");
-    addMarker(map, { lng: -122.8147690, lat: 45.5925784 }, "BPA &amp; Newton road", "<br>Apr 9, 2014 <br>Distance: 6.03 miles <br>Altitude: 245 ft - 1,150 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/ride/BPANewtonroad.html'>http://www.timkeith.tk/maps/ride/BPANewtonroad.html</a> ");
-    addMarker(map, { lng: -123.1850579, lat: 45.7473650 }, "Stub Stewart on Rossi", "<br>Nov 4, 2015 <br>Distance: 4.38 miles <br>Altitude: 861 ft - 1,332 ft <br>Map: <a target='_blank' href='http://www.timkeith.tk/maps/ride/StubStewartonRossi.html'>http://www.timkeith.tk/maps/ride/StubStewartonRossi.html</a> ");
+    addMarker(map, {lng: -123.3383490, lat: 45.7070021}, "Reehers w/Christine", "<br>May 9, 2015 <br>Distance: 5.97 miles <br>Altitude: 1,089 ft - 1,605 ft <br>Map: <a target='_blank' href='/maps/ride/ReeherswChristine.html'>/maps/ride/ReeherswChristine.html</a> ");
+    addMarker(map, {lng: -123.1850579, lat: 45.7473650}, "Stub Stewart on Rossi", "<br>Nov 4, 2015 <br>Distance: 4.38 miles <br>Altitude: 861 ft - 1,332 ft <br>Map: <a target='_blank' href='/maps/ride/StubStewartonRossi.html'>/maps/ride/StubStewartonRossi.html</a> ");
+    addMarker(map, {lng: -122.8147690, lat: 45.5925784}, "BPA &amp; Newton road", "<br>Apr 9, 2014 <br>Distance: 6.03 miles <br>Altitude: 245 ft - 1,150 ft <br>Map: <a target='_blank' href='/maps/ride/BPANewtonroad.html'>/maps/ride/BPANewtonroad.html</a> ");
+    addMarker(map, {lng: -122.3633037, lat: 45.2894485}, "Milo McIver", "<br>Sep 10, 2014 <br>Distance: 9.27 miles <br>Altitude: 306 ft - 790 ft <br>Map: <a target='_blank' href='/maps/ride/MiloMcIver.html'>/maps/ride/MiloMcIver.html</a> ");
 
   }
 
