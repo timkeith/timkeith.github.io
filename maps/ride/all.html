@@ -9,34 +9,52 @@
 <style type='text/css'>
   html, body { height: 100%; margin: 0; padding: 0; }
   #map { height: 100%; }
+  #title {
+    margin-top: .5em;
+    font-size: 120%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    padding: .3em;
+  }
+  h2 {
+    font-size: 125%;
+    margin-top: 0;
+    margin-bottom: .2em;
+  }
 </style>
 <div id='map'></div>
+<div id='title' style='color: black; font-size: 120%; position: absolute;'>
+<h2>All Horseback Rides</h2>
+</div>
 <script type='text/javascript'>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
     map.fitBounds(new google.maps.LatLngBounds({lng: -123.3383490, lat: 45.2894485}, {lng: -122.3633037, lat: 45.7473650}));
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
     console.log('map', map);
     var infowindow = new google.maps.InfoWindow();
     function addMarker(map, position, title, content) {
       var marker = new google.maps.Marker({ map: map, position: position, title: title });
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.close();
-        infowindow.setContent('<b>' + title + '</b>' + content);
+        infowindow.setContent(content);
         infowindow.open(map, marker);
       });
     }
-    addMarker(map, {lng: -123.3383490, lat: 45.7070021}, "Reehers w/Christine", "<br>May 9, 2015 <br>Distance: 5.97 miles <br>Altitude: 1,089 ft - 1,605 ft <br>Map: <a target='_blank' href='/maps/ride/ReeherswChristine.html'>/maps/ride/ReeherswChristine.html</a> ");
-    addMarker(map, {lng: -123.1850579, lat: 45.7473650}, "Stub Stewart on Rossi", "<br>Nov 4, 2015 <br>Distance: 4.38 miles <br>Altitude: 861 ft - 1,332 ft <br>Map: <a target='_blank' href='/maps/ride/StubStewartonRossi.html'>/maps/ride/StubStewartonRossi.html</a> ");
-    addMarker(map, {lng: -122.8147690, lat: 45.5925784}, "BPA &amp; Newton road", "<br>Apr 9, 2014 <br>Distance: 6.03 miles <br>Altitude: 245 ft - 1,150 ft <br>Map: <a target='_blank' href='/maps/ride/BPANewtonroad.html'>/maps/ride/BPANewtonroad.html</a> ");
-    addMarker(map, {lng: -122.3633037, lat: 45.2894485}, "Milo McIver", "<br>Sep 10, 2014 <br>Distance: 9.27 miles <br>Altitude: 306 ft - 790 ft <br>Map: <a target='_blank' href='/maps/ride/MiloMcIver.html'>/maps/ride/MiloMcIver.html</a> ");
+    addMarker(map, {lng: -123.3383490, lat: 45.7070021}, "Reehers w/Christine", "<h2>Reehers w/Christine</h2> May 9, 2015<br> Distance: <span id='distance'>5.97 miles</span><br> Altitude: 1,089 ft - 1,605 ft <br>Map: <a target='_blank' href='/maps/ride/ReeherswChristine.html'>/maps/ride/ReeherswChristine.html</a> ");
+    addMarker(map, {lng: -122.3633037, lat: 45.2894485}, "Milo McIver", "<h2>Milo McIver</h2> Sep 10, 2014<br> Distance: <span id='distance'>9.27 miles</span><br> Altitude: 306 ft - 790 ft <br>Map: <a target='_blank' href='/maps/ride/MiloMcIver.html'>/maps/ride/MiloMcIver.html</a> ");
+    addMarker(map, {lng: -122.8147690, lat: 45.5925784}, "BPA &amp; Newton road", "<h2>BPA &amp; Newton road</h2> Apr 9, 2014<br> Distance: <span id='distance'>6.03 miles</span><br> Altitude: 245 ft - 1,150 ft <br>Map: <a target='_blank' href='/maps/ride/BPANewtonroad.html'>/maps/ride/BPANewtonroad.html</a> ");
+    addMarker(map, {lng: -123.1850579, lat: 45.7473650}, "Stub Stewart on Rossi", "<h2>Stub Stewart on Rossi </h2> Nov 4, 2015<br> Distance: <span id='distance'>4.38 miles</span><br> Altitude: 861 ft - 1,332 ft <br>Map: <a target='_blank' href='/maps/ride/StubStewartonRossi.html'>/maps/ride/StubStewartonRossi.html</a> ");
 
   }
 
 </script>
+</script>
 <script
-  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+  src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
 </script>
 
 </body>

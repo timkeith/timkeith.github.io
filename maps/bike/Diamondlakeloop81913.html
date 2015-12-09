@@ -9,8 +9,24 @@
   <style type='text/css'>
     html, body { height: 100%; margin: 0; padding: 0; }
     #map { height: 100%; }
+    #title {
+      margin-top: .5em;
+      font-size: 120%;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid black;
+      padding: .3em;
+    }
+    h2 {
+      font-size: 125%;
+      margin-top: 0;
+      margin-bottom: .2em;
+    }
   </style>
   <div id='map'></div>
+  <div id='title' style='color: black; font-size: 120%; position: absolute;'>
+  <h2>Diamond lake loop 8-19-13</h2> Aug 19, 2013<br> Distance: <span id='distance'>11.6 miles</span><br> Altitude: 5,070 ft - 5,342 ft
+  </div>
   <script type='text/javascript'>
     function initMap() {
       var coordinates = [
@@ -1438,6 +1454,7 @@
         mapTypeId: google.maps.MapTypeId.TERRAIN
       });
       map.fitBounds(new google.maps.LatLngBounds({lng: -122.1720875, lat: 43.1293831}, {lng: -122.1325843, lat: 43.1857793}));
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
       var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
       var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
       var polyline = new google.maps.Polyline({
@@ -1448,11 +1465,19 @@
         strokeWeight: 2
       });
       polyline.setMap(map);
+      var length = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+
+      // replace length in page title, if there is a #distance node
+      var lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+      var lenMiles = (lenMeters/1609.34).toFixed(2);
+      var distNode = document.getElementById('distance');
+      if (distNode) distNode.innerHTML = lenMiles;
     }
 
   </script>
+  </script>
   <script
-    src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+    src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
   </script>
 
 </body>

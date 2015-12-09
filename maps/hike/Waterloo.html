@@ -9,8 +9,24 @@
   <style type='text/css'>
     html, body { height: 100%; margin: 0; padding: 0; }
     #map { height: 100%; }
+    #title {
+      margin-top: .5em;
+      font-size: 120%;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid black;
+      padding: .3em;
+    }
+    h2 {
+      font-size: 125%;
+      margin-top: 0;
+      margin-bottom: .2em;
+    }
   </style>
   <div id='map'></div>
+  <div id='title' style='color: black; font-size: 120%; position: absolute;'>
+  <h2>Waterloo</h2> Oct 13, 2014<br> Distance: <span id='distance'>3.14 miles</span><br> Altitude: 0 ft - 1,182 ft
+  </div>
   <script type='text/javascript'>
     function initMap() {
       var coordinates = [
@@ -60,7 +76,6 @@
   {lng: -80.5619335, lat: 43.4584769},
   {lng: -80.5620350, lat: 43.4584143},
   {lng: -80.5621473, lat: 43.4583545},
-  {lng: 0.0000000, lat: 0.0000000},
   {lng: -80.5713988, lat: 43.4657293},
   {lng: -80.5712768, lat: 43.4657597},
   {lng: -80.5711462, lat: 43.4657864},
@@ -376,7 +391,8 @@
       var map = new google.maps.Map(document.getElementById('map'), {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       });
-      map.fitBounds(new google.maps.LatLngBounds({lng: -80.5713988, lat: 0.0000000}, {lng: 0.0000000, lat: 43.4690171}));
+      map.fitBounds(new google.maps.LatLngBounds({lng: -80.5713988, lat: 43.4583545}, {lng: -80.5521369, lat: 43.4690171}));
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
       var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
       var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
       var polyline = new google.maps.Polyline({
@@ -387,11 +403,19 @@
         strokeWeight: 2
       });
       polyline.setMap(map);
+      var length = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+
+      // replace length in page title, if there is a #distance node
+      var lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+      var lenMiles = (lenMeters/1609.34).toFixed(2);
+      var distNode = document.getElementById('distance');
+      if (distNode) distNode.innerHTML = lenMiles;
     }
 
   </script>
+  </script>
   <script
-    src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+    src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
   </script>
 
 </body>

@@ -1,1 +1,2 @@
 name: Canoe Trips
+omit-CanoeingfromRoodBridgePark: 63

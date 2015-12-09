@@ -9,8 +9,24 @@
   <style type='text/css'>
     html, body { height: 100%; margin: 0; padding: 0; }
     #map { height: 100%; }
+    #title {
+      margin-top: .5em;
+      font-size: 120%;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid black;
+      padding: .3em;
+    }
+    h2 {
+      font-size: 125%;
+      margin-top: 0;
+      margin-bottom: .2em;
+    }
   </style>
   <div id='map'></div>
+  <div id='title' style='color: black; font-size: 120%; position: absolute;'>
+  <h2>Canoeing from Rood Bridge Park</h2> Jun 27, 2015<br> Distance: <span id='distance'>2.77 miles</span><br> Altitude: 120 ft - 175 ft
+  </div>
   <script type='text/javascript'>
     function initMap() {
       var coordinates = [
@@ -333,76 +349,14 @@
   {lng: -122.9513121, lat: 45.4901937},
   {lng: -122.9514226, lat: 45.4902545},
   {lng: -122.9515266, lat: 45.4903159},
-  {lng: -122.9512068, lat: 45.4903417},
-  {lng: -122.9510917, lat: 45.4904045},
-  {lng: -122.9511763, lat: 45.4904902},
-  {lng: -122.9513436, lat: 45.4905197},
-  {lng: -122.9514791, lat: 45.4905281},
-  {lng: -122.9516115, lat: 45.4905503},
-  {lng: -122.9517619, lat: 45.4906565},
-  {lng: -122.9518238, lat: 45.4907452},
-  {lng: -122.9518278, lat: 45.4908774},
-  {lng: -122.9518542, lat: 45.4909689},
-  {lng: -122.9518616, lat: 45.4910651},
-  {lng: -122.9518594, lat: 45.4911680},
-  {lng: -122.9518807, lat: 45.4912718},
-  {lng: -122.9519150, lat: 45.4913729},
-  {lng: -122.9519247, lat: 45.4914774},
-  {lng: -122.9518134, lat: 45.4916318},
-  {lng: -122.9516619, lat: 45.4916699},
-  {lng: -122.9515372, lat: 45.4917140},
-  {lng: -122.9514967, lat: 45.4918181},
-  {lng: -122.9515267, lat: 45.4919079},
-  {lng: -122.9514672, lat: 45.4920010},
-  {lng: -122.9513691, lat: 45.4921000},
-  {lng: -122.9513117, lat: 45.4922106},
-  {lng: -122.9512982, lat: 45.4923204},
-  {lng: -122.9513600, lat: 45.4924134},
-  {lng: -122.9514364, lat: 45.4925153},
-  {lng: -122.9515280, lat: 45.4925891},
-  {lng: -122.9516334, lat: 45.4926485},
-  {lng: -122.9517508, lat: 45.4926967},
-  {lng: -122.9519146, lat: 45.4927259},
-  {lng: -122.9520592, lat: 45.4927766},
-  {lng: -122.9521463, lat: 45.4928650},
-  {lng: -122.9522108, lat: 45.4929543},
-  {lng: -122.9522530, lat: 45.4930609},
-  {lng: -122.9521953, lat: 45.4931424},
-  {lng: -122.9520867, lat: 45.4932020},
-  {lng: -122.9519506, lat: 45.4932533},
-  {lng: -122.9518759, lat: 45.4933348},
-  {lng: -122.9519090, lat: 45.4934295},
-  {lng: -122.9520425, lat: 45.4934723},
-  {lng: -122.9521635, lat: 45.4934106},
-  {lng: -122.9522064, lat: 45.4933220},
-  {lng: -122.9521923, lat: 45.4932233},
-  {lng: -122.9522462, lat: 45.4931295},
-  {lng: -122.9522968, lat: 45.4930326},
-  {lng: -122.9522516, lat: 45.4929235},
-  {lng: -122.9521696, lat: 45.4928470},
-  {lng: -122.9520960, lat: 45.4927708},
-  {lng: -122.9519990, lat: 45.4926832},
-  {lng: -122.9518378, lat: 45.4926549},
-  {lng: -122.9516842, lat: 45.4926485},
-  {lng: -122.9515515, lat: 45.4925994},
-  {lng: -122.9514354, lat: 45.4925198},
-  {lng: -122.9513769, lat: 45.4924388},
-  {lng: -122.9513223, lat: 45.4923205},
-  {lng: -122.9513085, lat: 45.4922288},
-  {lng: -122.9513323, lat: 45.4921132},
-  {lng: -122.9514067, lat: 45.4920175},
-  {lng: -122.9515002, lat: 45.4919293},
-  {lng: -122.9515938, lat: 45.4918525},
-  {lng: -122.9517210, lat: 45.4917965},
-  {lng: -122.9518923, lat: 45.4918221},
-  {lng: -122.9520442, lat: 45.4918962},
       ];
       var start = coordinates[0];
       var end = coordinates[coordinates.length-1];
       var map = new google.maps.Map(document.getElementById('map'), {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       });
-      map.fitBounds(new google.maps.LatLngBounds({lng: -122.9551320, lat: 45.4847201}, {lng: -122.9413173, lat: 45.4934723}));
+      map.fitBounds(new google.maps.LatLngBounds({lng: -122.9551320, lat: 45.4847201}, {lng: -122.9413173, lat: 45.4909451}));
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
       var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
       var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
       var polyline = new google.maps.Polyline({
@@ -413,11 +367,19 @@
         strokeWeight: 2
       });
       polyline.setMap(map);
+      var length = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+
+      // replace length in page title, if there is a #distance node
+      var lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+      var lenMiles = (lenMeters/1609.34).toFixed(2);
+      var distNode = document.getElementById('distance');
+      if (distNode) distNode.innerHTML = lenMiles;
     }
 
   </script>
+  </script>
   <script
-    src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+    src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
   </script>
 
 </body>

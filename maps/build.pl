@@ -19,11 +19,11 @@ sub path_to_url($);
 sub t_page_html($$);
 sub t_initMap($$$$$);
 sub t_addMarker();
-sub t_infowindow_contents($);
+sub t_infowindow_contents($;$);
 sub to_point($);
 sub t_polyline_initMap($$);
 sub t_kml_page($);
-sub t_map_html($);
+sub t_map_html($;$);
 
 my @links = ();
 for my $dir (grep(-d, glob('*'))) {
@@ -56,8 +56,10 @@ sub do_dir($) {
       gen_page("$dir/$base2.html", $info->{name}, t_kml_page($url));
     } else {
       my $omit = $dir_info{"omit-$base2"} || 0;
-      my $x = t_map_html(t_polyline_initMap($info->{Coords}, $omit));
-      gen_page("$dir/$base2.html", $info->{name}, $x);
+      print "$dir/$base2.html - omit last $omit points\n" if $omit;
+      my $title = t_infowindow_contents($info, 1);
+      gen_page("$dir/$base2.html", $info->{name},
+        t_map_html(t_polyline_initMap($info->{Coords}, $omit), $title));
     }
     #print "$dir/$base2.html\n";
   }
@@ -93,7 +95,7 @@ sub gen_all_map($$$) {
     my $center = to_point($coords[0]);
     #??? does zoom and center even matter?
     my $initMap = t_initMap(7, $center, $sw, $ne, $body);
-    my $html = t_map_html($initMap);
+    my $html = t_map_html($initMap, "<h2>All $dir_name</h2>");
     Misc::put($outfile, t_page_html("All $dir_name", $html));
   }
 }
@@ -121,7 +123,7 @@ sub get_info_txt($) {
 
 sub gen_contents($$) {
   my($base, $info) = @_;
-  my $h = "<h3>$info->{name}</h3>\n";
+  my $h = "<b>$info->{name}</b>\n";
   if (my $snippet = $info->{snippet}) {
     $h .= "<p>$snippet</p>\n";
   }
@@ -265,6 +267,7 @@ sub t_initMap($$$$$) {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
     map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
     console.log('map', map);
 $body
   }
@@ -278,20 +281,22 @@ function addMarker(map, position, title, content) {
   var marker = new google.maps.Marker({ map: map, position: position, title: title });
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.close();
-    infowindow.setContent('<b>' + title + '</b>' + content);
+    infowindow.setContent(content);
     infowindow.open(map, marker);
   });
 }
 END
 }
 
-sub t_infowindow_contents($) {
-  my($info) = @_;
+sub t_infowindow_contents($;$) {
+  my($info, $noUrl) = @_;
+  my $url_line = $noUrl ? '' : "<br>Map: <a target='_blank' href='$info->{url}'>$info->{url}</a>";
   return Misc::subst(<<END, "\n" => ' ');
-<br>$info->{Date}
-<br>Distance: $info->{Distance}
-<br>Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
-<br>Map: <a target='_blank' href='$info->{url}'>$info->{url}</a>
+<h2>$info->{name}</h2>
+$info->{Date}<br>
+Distance: <span id='distance'>$info->{Distance}</span><br>
+Altitude: $info->{'Min Altitude'} - $info->{'Max Altitude'}
+$url_line
 END
 }
 
@@ -318,6 +323,7 @@ $coordinates
       mapTypeId: google.maps.MapTypeId.TERRAIN
     });
     map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
     var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
     var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
     var polyline = new google.maps.Polyline({
@@ -328,6 +334,13 @@ $coordinates
       strokeWeight: 2
     });
     polyline.setMap(map);
+    var length = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+
+    // replace length in page title, if there is a #distance node
+    var lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+    var lenMiles = (lenMeters/1609.34).toFixed(2);
+    var distNode = document.getElementById('distance');
+    if (distNode) distNode.innerHTML = lenMiles;
   }
 END
 }
@@ -353,19 +366,37 @@ END
 }
 
 # html for map page around initMap function
-sub t_map_html($) {
-  my($initMap) = @_;
+sub t_map_html($;$) {
+  my($initMap, $title) = @_;
+  $title = '' if !defined $title;
   return <<END;
 <style type='text/css'>
   html, body { height: 100%; margin: 0; padding: 0; }
   #map { height: 100%; }
+  #title {
+    margin-top: .5em;
+    font-size: 120%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    padding: .3em;
+  }
+  h2 {
+    font-size: 125%;
+    margin-top: 0;
+    margin-bottom: .2em;
+  }
 </style>
 <div id='map'></div>
+<div id='title' style='color: black; font-size: 120%; position: absolute;'>
+$title
+</div>
 <script type='text/javascript'>
 $initMap
 </script>
+</script>
 <script
-  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+  src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
 </script>
 END
 }

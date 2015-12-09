@@ -9,32 +9,50 @@
 <style type='text/css'>
   html, body { height: 100%; margin: 0; padding: 0; }
   #map { height: 100%; }
+  #title {
+    margin-top: .5em;
+    font-size: 120%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    padding: .3em;
+  }
+  h2 {
+    font-size: 125%;
+    margin-top: 0;
+    margin-bottom: .2em;
+  }
 </style>
 <div id='map'></div>
+<div id='title' style='color: black; font-size: 120%; position: absolute;'>
+<h2>All Canoe Trips</h2>
+</div>
 <script type='text/javascript'>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
     });
     map.fitBounds(new google.maps.LatLngBounds({lng: -122.9514189, lat: 45.3919306}, {lng: -122.8055286, lat: 45.4903327}));
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
     console.log('map', map);
     var infowindow = new google.maps.InfoWindow();
     function addMarker(map, position, title, content) {
       var marker = new google.maps.Marker({ map: map, position: position, title: title });
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.close();
-        infowindow.setContent('<b>' + title + '</b>' + content);
+        infowindow.setContent(content);
         infowindow.open(map, marker);
       });
     }
-    addMarker(map, {lng: -122.9514189, lat: 45.4903327}, "Canoeing from Rood Bridge Park", "<br>Jun 27, 2015 <br>Distance: 2.77 miles <br>Altitude: 120 ft - 175 ft <br>Map: <a target='_blank' href='/maps/canoe/CanoeingfromRoodBridgePark.html'>/maps/canoe/CanoeingfromRoodBridgePark.html</a> ");
-    addMarker(map, {lng: -122.8055286, lat: 45.3919306}, "Canoeing On The Tuallitan From The 99W Bridge Upstream", "<br>Jul 4, 2015 <br>Distance: 6.83 miles <br>Altitude: 65 ft - 158 ft <br>Map: <a target='_blank' href='/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html'>/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html</a> ");
+    addMarker(map, {lng: -122.9514189, lat: 45.4903327}, "Canoeing from Rood Bridge Park", "<h2>Canoeing from Rood Bridge Park</h2> Jun 27, 2015<br> Distance: <span id='distance'>2.77 miles</span><br> Altitude: 120 ft - 175 ft <br>Map: <a target='_blank' href='/maps/canoe/CanoeingfromRoodBridgePark.html'>/maps/canoe/CanoeingfromRoodBridgePark.html</a> ");
+    addMarker(map, {lng: -122.8055286, lat: 45.3919306}, "Canoeing On The Tuallitan From The 99W Bridge Upstream", "<h2>Canoeing On The Tuallitan From The 99W Bridge Upstream</h2> Jul 4, 2015<br> Distance: <span id='distance'>6.83 miles</span><br> Altitude: 65 ft - 158 ft <br>Map: <a target='_blank' href='/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html'>/maps/canoe/CanoeingOnTheTuallitanFromThe99WBridgeUpstream.html</a> ");
 
   }
 
 </script>
+</script>
 <script
-  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+  src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
 </script>
 
 </body>
