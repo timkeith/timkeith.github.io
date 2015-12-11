@@ -1,2 +1,2 @@
 name: Canoe Trips
-omit-CanoeingfromRoodBridgePark: 63
+CanoeingfromRoodBridgePark.omit: 63

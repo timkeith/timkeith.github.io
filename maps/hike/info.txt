@@ -1,2 +1,4 @@
 name: Hikes and Walks
-omit-TildenparknearBerkeley: 179
+TildenparknearBerkeley.omit: 179
+GrizzlyPeak.omit: 100
+GrizzlyPeak.Distance: 5.37

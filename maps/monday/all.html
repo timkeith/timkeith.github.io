@@ -6,7 +6,7 @@
       font-family: sans-serif;
     }
   </style>
-  <title>All Cross-Country Ski Trips</title>
+  <title>All Monday Hikes</title>
 </head>
 <body>
 <style type='text/css'>
@@ -28,7 +28,7 @@
 </style>
 <div id='map'></div>
 <div id='title' style='color: black; font-size: 120%; position: absolute;'>
-<h2>All Cross-Country Ski Trips</h2>
+<h2>All Monday Hikes</h2>
 </div>
 <script type='text/javascript'>
 
@@ -36,7 +36,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeId: google.maps.MapTypeId.TERRAIN,
   });
-  map.fitBounds(new google.maps.LatLngBounds({lng: -122.9048480, lat: 45.3204883}, {lng: -121.6233432, lat: 45.6115444}));
+  map.fitBounds(new google.maps.LatLngBounds({lng: -122.1785313, lat: 45.5491722}, {lng: -122.0915553, lat: 45.5893475}));
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
   console.log('map', map);
       var infowindow = new google.maps.InfoWindow();
@@ -48,8 +48,9 @@ function addMarker(map, position, title, content) {
     infowindow.open(map, marker);
   });
 }
-addMarker(map, {lng: -122.9048480, lat: 45.6115444}, "X-C ski nw of Dick rd", "<h2>X-C ski nw of Dick rd</h2> Feb 8, 2014<br> Distance: <span id='distance'>1.80 miles</span><br> Altitude: 346 ft - 498 ft <br>Map: <a target='_blank' href='/maps/ski/XCskinwofDickrd.html'>/maps/ski/XCskinwofDickrd.html</a> ");
-addMarker(map, {lng: -121.6233432, lat: 45.3204883}, "Teacup skiing", "<h2>Teacup skiing</h2> Jan 3, 2015<br> Distance: <span id='distance'>15.5 miles</span><br> Altitude: 2,988 ft - 4,378 ft <br>Map: <a target='_blank' href='/maps/ski/Teacupskiing.html'>/maps/ski/Teacupskiing.html</a> ");
+addMarker(map, {lng: -122.1727020, lat: 45.5605892}, "Angel's Rest", "<h2>Angel's Rest</h2> Nov 23, 2015<br> Distance: <span id='distance'>4.46 miles</span><br> Altitude: 106 ft - 1,601 ft <br>Map: <a target='_blank' href='/maps/monday/AngelsRest.html'>/maps/monday/AngelsRest.html</a> ");
+addMarker(map, {lng: -122.1785313, lat: 45.5893475}, "Cape Horn Trail 11-2-15", "<h2> Cape Horn Trail 11-2-15 </h2> Nov 2, 2015<br> Distance: <span id='distance'>7.06 miles</span><br> Altitude: 162 ft - 1,278 ft <br>Map: <a target='_blank' href='/maps/monday/CapeHornTrail11215.html'>/maps/monday/CapeHornTrail11215.html</a> ");
+addMarker(map, {lng: -122.0915553, lat: 45.5491722}, "Larch Mountain Crater", "<h2>Larch Mountain Crater</h2> Oct 5, 2015<br> Distance: <span id='distance'>7.19 miles</span><br> Altitude: 2,813 ft - 4,003 ft <br>Map: <a target='_blank' href='/maps/monday/LarchMountainCrater.html'>/maps/monday/LarchMountainCrater.html</a> ");
 
 }
   

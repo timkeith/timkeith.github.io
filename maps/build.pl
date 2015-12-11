@@ -17,11 +17,12 @@ sub gen_all_kml($$);
 sub get_info_from_kmz($);
 sub path_to_url($);
 sub t_page_html($$);
-sub t_initMap($$$$$);
+sub t_initMap($$$);
 sub t_addMarker();
 sub t_infowindow_contents($;$);
 sub to_point($);
-sub t_polyline_initMap($$);
+sub gen_polyline_js($$);
+sub t_polyline_initMap_body();
 sub t_kml_page($);
 sub t_map_html($;$);
 
@@ -51,15 +52,23 @@ sub do_dir($) {
     my $info = get_info_from_kmz($kmz);
     #$info->{url} = path_to_url("$dir/$base2.html");
     $info->{url} = "/maps/$dir/$base2.html";
+    # override $info from info.txt
+    while (my($key, $value) = each %dir_info) {
+      if ($key =~ /^$base2\.(.+)$/) {
+        print "override for $base2: $key=$value\n";
+        $info->{$1} = $value;
+      }
+    }
     $all{$base2} = $info;
     if (0) {
       gen_page("$dir/$base2.html", $info->{name}, t_kml_page($url));
     } else {
-      my $omit = $dir_info{"omit-$base2"} || 0;
+      #my $omit = $dir_info{"$base2.omit"} || 0;
+      my $omit = $info->{omit} || 0;
       print "$dir/$base2.html - omit last $omit points\n" if $omit;
       my $title = t_infowindow_contents($info, 1);
       gen_page("$dir/$base2.html", $info->{name},
-        t_map_html(t_polyline_initMap($info->{Coords}, $omit), $title));
+        t_map_html(gen_polyline_js($info->{Coords}, $omit), $title));
     }
     #print "$dir/$base2.html\n";
   }
@@ -92,9 +101,7 @@ sub gen_all_map($$$) {
     my $bounds = get_bounds(\@coords);
     my $ne = to_point($bounds->{ne});
     my $sw = to_point($bounds->{sw});
-    my $center = to_point($coords[0]);
-    #??? does zoom and center even matter?
-    my $initMap = t_initMap(7, $center, $sw, $ne, $body);
+    my $initMap = t_initMap($sw, $ne, $body);
     my $html = t_map_html($initMap, "<h2>All $dir_name</h2>");
     Misc::put($outfile, t_page_html("All $dir_name", $html));
   }
@@ -145,7 +152,7 @@ sub finish($) {
 
 sub gen_page($$$) {
   my($outfile, $title, $contents) = @_;
-  $contents =~ s/^/  /gm;
+  #$contents =~ s/^/  /gm;
   $contents =~ s/ +$//gm;
   Misc::put($outfile, t_page_html($title, $contents));
 }
@@ -247,6 +254,9 @@ sub t_page_html($$) {
 <html>
 <head>
   <style type='text/css'>
+    body {
+      font-family: sans-serif;
+    }
   </style>
   <title>$title</title>
 </head>
@@ -257,21 +267,21 @@ $contents
 END
 }
 
-# initMap function
-sub t_initMap($$$$$) {
-  my($zoom, $center, $sw, $ne, $body) = @_;
+# Generate initMap function: $sw and $ne are the bounds, $body is the code that goes in it.
+sub t_initMap($$$) {
+  my($sw, $ne, $body) = @_;
   $body =~ s/^/    /gm;
-  return <<END;
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeId: google.maps.MapTypeId.TERRAIN,
-    });
-    map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
-    console.log('map', map);
-$body
-  }
-END
+  return Misc::subst(qq[
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+      });
+      map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
+      console.log('map', map);
+      $body
+    }
+  ], '(?m)^    ' => '');
 }
 
 sub t_addMarker() {
@@ -305,25 +315,22 @@ sub to_point($) {
   return "{lng: $coordinates->[0], lat: $coordinates->[1]}";
 }
 
-sub t_polyline_initMap($$) {
+sub gen_polyline_js($$) {
   my($coords, $omit) = @_;
   splice($coords, @$coords - $omit);
   my $bounds = get_bounds($coords);
-  my $sw = to_point($bounds->{sw});
-  my $ne = to_point($bounds->{ne});
-  my $coordinates = join("\n", map { to_point($_) . ',' } @{$coords});
-  return <<END;
-  function initMap() {
-    var coordinates = [
-$coordinates
-    ];
+  my $getCoordinates = "\n\nfunction getCoordinates() { return [\n"
+    . join("\n", map { to_point($_) . ',' } @{$coords})
+    . "\n] }\n\n";
+  return t_initMap(to_point($bounds->{sw}), to_point($bounds->{ne}), t_polyline_initMap_body())
+    . $getCoordinates;
+}
+
+sub t_polyline_initMap_body() {
+  return Misc::subst(qq[
+    var coordinates = getCoordinates();
     var start = coordinates[0];
     var end = coordinates[coordinates.length-1];
-    var map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeId: google.maps.MapTypeId.TERRAIN
-    });
-    map.fitBounds(new google.maps.LatLngBounds($sw, $ne));
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
     var start = new google.maps.Marker({ map: map, position: start, title: 'Start' });
     var end = new google.maps.Marker({ map: map, position: end, title: 'End' });
     var polyline = new google.maps.Polyline({
@@ -334,15 +341,12 @@ $coordinates
       strokeWeight: 2
     });
     polyline.setMap(map);
-    var length = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
-
     // replace length in page title, if there is a #distance node
     var lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
     var lenMiles = (lenMeters/1609.34).toFixed(2);
     var distNode = document.getElementById('distance');
     if (distNode) distNode.innerHTML = lenMiles;
-  }
-END
+  ], '    ' => '');
 }
 
 sub t_kml_page($) {
@@ -393,7 +397,6 @@ $title
 </div>
 <script type='text/javascript'>
 $initMap
-</script>
 </script>
 <script
   src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
