@@ -36,7 +36,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeId: google.maps.MapTypeId.TERRAIN,
   });
-  map.fitBounds(new google.maps.LatLngBounds({lng: -122.9048480, lat: 45.3204193}, {lng: -121.6221620, lat: 45.6115444}));
+  map.fitBounds(new google.maps.LatLngBounds({lng: -122.9048480, lat: 45.3196797}, {lng: -121.5870371, lat: 45.6115444}));
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('title'));
   console.log('map', map);
       var infowindow = new google.maps.InfoWindow();
@@ -51,6 +51,8 @@ function addMarker(map, position, title, content) {
 addMarker(map, {lng: -121.6221620, lat: 45.3204193}, "Teacup", "<h2>Teacup </h2> Dec 15, 2015<br> Distance: <span id='distance'>10.6 miles</span><br> Altitude: 3,937 ft - 4,421 ft <br>Map: <a target='_blank' href='/maps/ski/Teacup.html'>/maps/ski/Teacup.html</a> ");
 addMarker(map, {lng: -121.6233432, lat: 45.3204883}, "Teacup skiing", "<h2>Teacup skiing</h2> Jan 3, 2015<br> Distance: <span id='distance'>15.5 miles</span><br> Altitude: 2,988 ft - 4,378 ft <br>Map: <a target='_blank' href='/maps/ski/Teacupskiing.html'>/maps/ski/Teacupskiing.html</a> ");
 addMarker(map, {lng: -122.9048480, lat: 45.6115444}, "X-C ski nw of Dick rd", "<h2>X-C ski nw of Dick rd</h2> Feb 8, 2014<br> Distance: <span id='distance'>1.80 miles</span><br> Altitude: 346 ft - 498 ft <br>Map: <a target='_blank' href='/maps/ski/XCskinwofDickrd.html'>/maps/ski/XCskinwofDickrd.html</a> ");
+addMarker(map, {lng: -121.6252381, lat: 45.3196797}, "Teacup 12-26-2015", "<h2>Teacup 12-26-2015</h2> Dec 26, 2015<br> Distance: <span id='distance'>8.19 miles</span><br> Altitude: 3,958 ft - 4,409 ft <br>Map: <a target='_blank' href='/maps/ski/Teacup12262015.html'>/maps/ski/Teacup12262015.html</a> ");
+addMarker(map, {lng: -121.5870371, lat: 45.3288559}, "Teacup &amp; Pocket Creek loop counterclockwise", "<h2>Teacup &amp; Pocket Creek loop counterclockwise </h2> Jan 7, 2016<br> Distance: <span id='distance'>9.21 miles</span><br> Altitude: 3,709 ft - 4,367 ft <br>Map: <a target='_blank' href='/maps/ski/TeacupPocketCreekloopcounterclockwise.html'>/maps/ski/TeacupPocketCreekloopcounterclockwise.html</a> ");
 
 }
   
