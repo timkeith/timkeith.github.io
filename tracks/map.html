@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type='text/css'>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
+  <title>GPS Track</title>
+</head>
+<body>
+<style type='text/css'>
+  html, body { height: 100%; margin: 0; padding: 0; }
+  #map { height: 100%; }
+  #title {
+    margin-top: .5em;
+    font-size: 120%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    padding: .3em;
+  }
+  #title span {
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 125%;
+    margin-top: 0;
+    margin-bottom: .2em;
+  }
+  .hline {
+    display: inline-block;
+    width: 2em;
+    height: 3px;
+    background-color: #A00000;
+    margin-bottom: .3em;
+    margin-right: .2em;
+  }
+</style>
+<div id='map'></div>
+<div id='title' style='color: black; font-size: 120%; position: absolute;'></div>
+
+<script type='text/javascript' src='bundle.js'></script>
+<script type='text/javascript'>
+  function initMap() {
+    window.tsk.createMapFromSearchString('map', location.search);
+  }
+</script>
+<script
+  src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCqTgoJzFd5QXVynbHiCNM28pHq9SVhbtw&callback=initMap'>
+</script>
+
+</body>
+</html>

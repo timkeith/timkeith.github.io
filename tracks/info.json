@@ -1,0 +1,27 @@
+{
+  "ski": {
+    "name": "Cross-Country Ski Trips",
+    "Teacup_skiing.json": { "omit": 64 }
+  },
+  "canoe": {
+    "name": "Canoe Trips",
+    "Canoeing_from_Rood_Bridge_Park.json": { "omit": 63 }
+  },
+  "hike": {
+    "name": "Hikes and Walks",
+    "Grizzly_Peak.json": { "omit": 100, "Distance": 5.37 },
+    "Tilden_park_near_Berkeley.json": { "omit": 179 }
+  },
+  "jog": {
+    "name": "Jogs"
+  },
+  "ride": {
+    "name": "Horseback Rides"
+  },
+  "monday": {
+    "name": "Monday Hikes"
+  },
+  "bike": {
+    "name": "Bike Rides"
+  }
+}

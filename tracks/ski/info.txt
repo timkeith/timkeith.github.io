@@ -1,0 +1,2 @@
+name: Cross-Country Ski Trips
+Teacupskiing.omit: 64
