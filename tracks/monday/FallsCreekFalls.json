@@ -1,20 +1,20 @@
 {
- "Max Speed": "7.2 mph",
- "Avg Speed": "2.4 mph",
- "Start Location": " ",
- "StartCoord": {"lat": 45.9061294, "lng": -121.9402400},
- "Max Altitude": "2,357 ft",
- "date": "2015/10/26",
- "Min Altitude": "1,307 ft",
  "Avg Pace": "25' 02\" per mile",
- "Finish Time": "2015-10-26T21:00:41Z",
- "Distance": "5.95 miles",
- "Longitude": "121º 56' 23\" W",
+ "Avg Speed": "2.4 mph",
  "Date": "Oct 26, 2015",
- "snippet": "  Catherine, Tim, Susan, Lynsley ",
- "Finish Location": " ",
- "Start Time": "2015-10-26T18:31:41Z",
+ "Distance": "5.95 miles",
  "Elapsed Time": "2:28:59",
+ "Finish Location": " ",
+ "Finish Time": "2015-10-26T21:00:41Z",
+ "Latitude": "45º 54' 21\" N",
+ "Longitude": "121º 56' 23\" W",
+ "Max Altitude": "2,357 ft",
+ "Max Speed": "7.2 mph",
+ "Min Altitude": "1,307 ft",
+ "Start Location": " ",
+ "Start Time": "2015-10-26T18:31:41Z",
+ "StartCoord": {"lat": 45.9061294, "lng": -121.9402400},
+ "Time": "11:31 am",
  "coords": [
   {"lat": 45.9061294, "lng": -121.9402400},
   {"lat": 45.9059176, "lng": -121.9401656},
@@ -874,7 +874,7 @@
   {"lat": 45.9058285, "lng": -121.9396563},
   {"lat": 45.9057480, "lng": -121.9397328}
  ],
+ "date": "2015/10/26",
  "name": "Falls Creek Falls",
- "Time": "11:31 am",
- "Latitude": "45º 54' 21\" N"
+ "snippet": "  Catherine, Tim, Susan, Lynsley "
 }

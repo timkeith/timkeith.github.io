@@ -1,20 +1,20 @@
 {
- "Max Speed": "8.5 mph",
- "Start Location": " ",
- "Avg Speed": "3.8 mph",
- "StartCoord": {"lat": 37.3330762, "lng": -122.0900740},
- "Max Altitude": "880 ft",
- "date": "2014/03/31",
- "Min Altitude": "274 ft",
  "Avg Pace": "15' 36\" per mile",
- "Distance": "5.14 miles",
- "Longitude": "122º 05' 14\" W",
- "Finish Time": "2014-03-31T19:38:07Z",
+ "Avg Speed": "3.8 mph",
  "Date": "Mar 31, 2014",
- "snippet": "",
- "Finish Location": " ",
- "Start Time": "2014-03-31T18:17:57Z",
+ "Distance": "5.14 miles",
  "Elapsed Time": "1:20:10",
+ "Finish Location": " ",
+ "Finish Time": "2014-03-31T19:38:07Z",
+ "Latitude": "37º 19' 57\" N",
+ "Longitude": "122º 05' 14\" W",
+ "Max Altitude": "880 ft",
+ "Max Speed": "8.5 mph",
+ "Min Altitude": "274 ft",
+ "Start Location": " ",
+ "Start Time": "2014-03-31T18:17:57Z",
+ "StartCoord": {"lat": 37.3330762, "lng": -122.0900740},
+ "Time": "11:17 am",
  "coords": [
   {"lat": 37.3330762, "lng": -122.0900740},
   {"lat": 37.3331277, "lng": -122.0901765},
@@ -749,7 +749,7 @@
   {"lat": 37.3326062, "lng": -122.0872691},
   {"lat": 37.3324241, "lng": -122.0872172}
  ],
+ "date": "2014/03/31",
  "name": "Rancho San Antonio hike CA",
- "Time": "11:17 am",
- "Latitude": "37º 19' 57\" N"
+ "snippet": ""
 }

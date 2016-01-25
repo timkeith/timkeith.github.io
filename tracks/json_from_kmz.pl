@@ -7,6 +7,7 @@ use File::Spec::Functions qw(catfile catdir);
 use Date::Parse ();
 use lib catfile($ENV{HOME}, 'bin');
 use Misc qw(dirname assert note warning error fatal internal);
+sub put_json($$);
 sub do_dir($$);
 sub get_info_from_kmz($);
 sub encode_json($);
@@ -18,8 +19,7 @@ for my $dir (sort keys %$info_json) {
   my $extra = $info_json->{$dir};
   push(@$all_info, { dir => $dir, name => $extra->{name}, data => do_dir($dir, $extra) });
 }
-print "main.json\n";
-Misc::put('main.json', encode_json($all_info));
+put_json('main.json', $all_info);
 exit;
 
 #my $all_info = [];
@@ -42,13 +42,12 @@ sub do_dir($$) {
   for my $kmz (@kmzs) {
     my $info = get_info_from_kmz($kmz);
     my $json = Misc::subst($kmz, ' *\.kmz$' => '.json', '/ ' => '/', ' +' => '_');
-    print "$json\n";
     if (defined(my $e = $extra->{basename($json)})) {
       for my $key (keys %$e) {
         $info->{$key} = $e->{$key};
       }
     }
-    Misc::put($json, encode_json($info));
+    put_json($json, $info);
     push(@$dir_info,
       { path => $json, map { $_ => $info->{$_} } qw(date name Distance StartCoord snippet) });
   }
@@ -104,9 +103,26 @@ sub get_info_from_kmz($) {
   return \%info;
 }
 
+sub put_json($$) {
+  my($file, $data) = @_;
+  my $json = encode_json($data);
+#Misc::put('/tmp/1.json', $json);
+#print "1:\n", substr($json, 0, 200), "\n";
+  if (-f $file) {
+    my $prev = Misc::get($file);
+#Misc::put('/tmp/2.json', $prev);
+#print "2:\n", substr($prev, 0, 200), "\n";
+    return if $prev eq $json;
+#print "DIFF\n";
+    unlink($file);
+  }
+  print "$file\n";
+  Misc::put($file, $json);
+}
+
 sub encode_json($) {
   my($data) = @_;
-  my $j = JSON->new->indent->space_after->encode($data);
+  my $j = JSON->new->canonical->indent->space_after->encode($data);
   $j =~ s/\{\s*"lat": *"(.*?)",\s*"lng":\s*"(.*?)"\s*\}/{"lat": $1, "lng": $2}/g;
   $j =~ s/\{\s*"lng": *"(.*?)",\s*"lat":\s*"(.*?)"\s*\}/{"lat": $2, "lng": $1}/g;
   $j =~ s/^   / /gm;

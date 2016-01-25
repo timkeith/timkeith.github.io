@@ -1,6 +1,19 @@
 {
- "name": "Waterloo",
+ "Avg Pace": "18' 26\" per mile",
+ "Avg Speed": "3.3 mph",
+ "Date": "Oct 13, 2014",
+ "Distance": "3.14 miles",
+ "Elapsed Time": "57:50.5",
+ "Finish Location": " ",
+ "Finish Time": "2014-10-13T15:38:28Z",
  "Latitude": "43º 27' 44\" N",
+ "Longitude": "80º 33' 34\" W",
+ "Max Altitude": "1,182 ft",
+ "Max Speed": "7.9 mph",
+ "Min Altitude": "0 ft",
+ "Start Location": " ",
+ "Start Time": "2014-10-13T14:40:38Z",
+ "StartCoord": {"lat": 43.4617366, "lng": -80.5603906},
  "Time": "7:40 am",
  "coords": [
   {"lat": 43.4617366, "lng": -80.5603906},
@@ -359,20 +372,7 @@
   {"lat": 43.4621600, "lng": -80.5596565},
   {"lat": 43.4621515, "lng": -80.5595672}
  ],
- "Elapsed Time": "57:50.5",
- "Distance": "3.14 miles",
- "Finish Time": "2014-10-13T15:38:28Z",
- "Longitude": "80º 33' 34\" W",
- "Avg Pace": "18' 26\" per mile",
- "Start Time": "2014-10-13T14:40:38Z",
- "Date": "Oct 13, 2014",
- "snippet": "",
- "Finish Location": " ",
- "Min Altitude": "0 ft",
  "date": "2014/10/13",
- "Max Altitude": "1,182 ft",
- "Avg Speed": "3.3 mph",
- "Start Location": " ",
- "StartCoord": {"lat": 43.4617366, "lng": -80.5603906},
- "Max Speed": "7.9 mph"
+ "name": "Waterloo",
+ "snippet": ""
 }

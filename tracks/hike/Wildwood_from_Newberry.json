@@ -1,22 +1,19 @@
 {
- "Start Location": " ",
- "Avg Speed": "2.4 mph",
- "StartCoord": {"lat": 45.6056613, "lng": -122.8231539},
- "Max Speed": "7.5 mph",
- "date": "2015/05/22",
- "Min Altitude": "592 ft",
- "Max Altitude": "931 ft",
- "Elapsed Time": "2:16:43",
  "Avg Pace": "25' 10\" per mile",
- "Finish Time": "2015-05-22T23:06:54Z",
- "Distance": "5.43 miles",
- "Longitude": "122º 49' 23\" W",
- "snippet": "",
+ "Avg Speed": "2.4 mph",
  "Date": "May 22, 2015",
+ "Distance": "5.43 miles",
+ "Elapsed Time": "2:16:43",
  "Finish Location": " ",
- "Start Time": "2015-05-22T20:50:10Z",
- "name": "Wildwood from Newberry",
+ "Finish Time": "2015-05-22T23:06:54Z",
  "Latitude": "45º 36' 21\" N",
+ "Longitude": "122º 49' 23\" W",
+ "Max Altitude": "931 ft",
+ "Max Speed": "7.5 mph",
+ "Min Altitude": "592 ft",
+ "Start Location": " ",
+ "Start Time": "2015-05-22T20:50:10Z",
+ "StartCoord": {"lat": 45.6056613, "lng": -122.8231539},
  "Time": "1:50 pm",
  "coords": [
   {"lat": 45.6056613, "lng": -122.8231539},
@@ -758,5 +755,8 @@
   {"lat": 45.6056117, "lng": -122.8230700},
   {"lat": 45.6056423, "lng": -122.8231913},
   {"lat": 45.6057096, "lng": -122.8231784}
- ]
+ ],
+ "date": "2015/05/22",
+ "name": "Wildwood from Newberry",
+ "snippet": ""
 }

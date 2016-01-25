@@ -1,16 +1,20 @@
 {
- "Elapsed Time": "2:26:03",
- "Longitude": "122º 53' 30\" W",
- "Distance": "28.9 miles",
- "Finish Time": "2015-08-09T21:14:00Z",
  "Avg Pace": " 5' 02\" per mile",
- "Start Time": "2015-08-09T18:47:57Z",
+ "Avg Speed": "11.9 mph",
  "Date": "Aug 9, 2015",
- "snippet": "",
+ "Distance": "28.9 miles",
+ "Elapsed Time": "2:26:03",
  "Finish Location": " ",
- "name": "Mountaindale &amp; Roy",
- "Time": "11:47 am",
+ "Finish Time": "2015-08-09T21:14:00Z",
  "Latitude": "45º 36' 07\" N",
+ "Longitude": "122º 53' 30\" W",
+ "Max Altitude": "418 ft",
+ "Max Speed": "31.4 mph",
+ "Min Altitude": "158 ft",
+ "Start Location": " ",
+ "Start Time": "2015-08-09T18:47:57Z",
+ "StartCoord": {"lat": 45.6018633, "lng": -122.8915199},
+ "Time": "11:47 am",
  "coords": [
   {"lat": 45.6018633, "lng": -122.8915199},
   {"lat": 45.6019037, "lng": -122.8912539},
@@ -3011,11 +3015,7 @@
   {"lat": 45.6018724, "lng": -122.8914370},
   {"lat": 45.6018778, "lng": -122.8915805}
  ],
- "Avg Speed": "11.9 mph",
- "Start Location": " ",
- "StartCoord": {"lat": 45.6018633, "lng": -122.8915199},
- "Max Speed": "31.4 mph",
- "Min Altitude": "158 ft",
  "date": "2015/08/09",
- "Max Altitude": "418 ft"
+ "name": "Mountaindale &amp; Roy",
+ "snippet": ""
 }

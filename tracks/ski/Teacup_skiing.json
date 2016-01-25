@@ -1,16 +1,20 @@
 {
+ "Avg Pace": "16' 23\" per mile",
+ "Avg Speed": "3.7 mph",
+ "Date": "Jan 3, 2015",
+ "Distance": "15.5 miles",
  "Elapsed Time": "4:13:16",
  "Finish Location": " ",
- "Date": "Jan 3, 2015",
- "snippet": "",
- "Start Time": "2015-01-03T19:30:04Z",
- "Avg Pace": "16' 23\" per mile",
- "Longitude": "121º 34' 10\" W",
- "Distance": "15.5 miles",
  "Finish Time": "2015-01-03T23:43:21Z",
- "Time": "11:30 am",
  "Latitude": "45º 24' 10\" N",
- "name": "Teacup skiing",
+ "Longitude": "121º 34' 10\" W",
+ "Max Altitude": "4,378 ft",
+ "Max Speed": "42.7 mph",
+ "Min Altitude": "2,988 ft",
+ "Start Location": " ",
+ "Start Time": "2015-01-03T19:30:04Z",
+ "StartCoord": {"lat": 45.3204883, "lng": -121.6233432},
+ "Time": "11:30 am",
  "coords": [
   {"lat": 45.3204883, "lng": -121.6233432},
   {"lat": 45.3204295, "lng": -121.6233456},
@@ -1278,12 +1282,8 @@
   {"lat": 45.4024982, "lng": -121.5695996},
   {"lat": 45.4026523, "lng": -121.5695791}
  ],
- "StartCoord": {"lat": 45.3204883, "lng": -121.6233432},
- "Avg Speed": "3.7 mph",
- "Start Location": " ",
- "Max Speed": "42.7 mph",
  "date": "2015/01/03",
- "Min Altitude": "2,988 ft",
+ "name": "Teacup skiing",
  "omit": 64,
- "Max Altitude": "4,378 ft"
+ "snippet": ""
 }

@@ -1,13 +1,20 @@
 {
  "Avg Pace": "20' 41\" per mile",
- "Finish Time": "2016-01-15T22:18:09Z",
- "Longitude": "121º 43' 42\" W",
- "Distance": "8.74 miles",
- "Finish Location": " ",
- "snippet": "Jan 15, 2016  Tim &amp; Catherine ",
+ "Avg Speed": "2.9 mph",
  "Date": "Jan 15, 2016",
- "Start Time": "2016-01-15T19:17:16Z",
+ "Distance": "8.74 miles",
  "Elapsed Time": "3:00:52",
+ "Finish Location": " ",
+ "Finish Time": "2016-01-15T22:18:09Z",
+ "Latitude": "45º 17' 09\" N",
+ "Longitude": "121º 43' 42\" W",
+ "Max Altitude": "3,898 ft",
+ "Max Speed": "15.5 mph",
+ "Min Altitude": "3,489 ft",
+ "Start Location": " ",
+ "Start Time": "2016-01-15T19:17:16Z",
+ "StartCoord": {"lat": 45.2856903, "lng": -121.7284906},
+ "Time": "11:17 am",
  "coords": [
   {"lat": 45.2856903, "lng": -121.7284906},
   {"lat": 45.2857941, "lng": -121.7282733},
@@ -1229,14 +1236,7 @@
   {"lat": 45.2858027, "lng": -121.7284014},
   {"lat": 45.2857137, "lng": -121.7283607}
  ],
- "name": "Trillium and Mud Creek with Quarry Trail shortcut ",
- "Latitude": "45º 17' 09\" N",
- "Time": "11:17 am",
- "Max Speed": "15.5 mph",
- "Start Location": " ",
- "Avg Speed": "2.9 mph",
- "StartCoord": {"lat": 45.2856903, "lng": -121.7284906},
- "Max Altitude": "3,898 ft",
  "date": "2016/01/15",
- "Min Altitude": "3,489 ft"
+ "name": "Trillium and Mud Creek with Quarry Trail shortcut ",
+ "snippet": "Jan 15, 2016  Tim &amp; Catherine "
 }

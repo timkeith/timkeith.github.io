@@ -1,13 +1,20 @@
 {
  "Avg Pace": "14' 25\" per mile",
- "Finish Time": "2014-08-28T03:42:52Z",
- "Distance": "28.5 miles",
- "Longitude": "123º 56' 47\" W",
- "snippet": "",
+ "Avg Speed": "4.2 mph",
  "Date": "Aug 27, 2014",
- "Finish Location": " ",
- "Start Time": "2014-08-27T20:52:20Z",
+ "Distance": "28.5 miles",
  "Elapsed Time": "6:50:32",
+ "Finish Location": " ",
+ "Finish Time": "2014-08-28T03:42:52Z",
+ "Latitude": "46º 09' 30\" N",
+ "Longitude": "123º 56' 47\" W",
+ "Max Altitude": "77 ft",
+ "Max Speed": "60.5 mph",
+ "Min Altitude": "0 ft",
+ "Start Location": " ",
+ "Start Time": "2014-08-27T20:52:20Z",
+ "StartCoord": {"lat": 46.1555000, "lng": -123.9219265},
+ "Time": "1:52 pm",
  "coords": [
   {"lat": 46.1555000, "lng": -123.9219265},
   {"lat": 46.1556027, "lng": -123.9217402},
@@ -2535,14 +2542,7 @@
   {"lat": 46.1588744, "lng": -123.9466311},
   {"lat": 46.1583001, "lng": -123.9464885}
  ],
- "name": "Ft. Stevens",
- "Time": "1:52 pm",
- "Latitude": "46º 09' 30\" N",
- "Max Speed": "60.5 mph",
- "Start Location": " ",
- "Avg Speed": "4.2 mph",
- "StartCoord": {"lat": 46.1555000, "lng": -123.9219265},
- "Max Altitude": "77 ft",
  "date": "2014/08/27",
- "Min Altitude": "0 ft"
+ "name": "Ft. Stevens",
+ "snippet": ""
 }

@@ -1,20 +1,20 @@
 {
- "Max Speed": "9.1 mph",
- "Avg Speed": "3.0 mph",
- "Start Location": " ",
- "StartCoord": {"lat": 45.6115444, "lng": -122.9048480},
- "Max Altitude": "498 ft",
- "date": "2014/02/08",
- "Min Altitude": "346 ft",
  "Avg Pace": "19' 45\" per mile",
- "Distance": "1.80 miles",
- "Longitude": "122º 53' 30\" W",
- "Finish Time": "2014-02-08T18:45:26Z",
- "snippet": "",
+ "Avg Speed": "3.0 mph",
  "Date": "Feb 8, 2014",
- "Finish Location": " ",
- "Start Time": "2014-02-08T18:09:51Z",
+ "Distance": "1.80 miles",
  "Elapsed Time": "35:35.6",
+ "Finish Location": " ",
+ "Finish Time": "2014-02-08T18:45:26Z",
+ "Latitude": "45º 36' 06\" N",
+ "Longitude": "122º 53' 30\" W",
+ "Max Altitude": "498 ft",
+ "Max Speed": "9.1 mph",
+ "Min Altitude": "346 ft",
+ "Start Location": " ",
+ "Start Time": "2014-02-08T18:09:51Z",
+ "StartCoord": {"lat": 45.6115444, "lng": -122.9048480},
+ "Time": "10:09 am",
  "coords": [
   {"lat": 45.6115444, "lng": -122.9048480},
   {"lat": 45.6116278, "lng": -122.9047582},
@@ -263,7 +263,7 @@
   {"lat": 45.6016592, "lng": -122.8916081},
   {"lat": 45.6016284, "lng": -122.8915501}
  ],
+ "date": "2014/02/08",
  "name": "X-C ski nw of Dick rd",
- "Latitude": "45º 36' 06\" N",
- "Time": "10:09 am"
+ "snippet": ""
 }

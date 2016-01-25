@@ -1,6 +1,19 @@
 {
- "name": "Forest park--Springville-LE-Waterline-Wildwood",
+ "Avg Pace": "20' 10\" per mile",
+ "Avg Speed": "3.0 mph",
+ "Date": "Sep 14, 2015",
+ "Distance": "3.94 miles",
+ "Elapsed Time": "1:19:29",
+ "Finish Location": " ",
+ "Finish Time": "2015-09-14T23:27:16Z",
  "Latitude": "45º 34' 28\" N",
+ "Longitude": "122º 47' 20\" W",
+ "Max Altitude": "1,095 ft",
+ "Max Speed": "6.0 mph",
+ "Min Altitude": "613 ft",
+ "Start Location": " ",
+ "Start Time": "2015-09-14T22:07:47Z",
+ "StartCoord": {"lat": 45.5746707, "lng": -122.7890965},
  "Time": "3:07 pm",
  "coords": [
   {"lat": 45.5746707, "lng": -122.7890965},
@@ -584,20 +597,7 @@
   {"lat": 45.5745411, "lng": -122.7888432},
   {"lat": 45.5744995, "lng": -122.7889604}
  ],
- "Elapsed Time": "1:19:29",
- "Avg Pace": "20' 10\" per mile",
- "Finish Time": "2015-09-14T23:27:16Z",
- "Longitude": "122º 47' 20\" W",
- "Distance": "3.94 miles",
- "Finish Location": " ",
- "snippet": "",
- "Date": "Sep 14, 2015",
- "Start Time": "2015-09-14T22:07:47Z",
  "date": "2015/09/14",
- "Min Altitude": "613 ft",
- "Max Altitude": "1,095 ft",
- "Avg Speed": "3.0 mph",
- "Start Location": " ",
- "StartCoord": {"lat": 45.5746707, "lng": -122.7890965},
- "Max Speed": "6.0 mph"
+ "name": "Forest park--Springville-LE-Waterline-Wildwood",
+ "snippet": ""
 }
