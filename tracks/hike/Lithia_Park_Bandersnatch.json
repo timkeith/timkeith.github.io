@@ -1,6 +1,16 @@
 {
- "Distance": "7.27 miles",
+ "Elapsed Time": "3:53:16",
+ "Date": "Jun 2, 2015",
+ "snippet": "",
+ "Finish Location": " ",
+ "Start Time": "2015-06-02T18:47:28Z",
+ "Avg Pace": "32' 04\" per mile",
  "Finish Time": "2015-06-02T22:40:44Z",
+ "Distance": "7.27 miles",
+ "Longitude": "122º 42' 49\" W",
+ "Latitude": "42º 12' 10\" N",
+ "Time": "11:47 am",
+ "name": "Lithia Park &amp; Bandersnatch",
  "coords": [
   {"lat": 42.2026597, "lng": -122.7137539},
   {"lat": 42.2026428, "lng": -122.7138327},
@@ -1047,21 +1057,11 @@
   {"lat": 42.2025990, "lng": -122.7135933},
   {"lat": 42.2026626, "lng": -122.7136826}
  ],
- "snippet": "",
  "StartCoord": {"lat": 42.2026597, "lng": -122.7137539},
- "Latitude": "42º 12' 10\" N",
- "Min Altitude": "1,828 ft",
- "Max Speed": "6.3 mph",
- "Max Altitude": "2,924 ft",
- "Start Time": "2015-06-02T18:47:28Z",
  "Start Location": " ",
- "Time": "11:47 am",
- "name": "Lithia Park &amp; Bandersnatch",
- "Avg Pace": "32' 04\" per mile",
  "Avg Speed": "1.9 mph",
- "Longitude": "122º 42' 49\" W",
- "Finish Location": " ",
+ "Max Speed": "6.3 mph",
  "date": "2015/06/02",
- "Elapsed Time": "3:53:16",
- "Date": "Jun 2, 2015"
+ "Min Altitude": "1,828 ft",
+ "Max Altitude": "2,924 ft"
 }

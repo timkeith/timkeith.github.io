@@ -1,8 +1,10 @@
 {
+ "Max Altitude": "790 ft",
  "Min Altitude": "306 ft",
- "Latitude": "45º 17' 56\" N",
+ "date": "2014/09/10",
  "Max Speed": "42.4 mph",
- "snippet": "",
+ "Start Location": " ",
+ "Avg Speed": "1.5 mph",
  "StartCoord": {"lat": 45.2894485, "lng": -122.3633037},
  "coords": [
   {"lat": 45.2894485, "lng": -122.3633037},
@@ -1246,18 +1248,16 @@
   {"lat": 45.2987671, "lng": -122.3763096},
   {"lat": 45.2988128, "lng": -122.3764030}
  ],
- "Distance": "9.27 miles",
- "Finish Time": "2014-09-11T01:01:40Z",
- "Finish Location": " ",
- "Longitude": "122º 22' 35\" W",
- "Date": "Sep 10, 2014",
- "date": "2014/09/10",
- "Elapsed Time": "6:12:56",
- "Avg Speed": "1.5 mph",
- "Avg Pace": "40' 14\" per mile",
  "name": "Milo McIver",
  "Time": "11:48 am",
- "Max Altitude": "790 ft",
- "Start Location": " ",
- "Start Time": "2014-09-10T18:48:44Z"
+ "Latitude": "45º 17' 56\" N",
+ "Longitude": "122º 22' 35\" W",
+ "Distance": "9.27 miles",
+ "Finish Time": "2014-09-11T01:01:40Z",
+ "Avg Pace": "40' 14\" per mile",
+ "Start Time": "2014-09-10T18:48:44Z",
+ "Finish Location": " ",
+ "Date": "Sep 10, 2014",
+ "snippet": "",
+ "Elapsed Time": "6:12:56"
 }

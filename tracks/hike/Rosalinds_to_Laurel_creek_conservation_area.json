@@ -1,4 +1,11 @@
 {
+ "Max Altitude": "1,159 ft",
+ "date": "2015/08/04",
+ "Min Altitude": "1,085 ft",
+ "Max Speed": "11.0 mph",
+ "StartCoord": {"lat": 43.4621893, "lng": -80.5595457},
+ "Start Location": " ",
+ "Avg Speed": "3.3 mph",
  "coords": [
   {"lat": 43.4621893, "lng": -80.5595457},
   {"lat": 43.4623746, "lng": -80.5596399},
@@ -1168,23 +1175,16 @@
   {"lat": 43.4731144, "lng": -80.5466203},
   {"lat": 43.4731141, "lng": -80.5467594}
  ],
- "Distance": "8.03 miles",
- "Finish Time": "2015-08-04T18:15:32Z",
- "Min Altitude": "1,085 ft",
  "Latitude": "43º 28' 23\" N",
- "Max Speed": "11.0 mph",
- "StartCoord": {"lat": 43.4621893, "lng": -80.5595457},
- "snippet": "",
  "Time": "8:50 am",
  "name": "Rosalind's to Laurel creek conservation area",
- "Max Altitude": "1,159 ft",
- "Start Time": "2015-08-04T15:50:47Z",
- "Start Location": " ",
- "Longitude": "80º 32' 48\" W",
- "Finish Location": " ",
- "date": "2015/08/04",
- "Elapsed Time": "2:24:44",
  "Date": "Aug 4, 2015",
- "Avg Speed": "3.3 mph",
- "Avg Pace": "18' 01\" per mile"
+ "Finish Location": " ",
+ "snippet": "",
+ "Start Time": "2015-08-04T15:50:47Z",
+ "Avg Pace": "18' 01\" per mile",
+ "Distance": "8.03 miles",
+ "Longitude": "80º 32' 48\" W",
+ "Finish Time": "2015-08-04T18:15:32Z",
+ "Elapsed Time": "2:24:44"
 }

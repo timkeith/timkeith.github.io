@@ -1,9 +1,7 @@
 {
- "Min Altitude": "65 ft",
+ "name": "Canoeing On The Tuallitan From The 99W Bridge Upstream",
  "Latitude": "45º 23' 37\" N",
- "Max Speed": "4.4 mph",
- "StartCoord": {"lat": 45.3919306, "lng": -122.8055286},
- "snippet": "",
+ "Time": "12:13 pm",
  "coords": [
   {"lat": 45.3919306, "lng": -122.8055286},
   {"lat": 45.3919170, "lng": -122.8055386},
@@ -1007,18 +1005,20 @@
   {"lat": 45.3935240, "lng": -122.7984130},
   {"lat": 45.3936146, "lng": -122.7984164}
  ],
- "Finish Time": "2015-07-04T21:28:31Z",
- "Distance": "6.83 miles",
- "Longitude": "122º 47' 54\" W",
- "Finish Location": " ",
- "date": "2015/07/04",
  "Elapsed Time": "2:14:43",
- "Date": "Jul 4, 2015",
  "Avg Pace": "19' 43\" per mile",
- "Avg Speed": "3.0 mph",
- "Time": "12:13 pm",
- "name": "Canoeing On The Tuallitan From The 99W Bridge Upstream",
- "Max Altitude": "158 ft",
+ "Longitude": "122º 47' 54\" W",
+ "Distance": "6.83 miles",
+ "Finish Time": "2015-07-04T21:28:31Z",
+ "Finish Location": " ",
+ "Date": "Jul 4, 2015",
+ "snippet": "",
  "Start Time": "2015-07-04T19:13:48Z",
- "Start Location": " "
+ "date": "2015/07/04",
+ "Min Altitude": "65 ft",
+ "Max Altitude": "158 ft",
+ "Start Location": " ",
+ "Avg Speed": "3.0 mph",
+ "StartCoord": {"lat": 45.3919306, "lng": -122.8055286},
+ "Max Speed": "4.4 mph"
 }

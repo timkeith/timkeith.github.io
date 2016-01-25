@@ -1,11 +1,14 @@
 {
- "StartCoord": {"lat": 43.4623664, "lng": -80.5597179},
- "snippet": "",
  "Min Altitude": "1,115 ft",
- "Latitude": "43º 27' 44\" N",
+ "date": "2015/08/05",
+ "Max Altitude": "1,256 ft",
+ "StartCoord": {"lat": 43.4623664, "lng": -80.5597179},
+ "Start Location": " ",
+ "Avg Speed": "3.4 mph",
  "Max Speed": "6.8 mph",
- "Finish Time": "2015-08-05T14:54:22Z",
- "Distance": "5.09 miles",
+ "Latitude": "43º 27' 44\" N",
+ "Time": "6:25 am",
+ "name": "Rosalind's to Claire Hills",
  "coords": [
   {"lat": 43.4623664, "lng": -80.5597179},
   {"lat": 43.4623305, "lng": -80.5598460},
@@ -765,16 +768,13 @@
   {"lat": 43.4623386, "lng": -80.5596421},
   {"lat": 43.4622478, "lng": -80.5596034}
  ],
- "Avg Pace": "17' 29\" per mile",
- "Avg Speed": "3.4 mph",
- "Longitude": "80º 33' 35\" W",
- "Finish Location": " ",
- "date": "2015/08/05",
  "Elapsed Time": "1:29:01",
- "Date": "Aug 5, 2015",
- "Max Altitude": "1,256 ft",
  "Start Time": "2015-08-05T13:25:20Z",
- "Start Location": " ",
- "name": "Rosalind's to Claire Hills",
- "Time": "6:25 am"
+ "snippet": "",
+ "Finish Location": " ",
+ "Date": "Aug 5, 2015",
+ "Distance": "5.09 miles",
+ "Longitude": "80º 33' 35\" W",
+ "Finish Time": "2015-08-05T14:54:22Z",
+ "Avg Pace": "17' 29\" per mile"
 }

@@ -1,21 +1,16 @@
 {
- "date": "2013/10/19",
  "Elapsed Time": "51:15.9",
- "Date": "Oct 19, 2013",
+ "Distance": "3.34 miles",
  "Longitude": "71º 07' 04\" W",
- "Finish Location": " ",
- "Avg Speed": "3.9 mph",
+ "Finish Time": "2013-10-19T15:18:47Z",
  "Avg Pace": "15' 21\" per mile",
- "Time": "7:27 am",
- "name": "Jamaica Pond",
  "Start Time": "2013-10-19T14:27:31Z",
- "Start Location": " ",
- "Max Altitude": "221 ft",
- "Max Speed": "11.7 mph",
- "Latitude": "42º 19' 36\" N",
- "Min Altitude": "39 ft",
- "StartCoord": {"lat": 42.3269562, "lng": -71.1185527},
+ "Finish Location": " ",
  "snippet": "",
+ "Date": "Oct 19, 2013",
+ "name": "Jamaica Pond",
+ "Time": "7:27 am",
+ "Latitude": "42º 19' 36\" N",
  "coords": [
   {"lat": 42.3269562, "lng": -71.1185527},
   {"lat": 42.3270470, "lng": -71.1185980},
@@ -483,6 +478,11 @@
   {"lat": 42.3267336, "lng": -71.1179217},
   {"lat": 42.3267343, "lng": -71.1179005}
  ],
- "Finish Time": "2013-10-19T15:18:47Z",
- "Distance": "3.34 miles"
+ "Start Location": " ",
+ "Avg Speed": "3.9 mph",
+ "StartCoord": {"lat": 42.3269562, "lng": -71.1185527},
+ "Max Speed": "11.7 mph",
+ "Min Altitude": "39 ft",
+ "date": "2013/10/19",
+ "Max Altitude": "221 ft"
 }

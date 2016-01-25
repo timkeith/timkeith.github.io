@@ -1,16 +1,7 @@
 {
  "name": "Maple trail 11-28-13",
  "Time": "10:22 am",
- "Start Time": "2013-11-28T18:22:21Z",
- "Start Location": " ",
- "Max Altitude": "901 ft",
- "Date": "Nov 28, 2013",
- "date": "2013/11/28",
- "Elapsed Time": "1:43:22",
- "Finish Location": " ",
- "Longitude": "122º 45' 12\" W",
- "Avg Pace": "17' 36\" per mile",
- "Avg Speed": "3.4 mph",
+ "Latitude": "45º 33' 59\" N",
  "coords": [
   {"lat": 45.5662893, "lng": -122.7531816},
   {"lat": 45.5663454, "lng": -122.7532081},
@@ -869,11 +860,20 @@
   {"lat": 45.5663837, "lng": -122.7532647},
   {"lat": 45.5663442, "lng": -122.7532335}
  ],
+ "Elapsed Time": "1:43:22",
+ "Longitude": "122º 45' 12\" W",
  "Finish Time": "2013-11-28T20:05:43Z",
  "Distance": "5.87 miles",
- "Max Speed": "10.2 mph",
- "Min Altitude": "290 ft",
- "Latitude": "45º 33' 59\" N",
+ "Avg Pace": "17' 36\" per mile",
+ "Start Time": "2013-11-28T18:22:21Z",
  "snippet": "",
- "StartCoord": {"lat": 45.5662893, "lng": -122.7531816}
+ "Finish Location": " ",
+ "Date": "Nov 28, 2013",
+ "Min Altitude": "290 ft",
+ "date": "2013/11/28",
+ "Max Altitude": "901 ft",
+ "Start Location": " ",
+ "Avg Speed": "3.4 mph",
+ "StartCoord": {"lat": 45.5662893, "lng": -122.7531816},
+ "Max Speed": "10.2 mph"
 }

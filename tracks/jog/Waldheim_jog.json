@@ -1,16 +1,7 @@
 {
- "name": "Waldheim jog ",
  "Time": "1:02 pm",
- "Max Altitude": "2,101 ft",
- "Start Location": " ",
- "Start Time": "2014-07-09T20:02:26Z",
- "Finish Location": " ",
- "Longitude": "74º 51' 38\" W",
- "Date": "Jul 9, 2014",
- "Elapsed Time": "59:28.4",
- "date": "2014/07/09",
- "Avg Speed": "3.2 mph",
- "Avg Pace": "18' 41\" per mile",
+ "Latitude": "43º 49' 51\" N",
+ "name": "Waldheim jog ",
  "coords": [
   {"lat": 43.8308994, "lng": -74.8620012},
   {"lat": 43.8308934, "lng": -74.8620125},
@@ -471,11 +462,20 @@
   {"lat": 43.8308562, "lng": -74.8603645},
   {"lat": 43.8308044, "lng": -74.8604509}
  ],
+ "Elapsed Time": "59:28.4",
+ "Finish Location": " ",
+ "snippet": "",
+ "Date": "Jul 9, 2014",
+ "Start Time": "2014-07-09T20:02:26Z",
+ "Avg Pace": "18' 41\" per mile",
+ "Longitude": "74º 51' 38\" W",
  "Distance": "3.18 miles",
  "Finish Time": "2014-07-09T21:01:55Z",
+ "date": "2014/07/09",
  "Min Altitude": "1,894 ft",
- "Latitude": "43º 49' 51\" N",
- "Max Speed": "7.8 mph",
+ "Max Altitude": "2,101 ft",
  "StartCoord": {"lat": 43.8308994, "lng": -74.8620012},
- "snippet": ""
+ "Start Location": " ",
+ "Avg Speed": "3.2 mph",
+ "Max Speed": "7.8 mph"
 }

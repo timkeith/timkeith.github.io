@@ -1,18 +1,16 @@
 {
- "Max Altitude": "4,421 ft",
- "Start Location": " ",
+ "Elapsed Time": "3:00:29",
+ "Avg Pace": "17' 01\" per mile",
+ "Finish Time": "2015-12-15T21:30:25Z",
+ "Longitude": "121º 37' 20\" W",
+ "Distance": "10.6 miles",
+ "snippet": " with Susan and Tim",
+ "Finish Location": " ",
+ "Date": "Dec 15, 2015",
  "Start Time": "2015-12-15T18:29:56Z",
  "name": "Teacup ",
  "Time": "10:29 am",
- "Avg Pace": "17' 01\" per mile",
- "Avg Speed": "3.5 mph",
- "Finish Location": " ",
- "Longitude": "121º 37' 20\" W",
- "Date": "Dec 15, 2015",
- "date": "2015/12/15",
- "Elapsed Time": "3:00:29",
- "Distance": "10.6 miles",
- "Finish Time": "2015-12-15T21:30:25Z",
+ "Latitude": "45º 19' 13\" N",
  "coords": [
   {"lat": 45.3204193, "lng": -121.6221620},
   {"lat": 45.3204084, "lng": -121.6223809},
@@ -1468,9 +1466,11 @@
   {"lat": 45.3203902, "lng": -121.6224008},
   {"lat": 45.3203673, "lng": -121.6222742}
  ],
+ "Avg Speed": "3.5 mph",
+ "Start Location": " ",
  "StartCoord": {"lat": 45.3204193, "lng": -121.6221620},
- "snippet": " with Susan and Tim",
- "Latitude": "45º 19' 13\" N",
+ "Max Speed": "15.6 mph",
+ "date": "2015/12/15",
  "Min Altitude": "3,937 ft",
- "Max Speed": "15.6 mph"
+ "Max Altitude": "4,421 ft"
 }

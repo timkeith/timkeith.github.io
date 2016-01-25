@@ -1,6 +1,4 @@
 {
- "Finish Time": "2015-11-23T20:23:21Z",
- "Distance": "4.46 miles",
  "coords": [
   {"lat": 45.5605892, "lng": -122.1727020},
   {"lat": 45.5605658, "lng": -122.1725283},
@@ -672,21 +670,23 @@
   {"lat": 45.5605019, "lng": -122.1725961},
   {"lat": 45.5605759, "lng": -122.1725108}
  ],
- "StartCoord": {"lat": 45.5605892, "lng": -122.1727020},
- "snippet": "",
- "Min Altitude": "106 ft",
  "Latitude": "45º 33' 38\" N",
- "Max Speed": "5.6 mph",
- "Max Altitude": "1,601 ft",
- "Start Location": " ",
- "Start Time": "2015-11-23T18:08:13Z",
  "Time": "10:08 am",
  "name": "Angel's Rest",
- "Avg Speed": "2.0 mph",
- "Avg Pace": "30' 16\" per mile",
+ "snippet": "",
  "Finish Location": " ",
- "Longitude": "122º 10' 21\" W",
  "Date": "Nov 23, 2015",
+ "Start Time": "2015-11-23T18:08:13Z",
+ "Avg Pace": "30' 16\" per mile",
+ "Distance": "4.46 miles",
+ "Finish Time": "2015-11-23T20:23:21Z",
+ "Longitude": "122º 10' 21\" W",
  "Elapsed Time": "2:15:08",
- "date": "2015/11/23"
+ "Max Altitude": "1,601 ft",
+ "date": "2015/11/23",
+ "Min Altitude": "106 ft",
+ "Max Speed": "5.6 mph",
+ "StartCoord": {"lat": 45.5605892, "lng": -122.1727020},
+ "Avg Speed": "2.0 mph",
+ "Start Location": " "
 }

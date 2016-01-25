@@ -1,16 +1,4 @@
 {
- "Time": "10:22 am",
- "name": "Teacup 12-26-2015",
- "Start Time": "2015-12-26T18:22:24Z",
- "Start Location": " ",
- "Max Altitude": "4,409 ft",
- "Elapsed Time": "2:19:03",
- "date": "2015/12/26",
- "Date": "Dec 26, 2015",
- "Longitude": "121º 37' 14\" W",
- "Finish Location": " ",
- "Avg Speed": "3.5 mph",
- "Avg Pace": "16' 59\" per mile",
  "coords": [
   {"lat": 45.3196797, "lng": -121.6252381},
   {"lat": 45.3196738, "lng": -121.6254176},
@@ -1139,11 +1127,23 @@
   {"lat": 45.3204576, "lng": -121.6208123},
   {"lat": 45.3204432, "lng": -121.6206807}
  ],
+ "Latitude": "45º 19' 14\" N",
+ "Time": "10:22 am",
+ "name": "Teacup 12-26-2015",
+ "snippet": "",
+ "Date": "Dec 26, 2015",
+ "Finish Location": " ",
+ "Start Time": "2015-12-26T18:22:24Z",
+ "Avg Pace": "16' 59\" per mile",
  "Distance": "8.19 miles",
  "Finish Time": "2015-12-26T20:41:28Z",
- "Max Speed": "14.4 mph",
- "Latitude": "45º 19' 14\" N",
+ "Longitude": "121º 37' 14\" W",
+ "Elapsed Time": "2:19:03",
+ "Max Altitude": "4,409 ft",
+ "date": "2015/12/26",
  "Min Altitude": "3,958 ft",
+ "Max Speed": "14.4 mph",
  "StartCoord": {"lat": 45.3196797, "lng": -121.6252381},
- "snippet": ""
+ "Start Location": " ",
+ "Avg Speed": "3.5 mph"
 }

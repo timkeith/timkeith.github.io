@@ -1,20 +1,10 @@
 {
- "Longitude": "122º 54' 40\" W",
- "Finish Location": " ",
- "date": "2015/08/13",
- "Elapsed Time": "55:48.0",
- "Date": "Aug 12, 2015",
- "Avg Pace": "22' 28\" per mile",
- "Avg Speed": "2.7 mph",
- "Time": "6:03 pm",
- "name": "Jackson creek hike",
  "Max Altitude": "1,250 ft",
- "Start Time": "2015-08-13T01:03:30Z",
- "Start Location": " ",
- "Latitude": "45º 39' 57\" N",
+ "date": "2015/08/13",
  "Min Altitude": "901 ft",
  "Max Speed": "5.0 mph",
- "snippet": "",
+ "Start Location": " ",
+ "Avg Speed": "2.7 mph",
  "StartCoord": {"lat": 45.6658695, "lng": -122.9109169},
  "coords": [
   {"lat": 45.6658695, "lng": -122.9109169},
@@ -381,6 +371,16 @@
   {"lat": 45.6657530, "lng": -122.9111325},
   {"lat": 45.6658182, "lng": -122.9109790}
  ],
+ "name": "Jackson creek hike",
+ "Latitude": "45º 39' 57\" N",
+ "Time": "6:03 pm",
+ "Avg Pace": "22' 28\" per mile",
  "Finish Time": "2015-08-13T01:59:18Z",
- "Distance": "2.48 miles"
+ "Distance": "2.48 miles",
+ "Longitude": "122º 54' 40\" W",
+ "snippet": "",
+ "Date": "Aug 12, 2015",
+ "Finish Location": " ",
+ "Start Time": "2015-08-13T01:03:30Z",
+ "Elapsed Time": "55:48.0"
 }

@@ -1,6 +1,4 @@
 {
- "Distance": "11.6 miles",
- "Finish Time": "2013-08-19T19:50:25Z",
  "coords": [
   {"lat": 43.1652820, "lng": -122.1327629},
   {"lat": 43.1651517, "lng": -122.1327865},
@@ -1420,21 +1418,23 @@
   {"lat": 43.1665104, "lng": -122.1325843},
   {"lat": 43.1666234, "lng": -122.1328386}
  ],
- "snippet": "",
- "StartCoord": {"lat": 43.1652820, "lng": -122.1327629},
- "Latitude": "43º 10' 00\" N",
- "Min Altitude": "5,070 ft",
- "Max Speed": "16.2 mph",
- "Max Altitude": "5,342 ft",
- "Start Time": "2013-08-19T18:30:27Z",
- "Start Location": " ",
  "name": "Diamond lake loop 8-19-13",
+ "Latitude": "43º 10' 00\" N",
  "Time": "11:30 am",
- "Avg Pace": " 6' 54\" per mile",
- "Avg Speed": "8.7 mph",
- "Finish Location": " ",
  "Longitude": "122º 07' 58\" W",
+ "Distance": "11.6 miles",
+ "Finish Time": "2013-08-19T19:50:25Z",
+ "Avg Pace": " 6' 54\" per mile",
+ "Start Time": "2013-08-19T18:30:27Z",
  "Date": "Aug 19, 2013",
+ "snippet": "",
+ "Finish Location": " ",
+ "Elapsed Time": "1:19:57",
+ "Max Altitude": "5,342 ft",
+ "Min Altitude": "5,070 ft",
  "date": "2013/08/19",
- "Elapsed Time": "1:19:57"
+ "Max Speed": "16.2 mph",
+ "Start Location": " ",
+ "Avg Speed": "8.7 mph",
+ "StartCoord": {"lat": 43.1652820, "lng": -122.1327629}
 }

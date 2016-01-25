@@ -1,6 +1,11 @@
 {
- "Distance": "4.38 miles",
- "Finish Time": "2015-11-04T23:03:12Z",
+ "Max Altitude": "1,332 ft",
+ "date": "2015/11/04",
+ "Min Altitude": "861 ft",
+ "Max Speed": "10.1 mph",
+ "StartCoord": {"lat": 45.7473650, "lng": -123.1850579},
+ "Avg Speed": "3.1 mph",
+ "Start Location": " ",
  "coords": [
   {"lat": 45.7473650, "lng": -123.1850579},
   {"lat": 45.7472706, "lng": -123.1851188},
@@ -627,21 +632,16 @@
   {"lat": 45.7481154, "lng": -123.1846507},
   {"lat": 45.7480616, "lng": -123.1847646}
  ],
- "snippet": "",
- "StartCoord": {"lat": 45.7473650, "lng": -123.1850579},
- "Max Speed": "10.1 mph",
- "Min Altitude": "861 ft",
  "Latitude": "45º 44' 53\" N",
- "Start Time": "2015-11-04T21:37:46Z",
- "Start Location": " ",
- "Max Altitude": "1,332 ft",
  "Time": "1:37 pm",
  "name": "Stub Stewart on Rossi ",
- "Avg Speed": "3.1 mph",
- "Avg Pace": "19' 29\" per mile",
  "Date": "Nov 4, 2015",
- "date": "2015/11/04",
- "Elapsed Time": "1:25:26",
  "Finish Location": " ",
- "Longitude": "123º 11' 05\" W"
+ "snippet": "",
+ "Start Time": "2015-11-04T21:37:46Z",
+ "Avg Pace": "19' 29\" per mile",
+ "Longitude": "123º 11' 05\" W",
+ "Distance": "4.38 miles",
+ "Finish Time": "2015-11-04T23:03:12Z",
+ "Elapsed Time": "1:25:26"
 }
