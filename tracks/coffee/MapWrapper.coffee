@@ -107,8 +107,8 @@ class MapWrapper
     $.ajax
       url:     url
       type:    'GET'
-      success: (data) => @addPath(color, data)
-      error:   (error) -> console.log 'error', error
+      success: (data)  => @addPath(color, data)
+      error:   (error) => console.log 'error', error
 
   # add a path to the map in this color, update bounds
   addPath: (color, data) ->
@@ -121,14 +121,6 @@ class MapWrapper
       path.length -= data.omit
     start = path[0]
     end = path[path.length-1]
-    @info = """
-    <h2>#{data.name}</h2>
-    #{data.Date}<br>
-    Distance: #{data.Distance}<br>
-    Altitude: #{data['Min Altitude']} - #{data['Max Altitude']}
-    """
-    @addMarker(end, 'End', @info)
-    @addMarker(start, 'Start', @info)
     polyline = new google.maps.Polyline
       path:          path
       geodesic:      true
@@ -136,6 +128,17 @@ class MapWrapper
       strokeOpacity: 1.0
       strokeWeight:  3
     polyline.setMap(@map)
+
+    distance = @_computeDistance(polyline)
+    @info = """
+    <h2>#{data.name}</h2>
+    #{data.Date}<br>
+    Distance: #{distance}<br>
+    Altitude: #{data['Min Altitude']} - #{data['Max Altitude']}
+    """
+    @addMarker(end, 'End', @info)
+    @addMarker(start, 'Start', @info)
+
     for point in path
       {lat, lng} = point
       if lat < @sw.lat then @sw.lat = lat
@@ -150,6 +153,10 @@ class MapWrapper
       @infowindow.close()
       @infowindow.setContent(content)
       @infowindow.open(@map, marker)
+
+  _computeDistance: (polyline) ->
+    lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray())
+    return (lenMeters/1609.34).toFixed(2)  # convert to miles
 
 if not window.tsk? then window.tsk = {}
 window.tsk.MapWrapper = MapWrapper

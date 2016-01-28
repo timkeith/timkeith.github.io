@@ -127,14 +127,16 @@ MapWrapper = (function() {
           return _this.addPath(color, data);
         };
       })(this),
-      error: function(error) {
-        return console.log('error', error);
-      }
+      error: (function(_this) {
+        return function(error) {
+          return console.log('error', error);
+        };
+      })(this)
     });
   };
 
   MapWrapper.prototype.addPath = function(color, data) {
-    var end, j, lat, len, lng, path, point, polyline, start;
+    var distance, end, j, lat, len, lng, path, point, polyline, start;
     this.legend.push({
       name: data.name,
       date: data.date,
@@ -151,9 +153,6 @@ MapWrapper = (function() {
     }
     start = path[0];
     end = path[path.length - 1];
-    this.info = "<h2>" + data.name + "</h2>\n" + data.Date + "<br>\nDistance: " + data.Distance + "<br>\nAltitude: " + data['Min Altitude'] + " - " + data['Max Altitude'];
-    this.addMarker(end, 'End', this.info);
-    this.addMarker(start, 'Start', this.info);
     polyline = new google.maps.Polyline({
       path: path,
       geodesic: true,
@@ -162,6 +161,10 @@ MapWrapper = (function() {
       strokeWeight: 3
     });
     polyline.setMap(this.map);
+    distance = this._computeDistance(polyline);
+    this.info = "<h2>" + data.name + "</h2>\n" + data.Date + "<br>\nDistance: " + distance + "<br>\nAltitude: " + data['Min Altitude'] + " - " + data['Max Altitude'];
+    this.addMarker(end, 'End', this.info);
+    this.addMarker(start, 'Start', this.info);
     for (j = 0, len = path.length; j < len; j++) {
       point = path[j];
       lat = point.lat, lng = point.lng;
@@ -195,6 +198,12 @@ MapWrapper = (function() {
         return _this.infowindow.open(_this.map, marker);
       };
     })(this));
+  };
+
+  MapWrapper.prototype._computeDistance = function(polyline) {
+    var lenMeters;
+    lenMeters = google.maps.geometry.spherical.computeLength(polyline.getPath().getArray());
+    return (lenMeters / 1609.34).toFixed(2);
   };
 
   return MapWrapper;
