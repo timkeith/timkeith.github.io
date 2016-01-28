@@ -16,7 +16,8 @@
     "name": "Jogs"
   },
   "ride": {
-    "name": "Horseback Rides"
+    "name": "Horseback Rides",
+    "Milo_McIver.json": { "omit": 55 }
   },
   "monday": {
     "name": "Monday Funday"
