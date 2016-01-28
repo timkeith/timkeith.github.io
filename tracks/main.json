@@ -29,7 +29,7 @@
         "Distance": "28.9 miles",
         "StartCoord": {"lat": 45.6018633, "lng": -122.8915199},
         "date": "2015/08/09",
-        "name": "Mountaindale &amp; Roy",
+        "name": "Mountaindale & Roy",
         "path": "bike/Mountaindale_Roy.json",
         "snippet": ""
      },
@@ -39,7 +39,7 @@
         "date": "2015/05/08",
         "name": "Banks-vernonia",
         "path": "bike/Banksvernonia.json",
-        "snippet": ".  Button to vernonia and back Tim &amp; C"
+        "snippet": ".  Button to vernonia and back Tim & C"
      },
      {
         "Distance": "28.5 miles",
@@ -193,7 +193,7 @@
         "Distance": "0.75 miles",
         "StartCoord": {"lat": 42.1953857, "lng": -124.3710542},
         "date": "2015/06/07",
-        "name": "Natural Bridges &amp; Thunder Rock Cove",
+        "name": "Natural Bridges & Thunder Rock Cove",
         "path": "hike/Natural_Bridges_Thunder_Rock_Cove.json",
         "snippet": ""
      },
@@ -209,7 +209,7 @@
         "Distance": "7.27 miles",
         "StartCoord": {"lat": 42.2026597, "lng": -122.7137539},
         "date": "2015/06/02",
-        "name": "Lithia Park &amp; Bandersnatch",
+        "name": "Lithia Park & Bandersnatch",
         "path": "hike/Lithia_Park_Bandersnatch.json",
         "snippet": ""
      },
@@ -344,6 +344,14 @@
  {
   "data": [
      {
+        "Distance": "3.85 miles",
+        "StartCoord": {"lat": 45.6986703, "lng": -123.1832523},
+        "date": "2016/01/27",
+        "name": "Banks-Vernonia from Buxton",
+        "path": "ride/BanksVernonia_from_Buxton.json",
+        "snippet": "Jan 27, 2016. C & Rossi "
+     },
+     {
         "Distance": "4.38 miles",
         "StartCoord": {"lat": 45.7473650, "lng": -123.1850579},
         "date": "2015/11/04",
@@ -371,7 +379,7 @@
         "Distance": "6.03 miles",
         "StartCoord": {"lat": 45.5925784, "lng": -122.8147690},
         "date": "2014/04/09",
-        "name": "BPA &amp; Newton road",
+        "name": "BPA & Newton road",
         "path": "ride/BPA_Newton_road.json",
         "snippet": ""
      }
@@ -387,15 +395,15 @@
         "date": "2016/01/15",
         "name": "Trillium and Mud Creek with Quarry Trail shortcut ",
         "path": "ski/Trillium_and_Mud_Creek_with_Quarry_Trail_shortcut.json",
-        "snippet": "Jan 15, 2016  Tim &amp; Catherine "
+        "snippet": "Jan 15, 2016  Tim & Catherine "
      },
      {
         "Distance": "9.21 miles",
         "StartCoord": {"lat": 45.3288559, "lng": -121.5870371},
         "date": "2016/01/07",
-        "name": "Teacup &amp; Pocket Creek loop counterclockwise ",
+        "name": "Teacup & Pocket Creek loop counterclockwise ",
         "path": "ski/Teacup_Pocket_Creek_loop_counterclockwise.json",
-        "snippet": "Jan 7, 2016 Tim, Catherine &amp; Susan "
+        "snippet": "Jan 7, 2016 Tim, Catherine & Susan "
      },
      {
         "Distance": "8.19 miles",

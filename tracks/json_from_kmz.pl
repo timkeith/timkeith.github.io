@@ -81,6 +81,9 @@ sub get_info_from_kmz($) {
         $info{Time} = $2;
       }
     }
+    for my $key (keys %info) {
+      $info{$key} = Misc::subst($info{$key}, '\&amp;' => '&');
+    }
   }
   my(undef,undef,undef,$day,$month,$year) = Date::Parse::strptime($info{'Start Time'});
   $info{date} = sprintf('%04d/%02d/%02d', $year+1900, $month+1, $day);
@@ -110,10 +113,7 @@ sub put_json($$) {
 #print "1:\n", substr($json, 0, 200), "\n";
   if (-f $file) {
     my $prev = Misc::get($file);
-#Misc::put('/tmp/2.json', $prev);
-#print "2:\n", substr($prev, 0, 200), "\n";
     return if $prev eq $json;
-#print "DIFF\n";
     unlink($file);
   }
   print "$file\n";
