@@ -3,25 +3,6 @@ $ = require 'jquery'
 CallbackCounter = require './CallbackCounter'
 util = require './util'
 
-createMapFromSearchString = (elemId, search) ->
-  paths = search.replace(/^\?/, '').split('&')
-  console.log 'paths:', paths
-  map = new MapWrapper(document.getElementById(elemId))
-  for path, i in paths
-    color = COLORS[i]
-    map.getAndAddPath(color, util.getUrl("#{path}.json"))
-  map.done()
-
-scaleLuminance = (hex, scale) ->
-  match = hex.match /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i
-  if not match?
-    throw new Error "Bad RGB hex string: #{hex}"
-  return '#' + (for c in match[1..3]
-    x = Math.round(parseInt(c, 16) * scale)
-    x = Math.min(255, Math.max(0, x))
-    (if x < 16 then '0' else '') + x.toString(16)
-  ).join('')
-
 COLORS = [
   '#FFB300'  # Vivid Yellow
   '#803E75'  # Strong Purple
@@ -44,6 +25,15 @@ COLORS = [
   '#CEA262'  # Grayish Yellow
 ]
 
+
+createMapFromSearchString = (elemId, search) ->
+  paths = search.replace(/^\?/, '').split('&')
+  console.log 'paths:', paths
+  map = new MapWrapper(document.getElementById(elemId))
+  for path, i in paths
+    color = COLORS[i]
+    map.getAndAddPath(color, util.getUrl("#{path}.json"))
+  map.done()
 
 class MapWrapper
   constructor: (elem) ->
@@ -75,12 +65,10 @@ class MapWrapper
             """
               <tr>
                 <td><span class='hline' style='background-color: #{t.color}'></span></td>
-                <td>#{t.Date}</td>
+                <td>#{t.Date.replace(/ \d+:\d+ [ap]m/, '')}</td>
                 <td>&ndash; #{t.name}</td>
               </tr>
             """
-            #span = "<span class='hline' style='background-color: #{t.color}'></span>"
-            #"<div>#{span} #{t.Date} &ndash; #{t.name}</div>"
         ).join('')
         "<table id='title'>#{title}</table>"
     @map.controls[google.maps.ControlPosition.TOP_CENTER].push($(title)[0])
@@ -131,10 +119,10 @@ class MapWrapper
 
     distance = @_computeDistance(polyline)
     @info = """
-    <h2>#{data.name}</h2>
-    #{data.Date}<br>
-    Distance: #{distance}<br>
-    Altitude: #{data['Min Altitude']} - #{data['Max Altitude']}
+      <h2>#{data.name}</h2>
+      #{data.Date}<br>
+      Distance: #{distance}<br>
+      Altitude: #{data['Min Altitude']} - #{data['Max Altitude']}
     """
     @addMarker(end, 'End', @info)
     @addMarker(start, 'Start', @info)

@@ -1,444 +1,444 @@
 [
  {
   "data": [
-     {
-        "Distance": "27.3 miles",
-        "StartCoord": {"lat": 45.5139004, "lng": -122.6673670},
-        "date": "2015/09/21",
-        "name": "Trolley trail etc. ",
-        "path": "bike/Trolley_trail_etc.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "20.1 miles",
-        "StartCoord": {"lat": 44.4450139, "lng": -121.6536302},
-        "date": "2015/08/24",
-        "name": "Lake creek lodge to lower bridge",
-        "path": "bike/Lake_creek_lodge_to_lower_bridge.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "11.9 miles",
-        "StartCoord": {"lat": 45.8107231, "lng": -123.2311091},
-        "date": "2015/08/19",
-        "name": "B-V with Adam K 8-19-15",
-        "path": "bike/BV_with_Adam_K_81915.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "28.9 miles",
-        "StartCoord": {"lat": 45.6018633, "lng": -122.8915199},
-        "date": "2015/08/09",
-        "name": "Mountaindale & Roy",
-        "path": "bike/Mountaindale_Roy.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "32.2 miles",
-        "StartCoord": {"lat": 45.6983436, "lng": -123.1837000},
-        "date": "2015/05/08",
-        "name": "Banks-vernonia",
-        "path": "bike/Banksvernonia.json",
-        "snippet": ".  Button to vernonia and back Tim & C"
-     },
-     {
-        "Distance": "28.5 miles",
-        "StartCoord": {"lat": 46.1555000, "lng": -123.9219265},
-        "date": "2014/08/27",
-        "name": "Ft. Stevens",
-        "path": "bike/Ft_Stevens.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "15.6 miles",
-        "StartCoord": {"lat": 46.1734169, "lng": -123.9570780},
-        "date": "2014/08/25",
-        "name": "Ft. Stevens 8-25-14",
-        "path": "bike/Ft_Stevens_82514.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "14.6 miles",
-        "StartCoord": {"lat": 45.6018409, "lng": -122.8916758},
-        "date": "2014/06/01",
-        "name": "Meek Rd 6-1-14",
-        "path": "bike/Meek_Rd_6114.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "11.6 miles",
-        "StartCoord": {"lat": 43.1652820, "lng": -122.1327629},
-        "date": "2013/08/19",
-        "name": "Diamond lake loop 8-19-13",
-        "path": "bike/Diamond_lake_loop_81913.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "bike",
-  "name": "Bike Rides"
- },
- {
-  "data": [
-     {
-        "Distance": "6.83 miles",
-        "StartCoord": {"lat": 45.3919306, "lng": -122.8055286},
-        "date": "2015/07/04",
-        "name": "Canoeing On The Tuallitan From The 99W Bridge Upstream",
-        "path": "canoe/Canoeing_On_The_Tuallitan_From_The_99W_Bridge_Upstream.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "2.77 miles",
-        "StartCoord": {"lat": 45.4903327, "lng": -122.9514189},
-        "date": "2015/06/27",
-        "name": "Canoeing from Rood Bridge Park",
-        "path": "canoe/Canoeing_from_Rood_Bridge_Park.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "canoe",
-  "name": "Canoe Trips"
- },
- {
-  "data": [
-     {
-        "Distance": "4.55 miles",
-        "StartCoord": {"lat": 37.8601611, "lng": -122.2762021},
-        "date": "2015/11/30",
-        "name": "Berkeley to University ",
-        "path": "hike/Berkeley_to_University.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "6.12 miles",
-        "StartCoord": {"lat": 37.9049865, "lng": -122.2445254},
-        "date": "2015/11/28",
-        "name": "Tilden park near Berkeley ",
-        "path": "hike/Tilden_park_near_Berkeley.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.94 miles",
-        "StartCoord": {"lat": 45.5746707, "lng": -122.7890965},
-        "date": "2015/09/14",
-        "name": "Forest park--Springville-LE-Waterline-Wildwood",
-        "path": "hike/Forest_parkSpringvilleLEWaterlineWildwood.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.20 miles",
-        "StartCoord": {"lat": 45.5079788, "lng": -122.7168363},
-        "date": "2015/09/02",
-        "name": "4T trail zoo to OHSU",
-        "path": "hike/4T_trail_zoo_to_OHSU.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.95 miles",
-        "StartCoord": {"lat": 44.3950723, "lng": -121.6477121},
-        "date": "2015/08/25",
-        "name": "Black Butte",
-        "path": "hike/Black_Butte.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "8.14 miles",
-        "StartCoord": {"lat": 45.6404144, "lng": -121.9256960},
-        "date": "2015/08/20",
-        "name": "Eagle Creek to High Bridge",
-        "path": "hike/Eagle_Creek_to_High_Bridge.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "2.48 miles",
-        "StartCoord": {"lat": 45.6658695, "lng": -122.9109169},
-        "date": "2015/08/13",
-        "name": "Jackson creek hike",
-        "path": "hike/Jackson_creek_hike.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.09 miles",
-        "StartCoord": {"lat": 43.4623664, "lng": -80.5597179},
-        "date": "2015/08/05",
-        "name": "Rosalind's to Claire Hills",
-        "path": "hike/Rosalinds_to_Claire_Hills.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "8.03 miles",
-        "StartCoord": {"lat": 43.4621893, "lng": -80.5595457},
-        "date": "2015/08/04",
-        "name": "Rosalind's to Laurel creek conservation area",
-        "path": "hike/Rosalinds_to_Laurel_creek_conservation_area.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "4.94 miles",
-        "StartCoord": {"lat": 45.9629534, "lng": -123.6899401},
-        "date": "2015/07/03",
-        "name": "Saddle Mountain 7-3-15",
-        "path": "hike/Saddle_Mountain_7315.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "1.44 miles",
-        "StartCoord": {"lat": 42.7393267, "lng": -124.5106324},
-        "date": "2015/06/08",
-        "name": "Port Orford Heads",
-        "path": "hike/Port_Orford_Heads.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "0.75 miles",
-        "StartCoord": {"lat": 42.1953857, "lng": -124.3710542},
-        "date": "2015/06/07",
-        "name": "Natural Bridges & Thunder Rock Cove",
-        "path": "hike/Natural_Bridges_Thunder_Rock_Cove.json",
-        "snippet": ""
-     },
-     {
-        "Distance": 5.37,
-        "StartCoord": {"lat": 42.2720609, "lng": -122.6060388},
-        "date": "2015/06/04",
-        "name": "Grizzly Peak",
-        "path": "hike/Grizzly_Peak.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "7.27 miles",
-        "StartCoord": {"lat": 42.2026597, "lng": -122.7137539},
-        "date": "2015/06/02",
-        "name": "Lithia Park & Bandersnatch",
-        "path": "hike/Lithia_Park_Bandersnatch.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.43 miles",
-        "StartCoord": {"lat": 45.6056613, "lng": -122.8231539},
-        "date": "2015/05/22",
-        "name": "Wildwood from Newberry",
-        "path": "hike/Wildwood_from_Newberry.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.14 miles",
-        "StartCoord": {"lat": 43.4617366, "lng": -80.5603906},
-        "date": "2014/10/13",
-        "name": "Waterloo",
-        "path": "hike/Waterloo.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.90 miles",
-        "StartCoord": {"lat": 43.7805615, "lng": -74.8290586},
-        "date": "2014/08/14",
-        "name": "Cascade lake ",
-        "path": "hike/Cascade_lake.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.14 miles",
-        "StartCoord": {"lat": 37.3330762, "lng": -122.0900740},
-        "date": "2014/03/31",
-        "name": "Rancho San Antonio hike CA",
-        "path": "hike/Rancho_San_Antonio_hike_CA.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.87 miles",
-        "StartCoord": {"lat": 45.5662893, "lng": -122.7531816},
-        "date": "2013/11/28",
-        "name": "Maple trail 11-28-13",
-        "path": "hike/Maple_trail_112813.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "hike",
-  "name": "Hikes and Walks"
- },
- {
-  "data": [
-     {
-        "Distance": "3.04 miles",
-        "StartCoord": {"lat": 42.3267329, "lng": -71.1182417},
-        "date": "2015/09/26",
-        "name": "Jamaica pond 9-26-15",
-        "path": "jog/Jamaica_pond_92615.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "6.29 miles",
-        "StartCoord": {"lat": 42.3270505, "lng": -71.1158826},
-        "date": "2015/09/25",
-        "name": "Fenway",
-        "path": "jog/Fenway.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.18 miles",
-        "StartCoord": {"lat": 43.8308994, "lng": -74.8620012},
-        "date": "2014/07/09",
-        "name": "Waldheim jog ",
-        "path": "jog/Waldheim_jog.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "3.34 miles",
-        "StartCoord": {"lat": 42.3269562, "lng": -71.1185527},
-        "date": "2013/10/19",
-        "name": "Jamaica Pond",
-        "path": "jog/Jamaica_Pond.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "jog",
-  "name": "Jogs"
- },
- {
-  "data": [
-     {
-        "Distance": "5.41 miles",
-        "StartCoord": {"lat": 45.5355488, "lng": -122.7120579},
-        "date": "2016/01/11",
-        "name": "Balch-Holman-Birch-Aspen",
-        "path": "monday/BalchHolmanBirchAspen.json",
-        "snippet": "Jan 11, 2016 Catherine, Susan, Lynsley. Wet and muddy. "
-     },
-     {
-        "Distance": "4.46 miles",
-        "StartCoord": {"lat": 45.5605892, "lng": -122.1727020},
-        "date": "2015/11/23",
-        "name": "Angel's Rest",
-        "path": "monday/Angels_Rest.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "7.06 miles",
-        "StartCoord": {"lat": 45.5893475, "lng": -122.1785313},
-        "date": "2015/11/02",
-        "name": " Cape Horn Trail 11-2-15 ",
-        "path": "monday/Cape_Horn_Trail_11215.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.95 miles",
-        "StartCoord": {"lat": 45.9061294, "lng": -121.9402400},
-        "date": "2015/10/26",
-        "name": "Falls Creek Falls",
-        "path": "monday/FallsCreekFalls.json",
-        "snippet": "  Catherine, Tim, Susan, Lynsley "
-     },
-     {
-        "Distance": "7.19 miles",
-        "StartCoord": {"lat": 45.5491722, "lng": -122.0915553},
-        "date": "2015/10/05",
-        "name": "Larch Mountain Crater",
-        "path": "monday/LarchMountainCrater.json",
-        "snippet": "Oct 5, 2015 with Lynsley, Susan, Christopher, Jenn, Tim"
-     }
-  ],
-  "dir": "monday",
+   {
+    "Distance": "7.19 miles", 
+    "StartCoord": { "lat": 45.5491722, "lng": -122.0915553 }, 
+    "date": "2015-10-05", 
+    "name": "Larch Mountain Crater", 
+    "path": "monday/LarchMountainCrater.json", 
+    "snippet": "Oct 5, 2015 with Lynsley, Susan, Christopher, Jenn, Tim"
+   }, 
+   {
+    "Distance": "5.95 miles", 
+    "StartCoord": { "lat": 45.9061294, "lng": -121.94024 }, 
+    "date": "2015-10-26", 
+    "name": "Falls Creek Falls", 
+    "path": "monday/FallsCreekFalls.json", 
+    "snippet": "  Catherine, Tim, Susan, Lynsley "
+   }, 
+   {
+    "Distance": "7.06 miles", 
+    "StartCoord": { "lat": 45.5893475, "lng": -122.1785313 }, 
+    "date": "2015-11-02", 
+    "name": " Cape Horn Trail 11-2-15 ", 
+    "path": "monday/Cape_Horn_Trail_11215_.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "4.46 miles", 
+    "StartCoord": { "lat": 45.5605892, "lng": -122.172702 }, 
+    "date": "2015-11-23", 
+    "name": "Angel's Rest", 
+    "path": "monday/Angels_Rest.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.41 miles", 
+    "StartCoord": { "lat": 45.5355488, "lng": -122.7120579 }, 
+    "date": "2016-01-11", 
+    "name": "Balch-Holman-Birch-Aspen", 
+    "path": "monday/BalchHolmanBirchAspen.json", 
+    "snippet": "Jan 11, 2016 Catherine, Susan, Lynsley. Wet and muddy. "
+   }
+  ], 
+  "dir": "monday", 
   "name": "Monday Funday"
- },
+ }, 
  {
   "data": [
-     {
-        "Distance": "3.85 miles",
-        "StartCoord": {"lat": 45.6986703, "lng": -123.1832523},
-        "date": "2016/01/27",
-        "name": "Banks-Vernonia from Buxton",
-        "path": "ride/BanksVernonia_from_Buxton.json",
-        "snippet": "Jan 27, 2016. C & Rossi "
-     },
-     {
-        "Distance": "4.38 miles",
-        "StartCoord": {"lat": 45.7473650, "lng": -123.1850579},
-        "date": "2015/11/04",
-        "name": "Stub Stewart on Rossi ",
-        "path": "ride/Stub_Stewart_on_Rossi.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "5.97 miles",
-        "StartCoord": {"lat": 45.7070021, "lng": -123.3383490},
-        "date": "2015/05/09",
-        "name": "Reehers w/Christine",
-        "path": "ride/Reehers_wChristine.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "9.27 miles",
-        "StartCoord": {"lat": 45.2894485, "lng": -122.3633037},
-        "date": "2014/09/10",
-        "name": "Milo McIver",
-        "path": "ride/Milo_McIver.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "6.03 miles",
-        "StartCoord": {"lat": 45.5925784, "lng": -122.8147690},
-        "date": "2014/04/09",
-        "name": "BPA & Newton road",
-        "path": "ride/BPA_Newton_road.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "ride",
+   {
+    "Distance": "2.77 miles", 
+    "StartCoord": { "lat": 45.4903327, "lng": -122.9514189 }, 
+    "date": "2015-06-27", 
+    "name": "Canoeing from Rood Bridge Park", 
+    "path": "canoe/Canoeing_from_Rood_Bridge_Park.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "6.83 miles", 
+    "StartCoord": { "lat": 45.3919306, "lng": -122.8055286 }, 
+    "date": "2015-07-04", 
+    "name": "Canoeing On The Tuallitan From The 99W Bridge Upstream", 
+    "path": "canoe/Canoeing_On_The_Tuallitan_From_The_99W_Bridge_Upstream.json", 
+    "snippet": ""
+   }
+  ], 
+  "dir": "canoe", 
+  "name": "Canoe Trips"
+ }, 
+ {
+  "data": [
+   {
+    "Distance": "5.87 miles", 
+    "StartCoord": { "lat": 45.5662893, "lng": -122.7531816 }, 
+    "date": "2013-11-28", 
+    "name": "Maple trail 11-28-13", 
+    "path": "hike/Maple_trail_112813.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.14 miles", 
+    "StartCoord": { "lat": 37.3330762, "lng": -122.090074 }, 
+    "date": "2014-03-31", 
+    "name": "Rancho San Antonio hike CA", 
+    "path": "hike/Rancho_San_Antonio_hike_CA.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.90 miles", 
+    "StartCoord": { "lat": 43.7805615, "lng": -74.8290586 }, 
+    "date": "2014-08-14", 
+    "name": "Cascade lake ", 
+    "path": "hike/Cascade_lake_.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.43 miles", 
+    "StartCoord": { "lat": 45.6056613, "lng": -122.8231539 }, 
+    "date": "2015-05-22", 
+    "name": "Wildwood from Newberry", 
+    "path": "hike/Wildwood_from_Newberry.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "7.27 miles", 
+    "StartCoord": { "lat": 42.2026597, "lng": -122.7137539 }, 
+    "date": "2015-06-02", 
+    "name": "Lithia Park & Bandersnatch", 
+    "path": "hike/Lithia_Park_Bandersnatch.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": 5.37, 
+    "StartCoord": { "lat": 42.2720609, "lng": -122.6060388 }, 
+    "date": "2015-06-04", 
+    "name": "Grizzly Peak", 
+    "path": "hike/Grizzly_Peak.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "0.75 miles", 
+    "StartCoord": { "lat": 42.1953857, "lng": -124.3710542 }, 
+    "date": "2015-06-07", 
+    "name": "Natural Bridges & Thunder Rock Cove", 
+    "path": "hike/Natural_Bridges_Thunder_Rock_Cove.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "1.44 miles", 
+    "StartCoord": { "lat": 42.7393267, "lng": -124.5106324 }, 
+    "date": "2015-06-08", 
+    "name": "Port Orford Heads", 
+    "path": "hike/Port_Orford_Heads.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "4.94 miles", 
+    "StartCoord": { "lat": 45.9629534, "lng": -123.6899401 }, 
+    "date": "2015-07-03", 
+    "name": "Saddle Mountain 7-3-15", 
+    "path": "hike/Saddle_Mountain_7315.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "8.03 miles", 
+    "StartCoord": { "lat": 43.4621893, "lng": -80.5595457 }, 
+    "date": "2015-08-04", 
+    "name": "Rosalind's to Laurel creek conservation area", 
+    "path": "hike/Rosalinds_to_Laurel_creek_conservation_area.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.09 miles", 
+    "StartCoord": { "lat": 43.4623664, "lng": -80.5597179 }, 
+    "date": "2015-08-05", 
+    "name": "Rosalind's to Claire Hills", 
+    "path": "hike/Rosalinds_to_Claire_Hills.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "2.48 miles", 
+    "StartCoord": { "lat": 45.6658695, "lng": -122.9109169 }, 
+    "date": "2015-08-13", 
+    "name": "Jackson creek hike", 
+    "path": "hike/Jackson_creek_hike.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "8.14 miles", 
+    "StartCoord": { "lat": 45.6404144, "lng": -121.925696 }, 
+    "date": "2015-08-20", 
+    "name": "Eagle Creek to High Bridge", 
+    "path": "hike/Eagle_Creek_to_High_Bridge.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.95 miles", 
+    "StartCoord": { "lat": 44.3950723, "lng": -121.6477121 }, 
+    "date": "2015-08-25", 
+    "name": "Black Butte", 
+    "path": "hike/Black_Butte.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.20 miles", 
+    "StartCoord": { "lat": 45.5079788, "lng": -122.7168363 }, 
+    "date": "2015-09-02", 
+    "name": "4T trail zoo to OHSU", 
+    "path": "hike/4T_trail_zoo_to_OHSU.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.94 miles", 
+    "StartCoord": { "lat": 45.5746707, "lng": -122.7890965 }, 
+    "date": "2015-09-14", 
+    "name": "Forest park--Springville-LE-Waterline-Wildwood", 
+    "path": "hike/Forest_parkSpringvilleLEWaterlineWildwood.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "6.12 miles", 
+    "StartCoord": { "lat": 37.9049865, "lng": -122.2445254 }, 
+    "date": "2015-11-28", 
+    "name": "Tilden park near Berkeley ", 
+    "path": "hike/Tilden_park_near_Berkeley_.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "4.55 miles", 
+    "StartCoord": { "lat": 37.8601611, "lng": -122.2762021 }, 
+    "date": "2015-11-30", 
+    "name": "Berkeley to University ", 
+    "path": "hike/Berkeley_to_University_.json", 
+    "snippet": ""
+   }
+  ], 
+  "dir": "hike", 
+  "name": "Hikes and Walks"
+ }, 
+ {
+  "data": [
+   {
+    "Distance": "6.03 miles", 
+    "StartCoord": { "lat": 45.5925784, "lng": -122.814769 }, 
+    "date": "2014-04-09", 
+    "name": "BPA & Newton road", 
+    "path": "ride/BPA_Newton_road.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "9.27 miles", 
+    "StartCoord": { "lat": 45.2894485, "lng": -122.3633037 }, 
+    "date": "2014-09-10", 
+    "name": "Milo McIver", 
+    "path": "ride/Milo_McIver.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "5.97 miles", 
+    "StartCoord": { "lat": 45.7070021, "lng": -123.338349 }, 
+    "date": "2015-05-09", 
+    "name": "Reehers w/Christine", 
+    "path": "ride/Reehers_wChristine.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "4.38 miles", 
+    "StartCoord": { "lat": 45.747365, "lng": -123.1850579 }, 
+    "date": "2015-11-04", 
+    "name": "Stub Stewart on Rossi ", 
+    "path": "ride/Stub_Stewart_on_Rossi_.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.85 miles", 
+    "StartCoord": { "lat": 45.6986703, "lng": -123.1832523 }, 
+    "date": "2016-01-27", 
+    "name": "Banks-Vernonia from Buxton", 
+    "path": "ride/BanksVernonia_from_Buxton.json", 
+    "snippet": "Jan 27, 2016. C & Rossi "
+   }
+  ], 
+  "dir": "ride", 
   "name": "Horseback Rides"
- },
+ }, 
  {
   "data": [
-     {
-        "Distance": "8.74 miles",
-        "StartCoord": {"lat": 45.2856903, "lng": -121.7284906},
-        "date": "2016/01/15",
-        "name": "Trillium and Mud Creek with Quarry Trail shortcut ",
-        "path": "ski/Trillium_and_Mud_Creek_with_Quarry_Trail_shortcut.json",
-        "snippet": "Jan 15, 2016  Tim & Catherine "
-     },
-     {
-        "Distance": "9.21 miles",
-        "StartCoord": {"lat": 45.3288559, "lng": -121.5870371},
-        "date": "2016/01/07",
-        "name": "Teacup & Pocket Creek loop counterclockwise ",
-        "path": "ski/Teacup_Pocket_Creek_loop_counterclockwise.json",
-        "snippet": "Jan 7, 2016 Tim, Catherine & Susan "
-     },
-     {
-        "Distance": "8.19 miles",
-        "StartCoord": {"lat": 45.3196797, "lng": -121.6252381},
-        "date": "2015/12/26",
-        "name": "Teacup 12-26-2015",
-        "path": "ski/Teacup_12262015.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "10.6 miles",
-        "StartCoord": {"lat": 45.3204193, "lng": -121.6221620},
-        "date": "2015/12/15",
-        "name": "Teacup ",
-        "path": "ski/Teacup.json",
-        "snippet": " with Susan and Tim"
-     },
-     {
-        "Distance": "15.5 miles",
-        "StartCoord": {"lat": 45.3204883, "lng": -121.6233432},
-        "date": "2015/01/03",
-        "name": "Teacup skiing",
-        "path": "ski/Teacup_skiing.json",
-        "snippet": ""
-     },
-     {
-        "Distance": "1.80 miles",
-        "StartCoord": {"lat": 45.6115444, "lng": -122.9048480},
-        "date": "2014/02/08",
-        "name": "X-C ski nw of Dick rd",
-        "path": "ski/XC_ski_nw_of_Dick_rd.json",
-        "snippet": ""
-     }
-  ],
-  "dir": "ski",
+   {
+    "Distance": "11.6 miles", 
+    "StartCoord": { "lat": 43.165282, "lng": -122.1327629 }, 
+    "date": "2013-08-19", 
+    "name": "Diamond lake loop 8-19-13", 
+    "path": "bike/Diamond_lake_loop_81913.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "14.6 miles", 
+    "StartCoord": { "lat": 45.6018409, "lng": -122.8916758 }, 
+    "date": "2014-06-01", 
+    "name": "Meek Rd 6-1-14", 
+    "path": "bike/Meek_Rd_6114.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "15.6 miles", 
+    "StartCoord": { "lat": 46.1734169, "lng": -123.957078 }, 
+    "date": "2014-08-25", 
+    "name": "Ft. Stevens 8-25-14", 
+    "path": "bike/Ft_Stevens_82514.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "28.5 miles", 
+    "StartCoord": { "lat": 46.1555, "lng": -123.9219265 }, 
+    "date": "2014-08-27", 
+    "name": "Ft. Stevens", 
+    "path": "bike/Ft_Stevens.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "32.2 miles", 
+    "StartCoord": { "lat": 45.6983436, "lng": -123.1837 }, 
+    "date": "2015-05-08", 
+    "name": "Banks-vernonia", 
+    "path": "bike/Banksvernonia.json", 
+    "snippet": ".  Button to vernonia and back Tim & C"
+   }, 
+   {
+    "Distance": "28.9 miles", 
+    "StartCoord": { "lat": 45.6018633, "lng": -122.8915199 }, 
+    "date": "2015-08-09", 
+    "name": "Mountaindale & Roy", 
+    "path": "bike/Mountaindale_Roy.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "11.9 miles", 
+    "StartCoord": { "lat": 45.8107231, "lng": -123.2311091 }, 
+    "date": "2015-08-19", 
+    "name": "B-V with Adam K 8-19-15", 
+    "path": "bike/BV_with_Adam_K_81915.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "20.1 miles", 
+    "StartCoord": { "lat": 44.4450139, "lng": -121.6536302 }, 
+    "date": "2015-08-24", 
+    "name": "Lake creek lodge to lower bridge", 
+    "path": "bike/Lake_creek_lodge_to_lower_bridge.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "27.3 miles", 
+    "StartCoord": { "lat": 45.5139004, "lng": -122.667367 }, 
+    "date": "2015-09-21", 
+    "name": "Trolley trail etc. ", 
+    "path": "bike/Trolley_trail_etc_.json", 
+    "snippet": ""
+   }
+  ], 
+  "dir": "bike", 
+  "name": "Bike Rides"
+ }, 
+ {
+  "data": [
+   {
+    "Distance": "3.34 miles", 
+    "StartCoord": { "lat": 42.3269562, "lng": -71.1185527 }, 
+    "date": "2013-10-19", 
+    "name": "Jamaica Pond", 
+    "path": "jog/Jamaica_Pond.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.18 miles", 
+    "StartCoord": { "lat": 43.8309472, "lng": -74.8618318 }, 
+    "date": "2014-07-09", 
+    "name": "Waldheim jog ", 
+    "path": "jog/Waldheim_jog_.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "6.29 miles", 
+    "StartCoord": { "lat": 42.3270505, "lng": -71.1158826 }, 
+    "date": "2015-09-25", 
+    "name": "Fenway", 
+    "path": "jog/Fenway.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "3.04 miles", 
+    "StartCoord": { "lat": 42.3267329, "lng": -71.1182417 }, 
+    "date": "2015-09-26", 
+    "name": "Jamaica pond 9-26-15", 
+    "path": "jog/Jamaica_pond_92615.json", 
+    "snippet": ""
+   }
+  ], 
+  "dir": "jog", 
+  "name": "Jogs"
+ }, 
+ {
+  "data": [
+   {
+    "Distance": "1.80 miles", 
+    "StartCoord": { "lat": 45.6115444, "lng": -122.904848 }, 
+    "date": "2014-02-08", 
+    "name": "X-C ski nw of Dick rd", 
+    "path": "ski/XC_ski_nw_of_Dick_rd.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "15.5 miles", 
+    "StartCoord": { "lat": 45.3204883, "lng": -121.6233432 }, 
+    "date": "2015-01-03", 
+    "name": "Teacup skiing", 
+    "path": "ski/Teacup_skiing.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "10.6 miles", 
+    "StartCoord": { "lat": 45.3204193, "lng": -121.622162 }, 
+    "date": "2015-12-15", 
+    "name": "Teacup ", 
+    "path": "ski/Teacup_.json", 
+    "snippet": " with Susan and Tim"
+   }, 
+   {
+    "Distance": "8.19 miles", 
+    "StartCoord": { "lat": 45.3196797, "lng": -121.6252381 }, 
+    "date": "2015-12-26", 
+    "name": "Teacup 12-26-2015", 
+    "path": "ski/Teacup_12262015.json", 
+    "snippet": ""
+   }, 
+   {
+    "Distance": "9.21 miles", 
+    "StartCoord": { "lat": 45.3288559, "lng": -121.5870371 }, 
+    "date": "2016-01-07", 
+    "name": "Teacup & Pocket Creek loop counterclockwise ", 
+    "path": "ski/Teacup_Pocket_Creek_loop_counterclockwise_.json", 
+    "snippet": "Jan 7, 2016 Tim, Catherine & Susan "
+   }, 
+   {
+    "Distance": "8.74 miles", 
+    "StartCoord": { "lat": 45.2856903, "lng": -121.7284906 }, 
+    "date": "2016-01-15", 
+    "name": "Trillium and Mud Creek with Quarry Trail shortcut ", 
+    "path": "ski/Trillium_and_Mud_Creek_with_Quarry_Trail_shortcut_.json", 
+    "snippet": "Jan 15, 2016  Tim & Catherine "
+   }, 
+   {
+    "Distance": "7.12 miles", 
+    "StartCoord": { "lat": 45.3045585, "lng": -121.6690044 }, 
+    "date": "2016-02-02", 
+    "name": "White River East", 
+    "path": "ski/White_River_East.json", 
+    "snippet": ". Catherine, Tim, Susan"
+   }
+  ], 
+  "dir": "ski", 
   "name": "Cross-Country Ski Trips"
  }
 ]
