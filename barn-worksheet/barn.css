@@ -1,0 +1,57 @@
+body {
+  width: 7.25in;
+  height: 10in;
+  margin-left: 0.75in;
+  font-family: Arial, sans-serif;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  width: 0.5in;
+  height: 1.3em;
+  text-align: center;
+}
+tr.head1 td {
+  border: none;
+  text-align: left;
+  font-size: 125%;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 1em;
+}
+tr.head1 td.months {
+  text-align: right;
+}
+tr.head2 td {
+  border: none;
+}
+tr.notes td {
+  border: none;
+  text-align: left;
+}
+tr.notes td.underline {
+  border-bottom: 1px solid #c0c0c0;
+}
+tr.divider td {
+  border: none;
+}
+div.head {
+  font-size: 125%;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+div.nav {
+  padding-bottom: 1em;
+}
+div.nav a {
+  text-decoration: none;
+}
+@media print {
+  .nav {
+    display: none;
+  }
+}
