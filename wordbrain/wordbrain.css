@@ -1,0 +1,86 @@
+body {
+  font-size: 125%;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+h1 {
+}
+h2 {
+}
+h3 {
+  margin-top: 2em;
+}
+
+div.main {
+  /* border: 1px solid blue; */
+  display: inline-block;
+/*
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+*/
+}
+
+table.grid {
+  margin-top:    1em;
+  margin-bottom: 2em;
+}
+table.grid td {
+}
+table.grid td input {
+  font-size:   200%;
+  font-weight: bold;
+  text-align:  center;
+  width:       2em;
+}
+
+.answerSize {
+  margin-bottom: .5em;
+}
+a.selection {
+  color: gray;
+}
+
+.result {
+}
+
+.letters {
+  /* border:  1px solid green; */
+  display: inline-block;
+  text-align: left;
+}
+
+.letters span {
+  display:        inline-block;
+  border:         1px solid gray;
+  width:          1.5em;
+  line-height:    1.5em;
+  text-align:     center;
+  vertical-align: middle;
+  margin-left:    .25em;
+  margin-right:   .25em;
+  margin-top:     .5em;
+}
+.letters span.count {
+  border:       none;
+  color:        gray;
+  margin-right: -.25em;
+}
+
+span.selections a {
+  padding-left: 1em;
+  color: blue;
+}
+span.selections a.selected {
+  font-weight: bold;
+  color: black;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "wordbrains",
+  "version": "1.0.0",
+  "description": "WordBrains Cheater",
+  "main": "wordbrains.js",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
+    "coffeeify": "^2.0.1",
+    "lodash": "^4.13.1",
+    "moment": "^2.10.6",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "reactify": "^1.1.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "./startup.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": ""
+}
