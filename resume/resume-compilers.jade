@@ -1,0 +1,198 @@
+html
+  head
+    style.
+
+      body {
+        display: table;
+        width: 7.5in;
+        font-family: Arial, sans-serif;
+        margin-top: 0.75in;
+        margin-left: 0.75in;
+        margin-bottom: 1.5in;
+        margin-right: 1.5in;
+      }
+      h1 {
+        font-size: 133%;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+      }
+      h2 {
+        font-size: 110%;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+      }
+      ul {
+        margin-top: .2em;
+        padding-left: 2em;
+      }
+      ul.summary {
+        padding-left: 1.2em;
+      }
+      li {
+        margin-top: .4em;
+      }
+      ul ul {
+        margin-top: .2em;
+        padding-left: 1.2em;
+      }
+      ul ul li {
+        margin-top: 0em;
+      }
+      .section  {
+        display: table-row;
+      }
+      .section > div {
+        display: table-cell;
+      }
+      .label {
+        width: 1px;
+        color: #808080;
+        font-size: 110%;
+      }
+      .info {
+        width: 5in;
+        padding-bottom: .25in;
+      }
+      h1.page2 {
+        page-break-before: always;
+        padding-top: 0.75in;
+      }
+
+  body
+    .section
+      .label
+      .info
+        h1 Timothy Keith
+    .section
+      .label Contact Information
+      .info
+        div tim.keith@gmail.com
+        div https://www.linkedin.com/in/timkeith
+        div 503-664-0503
+        div 11355 NW Valley Vista Road
+        div Hillsboro OR 97124
+    .section
+      .label Summary
+      .info
+        ul.summary
+          li Expert in object-oriented design and Java
+          li Extensive experience in compiler implementation
+          li Strong analytic skills and ability to learn new technologies
+          li Record of technical leadership and mentoring more junior programmers
+          li Broad range of experience in all phases of the software development lifecycle
+          li Excellent written and oral communication skills
+          li Experienced in agile and test-driven processes
+
+    .section
+      .label Professional Experience
+      .info
+
+        h2 Technical Lead and Senior Software Engineer, IBM
+        div 2003 &ndash; 2015
+        ul
+          li Investigated use of Linux container technology to IBM products (2014-2015)
+            ul
+              li Created Docker images for IBM UrbanCode Deploy and other products
+              li Investigated use of Kubernetes for orchestrating Docker deployments
+              li
+                | Technologies: Docker, Linux, Vagrant, bash, Groovy, Java, IBM Bluemix,
+                | Google Compute Engine, git, github, Jenkins, nginx, UrbanCode Deploy
+
+          li Architect and technical lead for IBM Installation Manager (2006-2014)
+            ul
+              li
+                | Participated in the design and implementation of the tool currently used
+                | by more that 350 IBM products for installation, updates, and configuration
+              li
+                | Drove high quality and maintainability through extension automated tests
+                | and static code analysis
+              li
+                | Met rigorous requirements for reliability and backward compatibility
+              li
+                | Helped to drive the adoption of this new installation technology across
+                | brands within the IBM Software Group
+              li
+                | Supported internal community of users creating installation packages and external
+                | customers making use of them
+              li
+                | Used an Agile process to produce on-time external releases every quarter
+                | and internal releases every day.
+              li
+                | Technologies: Java, Eclipse, Ant, Rational Team Concert, XML, REST, web services
+
+          li Technical lead for Rational Product Updater (2004-2006)
+            ul
+              li
+                | Designed a service strategy for IBM Rational's Eclipse-based products
+              li
+                | Led the implementation of a tool used to implement that strategy,
+                | by applying updates to those products and some products from other brands
+                | with IBM
+              li
+                | Worked with product teams to develop their process for creating and publishing
+                | their updates and fixes
+              li
+                | Technologies: Java, Eclipse, CVS
+
+          li Main developer for build tooling for Rational XDE (2002-2004)
+            ul
+              li
+                | Improved and maintained automated build tooling for Rational's flagship
+                | modeling product
+              li
+                | Supported build and release teams with advice and fixes to ensure smooth
+                | product release process
+              li
+                | Designed an automated process for identifying and extracting translatable
+                | content to reduce time and errors in created translated and pseudo-translated
+                | builds
+              li
+                | Technologies: Perl, Java, CVS
+
+
+    // Page 2
+    .section
+      .label
+      .info
+        h1.page2 Timothy Keith
+    .section
+      .label Professional Experience (Continued)
+      .info
+
+        h2 Senior Software Engineer, Rational Software
+        div 1994 &ndash; 2003
+        ul
+          li
+            | Led the integration of the Rational Ada compiler front-end with Verdix
+            | back-end
+          li
+            | Led the Rational C++ compiler team
+          li
+            | Worked on a "clean room" Java compiler implementation
+          li
+            | Technologies: C++, C, Java, Ada, Windows
+
+        h2 Software Engineer, Verdix Corp.
+        div 1985 &ndash; 1994
+        ul
+          li
+            | Contributed to the development of the Verdix Ada compiler
+            ul
+              li
+                | Developed the i386 back-end
+              li
+                | Developed the SPARC back-end
+              li
+                | Contributed many improvements to the back-end technology
+              li
+                | Contributed to the intermediate code optimizer
+          li
+            | Improved automation infrastructure
+          li
+            | Technologies: C, Ada, scripting
+    .section
+      .label Education
+      .info
+        div M.S. Computer Science, University of Wisconsin-Madison, 1985
+        div M.A. Mathematics, University of Wisconsin-Madison, 1985
+        div B.Sc. Mathematics, University of Toronto, 1981

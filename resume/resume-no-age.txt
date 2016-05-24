@@ -1,0 +1,64 @@
+****** Timothy Keith ******
+Contact Information
+tim.keith@gmail.com
+https://www.linkedin.com/in/timkeith
+503-664-0503
+11355 NW Valley Vista Road
+Hillsboro OR 97124
+Summary
+    * Expert in object-oriented design and Java
+    * Strong analytic skills and ability to learn new technologies
+    * Record of technical leadership and mentoring more junior programmers
+    * Broad range of experience in all phases of the software development
+      lifecycle
+    * Excellent written and oral communication skills; proficient in gathering
+      and understanding requirements
+    * Experienced in agile and test-driven processes
+Professional Experience
+***** Technical Lead and Senior Software Engineer, IBM *****
+2003 &ndash; 2015
+
+* Investigated use of Linux container technology to IBM products (2014- 2015)
+  o Created Docker images for IBM UrbanCode Deploy and other products
+  o Investigated use of Kubernetes for orchestrating Docker deployments
+  o Technologies: Docker, Linux, Vagrant, bash, Groovy, Java, IBM Bluemix, Google Compute Engine, git, github, Jenkins, nginx, UrbanCode Deploy
+* Architect and technical lead for IBM Installation Manager (2006-2014)
+  o Participated in the design and implementation of the tool currently used by more that 350 IBM products for installation, updates, and configuration
+  o Drove high quality and maintainability through extension automated tests and static code analysis
+  o Met rigorous requirements for reliability and backward compatibility
+  o Helped to drive the adoption of this new installation technology across brands within the IBM Software Group
+  o Supported internal community of users creating installation packages and external customers making use of them
+  o Used an Agile process to produce on-time external releases every quarter and internal releases every day.
+  o Technologies: Java, Eclipse, Ant, Rational Team Concert, XML, REST, web services
+* Technical lead for Rational Product Updater (2004-2006)
+  o Designed a service strategy for IBM Rational's Eclipse-based products
+  o Led the implementation of a tool used to implement that strategy, by applying updates to those products and some products from other brands with IBM
+  o Worked with product teams to develop their process for creating and publishing their updates and fixes
+  o Technologies: Java, Eclipse, CVS
+* Main developer for build tooling for Rational XDE (2002-2004)
+  o Improved and maintained automated build tooling for Rational's flagship modeling product
+  o Supported build and release teams with advice and fixes to ensure smooth product release process
+  o Designed an automated process for identifying and extracting translatable content to reduce time and errors in created translated and pseudo-translated builds
+  o Technologies: Perl, Java, CVS
+
+****** Timothy Keith ******
+Additional Professional Experience
+***** Senior Software Engineer, Rational Software *****
+
+* Led the integration of the Rational Ada compiler front-end with Verdix back-end
+* Led the Rational C++ compiler team
+* Worked on a "clean room" Java compiler implementation
+* Technologies: C++, C, Java, Ada, Windows
+
+***** Software Engineer, Verdix Corp. *****
+* Contributed to the development of the Verdix Ada compiler
+  o Developed the i386 back-end
+  o Developed the SPARC back-end
+  o Contributed many improvements to the back-end technology
+  o Designed and implemented major portions of intermediate code optimizer
+* Improved automation infrastructure
+* Technologies: C, Ada, scripting
+Education
+M.S. Computer Science, University of Wisconsin-Madison
+M.A. Mathematics, University of Wisconsin-Madison
+B.Sc. Mathematics, University of Toronto
