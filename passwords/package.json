@@ -1,0 +1,23 @@
+{
+  "name": "passwords",
+  "version": "1.0.0",
+  "description": "Password Generator",
+  "main": "passwords.js",
+  "dependencies": {
+    "browserify-shim": "^3.8.12",
+    "browserify": "^13.0.0",
+    "coffeeify": "^2.0.1",
+    "moment": "^2.10.6",
+    "underscore": "^1.8.3",
+    "reactify": "^1.1.1",
+    "react-dom": "^0.14.7",
+    "react": "^0.14.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "./startup.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": ""
+}
