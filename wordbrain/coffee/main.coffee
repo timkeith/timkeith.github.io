@@ -23,6 +23,10 @@ Main = classFactory
   setGridSize: (size) ->
     @setState grid: new Grid(+size)
     @setState didSearch: false
+  clear: () ->
+    @state.grid.clear()
+    @setState didSearch: false
+    @forceUpdate()
   setLetter: (index, letter) ->
     @state.grid.set(index, letter)
     @setState didSearch: false
@@ -42,6 +46,8 @@ Main = classFactory
       div {},
         'Grid Size: '
         Selection selected: @state.grid.size, selections: [3 .. 6], set: @setGridSize
+      div {},
+        button onClick: @clear, 'Clear'
       GridTable size: @state.grid.size, setLetter: @setLetter
       div class: 'answerSize',
         'Answer Size: '
@@ -59,6 +65,10 @@ ShowResults = classFactory
     answers:    PropTypes.arrayOf(PropTypes.string).isRequired
   getInitialState: () ->
     numShow: 0
+  componentWillReceiveProps: (nextProps) ->
+    if @props.answerSize != nextProps.answerSize
+      # change answerSize -> switch back to showing 0
+      @setState numShow: 0
   setNumShow: (n) ->
     @setState numShow: n
   render: () ->
@@ -120,6 +130,7 @@ GridRow = classFactory
       isCurr = index == @props.currIndex
       GridCell key: index, index: index, isCurr: isCurr, setLetter: @props.setLetter
 
+#TODO: pass grid all the way down to get letter for cell
 GridCell = classFactory
   displayName: 'GridCell'
   propTypes:
@@ -149,6 +160,9 @@ class Grid
 
   show: () ->
     console.log @grid.map((cell) => cell.letter).join(' ')
+
+  clear: () ->
+    [0 ... @size**2].map (index) => @set(index, '?')
 
   set: (index, letter) ->
     @grid[index].letter = letter
@@ -209,5 +223,35 @@ Selection = classFactory
     a key: selection, class: selected, href: '#', onClick: @set(selection), selection
   render: () ->
     span class: 'selections', @props.selections.map(@renderSelection)
+
+#??? is this worth the trouble
+Selection2 = classFactory
+  displayName: 'Selection'
+  propTypes:
+    stateObject: PropTypes.object.isRequired
+    selections:  PropTypes.arrayOf(PropTypes.stringOrNumber).isRequired
+  set: (selection) ->
+    (e) => e.preventDefault(); @props.stateObject.set(selection)
+  renderSelection: (selection) ->
+    selected = if selection == @props.stateObject.get() then 'selected' else ''
+    a key: selection, class: selected, href: '#', onClick: @set(selection), selection
+  render: () ->
+    span class: 'selections', @props.selections.map(@renderSelection)
+
+# wrap fn in function that calls preventDefault on e first
+preventDefault = (e, fn) ->
+  e.preventDefault()
+  return (args...) -> fn(args)
+
+#TODO: class to encapsulate state object
+# @get() gets the value, @set(value) sets it
+class StateObject
+  constructor: (@state, @setState, @name) ->
+  get: () ->
+    @state[@name]
+  set: (value) ->
+    obj = {}
+    obj[@name] = value
+    @setState obj
 
 main()
