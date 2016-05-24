@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0 0 0 0;
+  margin-left: 6mm;
+  margin-top: 9mm;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+div#content {
+  font-size: 8px;
+}
+div.main {
+  border: 1px solid green;
+  width: 4.25in;
+  height: 5.5in;
+}
+table {
+  border-collapse: collapse;
+/*
+  width: 4.25in;
+  height: 5.5in;
+  border: 1px solid blue;
+*/
+}
+table.main td {
+  width: 4in;
+  vertical-align: top;
+}
+table.month {
+  margin-bottom: 3em;
+}
+table.month td {
+  border: 1px solid #d0d0d0;
+  width: 7mm;
+  height: 1.4em;
+  text-align: center;
+}
+table.month td.notes {
+  width: 2in;
+}
+table.month tr.head td {
+  border: none;
+  font-weight: bold;
+}
+div.head {
+  font-weight: bold;
+}
+
+a.nav {
+  text-decoration: none;
+}
+@media print {
+  a.nav {
+    display: none;
+  }
+}
