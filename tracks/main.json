@@ -2,6 +2,14 @@
  {
   "data": [
      {
+        "Distance": "11.0 miles",
+        "StartCoord": {"lat": 42.4971328, "lng": -71.3330131},
+        "date": "2016/05/23",
+        "name": "Concord trail bike ride",
+        "path": "bike/Concord_trail_bike_ride.json",
+        "snippet": ""
+     },
+     {
         "Distance": "27.3 miles",
         "StartCoord": {"lat": 45.5139004, "lng": -122.6673670},
         "date": "2015/09/21",
