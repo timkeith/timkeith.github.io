@@ -1,44 +1,46 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-
-my $WORDS_PER_LINE = 8;
+sub close_outfile($);
+sub open_outfile($);
 
 if(@ARGV != 1) {
-    die "Usage: $0 <output-file.js>\n";
+    die "Usage: $0 <output-file.coffee>\n";
 }
 my($outfile) = @ARGV;
+my $tmp = "$outfile.tmp";
+my $outfh = open_outfile($tmp);
 
-my %words = ();
+my $count = 0;
 my $fh;
 open($fh, '<', '/etc/dictionaries-common/words') || die $!;
 while(<$fh>) {
     chomp;
     next unless /^[a-z]{3,8}$/;
-    $words{$_} = 1;
+    tr/[a-z]/[A-Z]/;
+    print $outfh " '$_'\n";
+    $count += 1;
 }
 close($fh);
 
-my @words = sort keys %words;
-my $count = int(@words);
-print "Generating $outfile with $count words\n";
-
-my $tmp = "$outfile.tmp";
-my $outfh;
-open($outfh, '>', $tmp);
-print $outfh "module.exports = [\n";
-for(my $i = 0; $i < $count; ) {
-    my @x = @words[$i .. $i+$WORDS_PER_LINE-1];
-    $i += $WORDS_PER_LINE;
-    if ($i >= $count) {
-        my $out = '"' . join('","',  grep { defined } @x) . "\"\n";
-        $out =~ s/,("",)*$//;  # handle incomplete last line and trailing comma
-        print $outfh $out;
-        last;
-    }
-    my $out = '"' . join('","',  @x) . "\",\n";
-    print $outfh $out;
-}
-print $outfh "];\n";
-close($outfh);
+close_outfile($outfh);
 rename($tmp, $outfile);
+
+print "Generated $outfile with $count words\n";
+
+exit;
+
+sub open_outfile($) {
+    my($tmp) = @_;
+    my $outfh;
+    open($outfh, '>', $tmp);
+    print $outfh "module.exports = [\n";
+    return $outfh;
+}
+
+sub close_outfile($) {
+    my($outfh) = @_;
+    print $outfh "]\n";
+    close($outfh);
+}
+

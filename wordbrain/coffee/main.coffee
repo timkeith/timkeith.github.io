@@ -2,34 +2,68 @@
 PropTypes.stringOrNumber = PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 ReactDOM = require 'react-dom'
 Lodash = require 'lodash'
-Words = Lodash.countBy(require './words.js')
 
-{tr,td,table,tbody,a,select,option,hr,section,button,div,form,h1,h2,h3,input,span} = require './lib/ReactDOM'
+Grid = require './Grid'
+
+{tr,td,table,tbody,a,div,h1,h2,h3,input,span} = require './lib/ReactDOM'
 {classFactory,withKeys} = require './lib/ReactUtils'
+Selection = require './lib/Selection'
 
 main = () =>
   ReactDOM.render(
-    Main {}
+    Main defaultSize: 4
     document.getElementById('content')
   )
 
 Main = classFactory
   displayName: 'Main'
+  propTypes:
+    defaultSize: PropTypes.number.isRequired
   getInitialState: () ->
-    grid:          new Grid(4)
-    answerSize:    3
-    answers:       []
-    didSearch:     false
-  setGridSize: (size) ->
-    @setState grid: new Grid(+size)
-    @setState didSearch: false
-  clear: () ->
-    @state.grid.clear()
-    @setState didSearch: false
-    @forceUpdate()
-  setLetter: (index, letter) ->
-    @state.grid.set(index, letter)
-    @setState didSearch: false
+    gridSize: @props.defaultSize
+  render: () ->
+    div class: 'main',
+      h2 'WordBrain Helper'
+      div {},
+        'Grid Size: '
+        Selection
+          selected:   @state.gridSize
+          selections: [3 .. 6]
+          set:        (size) => @setState gridSize: size
+      WordBrain gridSize: @state.gridSize
+
+WordBrain = classFactory
+  displayName: 'WordBrain'
+  propTypes:
+    gridSize: PropTypes.number.isRequired
+  getInitialState: () ->
+    grid = new Grid(@props.gridSize)
+    grid.onSet () => @forceUpdate()
+    return gridSize: @props.gridSize, grid: grid
+  componentWillReceiveProps: (nextProps) ->
+    @setState gridSize: nextProps.gridSize
+    @state.grid.resize(nextProps.gridSize)
+  render: () ->
+    div {},
+      div class: 'buttons',
+        a onClick: ((e) => @state.grid.clear()), 'Clear'
+        a onClick: ((e) => @state.grid.random()), 'Random'
+        a onClick: ((e) => @state.grid.transform()), 'Transform'
+      GridTable gridSize: @state.gridSize, grid: @state.grid
+      Answers   gridSize: @state.gridSize, grid: @state.grid
+
+Answers = classFactory
+  displayName: 'Answers'
+  propTypes:
+    gridSize: PropTypes.number.isRequired
+    grid:     PropTypes.instanceOf(Grid).isRequired
+  getInitialState: () ->
+    # when grid changes, user must search again
+    @props.grid.onSet () => @setState didSearch: false
+    return {
+      answerSize: 3
+      didSearch: false
+    }
   setAnswerSize: (answerSize) ->
     @setState answerSize: answerSize
     if @state.didSearch
@@ -38,25 +72,21 @@ Main = classFactory
     @_search(@state.answerSize)
     @setState didSearch: true
   _search: (answerSize) ->
-    @setState answers: @state.grid.search(answerSize)
+    console.log 'answerSize:', answerSize
+    @setState answers: @props.grid.search(answerSize)
+  componentWillReceiveProps: (nextProps) ->
+    @setState didSearch: false
 
   render: () ->
-    div class: 'main',
-      h2 'WordBrain Cheater'
-      div {},
-        'Grid Size: '
-        Selection selected: @state.grid.size, selections: [3 .. 6], set: @setGridSize
-      div {},
-        button onClick: @clear, 'Clear'
-      GridTable size: @state.grid.size, setLetter: @setLetter
+    div {},
       div class: 'answerSize',
         'Answer Size: '
         Selection selected: @state.answerSize, selections: [3 .. 8], set: @setAnswerSize
       if @state.didSearch
         ShowResults answerSize: @state.answerSize, answers: @state.answers
       else
-        div class: 'show',
-          button onClick: @search, 'Search'
+        div class: 'buttons',
+          a onClick: @search, 'Search'
 
 ShowResults = classFactory
   displayName: 'ShowResults'
@@ -67,21 +97,21 @@ ShowResults = classFactory
     numShow: 0
   componentWillReceiveProps: (nextProps) ->
     if @props.answerSize != nextProps.answerSize
-      # change answerSize -> switch back to showing 0
-      @setState numShow: 0
-  setNumShow: (n) ->
-    @setState numShow: n
+      @setState numShow: 0  # change answerSize -> switch back to showing 0
   render: () ->
     prefixes = Lodash.countBy(@props.answers, (answer) => answer.substr(0, @state.numShow))
     div class: 'result',
-      h3 'Results'
+      h3 'Answers'
       if @props.answers.length == 0
         div 'None found'
       else
         div {},
           div class: 'numToShow',
             'Letters to show: '
-            Selection selected: @state.numShow, selections: [0..@props.answerSize], set: @setNumShow
+            Selection
+              selected:   @state.numShow
+              selections: [0 .. @props.answerSize]
+              set:        (n) => @setState numShow: n
           div class: 'letters',
             Lodash.map prefixes, (count, prefix) =>
               ShowResult key: prefix, prefix: prefix, count: count, answerSize: @props.answerSize
@@ -95,134 +125,56 @@ ShowResult = classFactory
   render: () ->
     result = Lodash.padEnd @props.prefix, @props.answerSize, '\u00a0' # NBSP
     div {},
-      withKeys(span char.toUpperCase() for char in result)
-      if @props.count > 1
-        span class: 'count', " (#{@props.count})"
+      withKeys(span char for char in result)
+      span class: 'count', if @props.count > 1 then " (#{@props.count})" else ''
+      #if @props.count > 1
+      #  span class: 'count', " (#{@props.count})"
 
 GridTable = classFactory
   displayName: 'GridTable'
   propTypes:
-    size:      PropTypes.number.isRequired
-    setLetter: PropTypes.func.isRequired
-  getInitialState: () ->
-    currIndex: 0
-  setLetter: (index, letter) ->
-    if letter != ''
-      @setState currIndex: index + 1
-    @props.setLetter(index, letter)
+    grid:      PropTypes.instanceOf(Grid).isRequired
   render: () ->
-    size = @props.size
+    size = @props.grid.size
     table class: 'grid', tbody {}, [0 ... size].map (row) =>
       GridRow
         key:       row
+        grid:      @props.grid
         indexes:   [row*size ... (row+1)*size]
-        currIndex: @state.currIndex
-        setLetter: @setLetter
 
 GridRow = classFactory
   displayName: 'GridRow'
   propTypes:
+    grid:      PropTypes.instanceOf(Grid).isRequired
     indexes:   PropTypes.array.isRequired
-    currIndex: PropTypes.number.isRequired
-    setLetter: PropTypes.func.isRequired
   render: () ->
     tr {}, @props.indexes.map (index) =>
-      isCurr = index == @props.currIndex
-      GridCell key: index, index: index, isCurr: isCurr, setLetter: @props.setLetter
+      GridCell key: index, grid: @props.grid, index: index
 
 #TODO: pass grid all the way down to get letter for cell
 GridCell = classFactory
   displayName: 'GridCell'
   propTypes:
+    grid:      PropTypes.instanceOf(Grid).isRequired
     index:     PropTypes.number.isRequired
-    isCurr:    PropTypes.bool.isRequired
-    setLetter: PropTypes.func.isRequired
   onFocus: (e) ->
     @refs.input.select()
   onChange: (e) ->
     letter = @refs.input.value.toUpperCase()
     @refs.input.value = letter
-    @props.setLetter(@props.index, letter)
+    @props.grid.set(@props.index, letter)
   componentDidMount: () -> @doFocus()
   componentDidUpdate: () -> @doFocus()
   doFocus: () ->
-    if @props.isCurr
+    if @props.grid.isCurrIndex(@props.index)
       @refs.input.focus()
   render: () ->
-    td {},
-      input maxLength: 1, ref: 'input', onChange: @onChange, onFocus: @onFocus
-
-
-class Grid
-  constructor: (@size) ->
-    @grid = [0 ... @size**2].map (index) =>
-      index: index, letter: '?', adjacent: @_adjacent(index)
-
-  show: () ->
-    console.log @grid.map((cell) => cell.letter).join(' ')
-
-  clear: () ->
-    [0 ... @size**2].map (index) => @set(index, '?')
-
-  set: (index, letter) ->
-    @grid[index].letter = letter
-
-  search: (answerSize) ->
-    gs = new GridSearch(@grid, answerSize)
-    return gs.search()
-
-  _adjacent: (index) ->
-    i = index // @size
-    j = index %% @size
-    result = []
-    for i2 in [i-1 .. i+1]
-      if i2 >= 0 && i2 < @size
-        for j2 in [j-1 .. j+1]
-          if j2 >= 0 && j2 < @size
-            index2 = @toIndex(i2, j2)
-            if index2 != index
-              result.push(index2)
-    return result
-
-  toIndex: (i, j) -> i * @size + j
-
-
-class GridSearch
-  constructor: (@grid, @answerSize) ->
-
-  search: () ->
-    @found = {}
-    @used = {}
-    [0 ... @grid.length].map((index) => @_search('', index))
-    return Object.keys(@found).sort()
-
-  # Add letters to curr starting from this index, adding words found to @found
-  _search: (curr, index) ->
-    curr += @grid[index].letter.toLowerCase()
-    if curr.length < @answerSize
-      @used[index] = 1
-      @grid[index].adjacent.map((adj) => @used[adj] || @_search(curr, adj))
-      @used[index] = 0
-    else if Words[curr]
-      @found[curr] = 1
-    # else at the end but not a word
-
-#NOTE: copied from password tool
-# Pass in choices and which one is selected; `set` when one of `selections` when selected.
-# Styling: all is wrapped in span.selection; selected choice is a.selected
-Selection = classFactory
-  displayName: 'Selection'
-  propTypes:
-    selections: PropTypes.arrayOf(PropTypes.stringOrNumber).isRequired
-    selected:   PropTypes.stringOrNumber.isRequired
-    set:        PropTypes.func.isRequired
-  set: (selection) ->
-    (e) => e.preventDefault(); @props.set(selection)
-  renderSelection: (selection) ->
-    selected = if selection == @props.selected then 'selected' else ''
-    a key: selection, class: selected, href: '#', onClick: @set(selection), selection
-  render: () ->
-    span class: 'selections', @props.selections.map(@renderSelection)
+    td input
+      maxLength: 1
+      ref:       'input'
+      onChange:  @onChange
+      onFocus:   @onFocus
+      value:     @props.grid.get(@props.index)
 
 #??? is this worth the trouble
 Selection2 = classFactory
@@ -234,7 +186,7 @@ Selection2 = classFactory
     (e) => e.preventDefault(); @props.stateObject.set(selection)
   renderSelection: (selection) ->
     selected = if selection == @props.stateObject.get() then 'selected' else ''
-    a key: selection, class: selected, href: '#', onClick: @set(selection), selection
+    a key: selection, class: selected, onClick: @set(selection), selection
   render: () ->
     span class: 'selections', @props.selections.map(@renderSelection)
 

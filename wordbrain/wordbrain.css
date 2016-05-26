@@ -5,36 +5,35 @@ body {
 a {
   text-decoration: none;
 }
-h1 {
+button {
+  font-size: 75%;
+  color: blue;
+  border-color: blue;
+  padding: .1em .5em;
+  border-radius: .5em;
 }
-h2 {
+a.button {
 }
 h3 {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 div.main {
-  /* border: 1px solid blue; */
-  display: inline-block;
-/*
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 0;
-  margin-left: auto;
-  margin-right: auto;
-
-  align-items: center;
-  display: flex;
-  justify-content: center;
-*/
+  display: inline-block;  /* allow it to be centered */
+}
+div.buttons {
+  font-size:   90%;
+  padding-top: .5em;
+}
+div.buttons a {
+  margin: .5em;
+  color:  blue;
 }
 
 table.grid {
+  display: inline-block;  /* allow it to be centered */
   margin-top:    1em;
-  margin-bottom: 2em;
-}
-table.grid td {
+  margin-bottom: 1em;
 }
 table.grid td input {
   font-size:   200%;
@@ -46,16 +45,9 @@ table.grid td input {
 .answerSize {
   margin-bottom: .5em;
 }
-a.selection {
-  color: gray;
-}
-
-.result {
-}
 
 .letters {
-  /* border:  1px solid green; */
-  display: inline-block;
+  display:    inline-block;
   text-align: left;
 }
 
@@ -77,10 +69,11 @@ a.selection {
 }
 
 span.selections a {
-  padding-left: 1em;
-  color: blue;
+  color:         blue;
+  padding-left:  0.5em;
+  padding-right: 0.5em;
 }
 span.selections a.selected {
   font-weight: bold;
-  color: black;
+  color:       black;
 }

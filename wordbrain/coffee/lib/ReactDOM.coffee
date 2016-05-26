@@ -8,25 +8,23 @@ ReactDOM = {}
 for name, value of React.DOM
   do(name) ->
     ReactDOM[name] = (attrs, children...) ->
-      #console.log 'name', name
-      #console.log 'attrs', attrs
-      #console.log 'children', children
       args = [attrs].concat(children)
-      #if attrs?.__proto__._isReactElement || _.isArray(attrs) || !_.isObject(attrs)
       if isReactElement(attrs) || _.isArray(attrs) || !_.isObject(attrs)
-        #console.log 'NO ATTRS'
         args = [null].concat(args)
       else
-        #console.log 'YES ATTRS'
         if attrs.class?
           attrs.className = attrs.class
           delete attrs.class
         if attrs.for?
           attrs.htmlFor = attrs.for
           delete attrs.for
-      #if attrs.key?
-      #  console.log 'have key', attrs
-      #  console.log 'elem', React.createElement.apply(null, [name].concat(args))
+        if name == 'a' and not attrs.href?
+          attrs.href = '#'
+          onClick = attrs.onClick
+          if onClick?
+            attrs.onClick = (e) -> e? and e.preventDefault(); onClick()
+          else
+            attrs.onClick = (e) -> e.preventDefault();
       return React.createElement.apply(null, [name].concat(args))
 
 isReactElement = (obj) ->
@@ -45,9 +43,5 @@ btn = (attrs, child) ->
   else
     attrs.class = 'btn'
   return ReactDOM.button(attrs, child)
-  #return React.createElement('button', attrs, child)
-  #args = ['button', attrs].concat(children)
-  #console.log 'args', args
-  #return React.createElement.apply(null, args)
 
 module.exports = ReactDOM
