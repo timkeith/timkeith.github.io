@@ -24,6 +24,7 @@
     "name": "Monday Funday"
   },
   "bike": {
+    "TorontoIsland.json": { "omit": 631, "Distance": 11.10 },
     "name": "Bike Rides"
   }
 }
