@@ -53,37 +53,53 @@ WordBrain = classFactory
       Answers   gridSize: @state.gridSize, grid: @state.grid
 
 Answers = classFactory
+  Searching: NotDone: 1, Doing: 2, Done: 3
   displayName: 'Answers'
   propTypes:
     gridSize: PropTypes.number.isRequired
     grid:     PropTypes.instanceOf(Grid).isRequired
   getInitialState: () ->
     # when grid changes, user must search again
-    @props.grid.onSet () => @setState didSearch: false
+    #@props.grid.onSet () => @setState didSearch: false
+    @props.grid.onSet () => @setState searching: @Searching.NotDone
     return {
       answerSize: 3
-      didSearch: false
+      #didSearch: false
+      searching: @Searching.NotDone
     }
   setAnswerSize: (answerSize) ->
     @setState answerSize: answerSize
-    if @state.didSearch
+    #if @state.didSearch
+    if @state.searching != @Searching.NotDone
       @_search(answerSize)
   search: (e) ->
+    @setState searching: @Searching.Doing
+    console.log 'start search'
+    @forceUpdate()
     @_search(@state.answerSize)
-    @setState didSearch: true
+    console.log 'end search'
+    @setState searching: @Searching.Done
+    #@setState didSearch: true
   _search: (answerSize) ->
-    console.log 'answerSize:', answerSize
+    @forceUpdate()
+    #@props.grid.search answerSize, (answers) =>
+    #  @setState answers: answers
     @setState answers: @props.grid.search(answerSize)
   componentWillReceiveProps: (nextProps) ->
-    @setState didSearch: false
+    @setState searching: @Searching.NotDone
+    #@setState didSearch: false
 
   render: () ->
+    console.log 'searching:', @state.searching
     div {},
       div class: 'answerSize',
         'Answer Size: '
         Selection selected: @state.answerSize, selections: [3 .. 8], set: @setAnswerSize
-      if @state.didSearch
+      #if @state.didSearch
+      if @state.searching == @Searching.Done
         ShowResults answerSize: @state.answerSize, answers: @state.answers
+      else if @state.searching == @Searching.Doing
+        div {}, 'Searching...'
       else
         div class: 'buttons',
           a onClick: @search, 'Search'

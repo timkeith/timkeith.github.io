@@ -1,5 +1,7 @@
 Lodash = require 'lodash'
-Words = Lodash.countBy(require './Words.js')
+{words,frequencies} = require './Words.js'
+#Words = Lodash.countBy(require './Words.js')
+Words = Lodash.countBy words
 
 class Grid
   constructor: (size) ->
@@ -16,7 +18,9 @@ class Grid
   toString:    ()      -> @grid.map((cell) => cell.letter).join(' ')
   show:        ()      -> console.log @toString()
   clear:       ()      -> [0 ... @size**2].map (index) => @set(index, '')
-  random:      ()      -> [0 ... @size**2].map (index) => @set(index, @_randomLetter())
+  random:      ()      ->
+    r = new RandomLetter(frequencies)
+    [0 ... @size**2].map (index) => @set(index, r.gen())
   get:         (index) -> @grid[index].letter
   search:      (size)  -> return new GridSearch(@grid, size).search()
 
@@ -93,5 +97,18 @@ class GridSearch
     else if Words[curr]
       @found[curr] = 1
     # else at the end but not a word
+
+class RandomLetter
+  constructor: (@frequencies) ->
+    @total = Lodash.sum(Lodash.map @frequencies, (value) -> value)
+
+  gen: () ->
+    r = Math.floor(Math.random() * @total)
+    for letter, count of @frequencies
+      r -= count
+      if r < 0
+        return letter
+    return '?'  # should not happen?
+
 
 module.exports = Grid
