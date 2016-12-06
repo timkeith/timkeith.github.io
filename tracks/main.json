@@ -2,10 +2,42 @@
  {
   "data": [
      {
-        "Distance": "22.1 miles",
+        "Distance": "10.9 miles",
+        "StartCoord": {"lat": 25.0576904, "lng": 121.5453986},
+        "date": "2016/10/04",
+        "name": "Taipei Biking 9-4-2016",
+        "path": "bike/Taipei_Biking_942016.json",
+        "snippet": ""
+     },
+     {
+        "Distance": "8.38 miles",
+        "StartCoord": {"lat": 25.0589874, "lng": 121.5619121},
+        "date": "2016/10/02",
+        "name": "Taipei bike ride",
+        "path": "bike/Taipei_bike_ride.json",
+        "snippet": ""
+     },
+     {
+        "Distance": "18.6 miles",
+        "StartCoord": {"lat": 45.6019531, "lng": -122.8913845},
+        "date": "2016/09/21",
+        "name": "C Ride 9-21-16",
+        "path": "bike/C_Ride_92116.json",
+        "snippet": ""
+     },
+     {
+        "Distance": "9.49 miles",
+        "StartCoord": {"lat": 45.6425790, "lng": -122.9262021},
+        "date": "2016/09/16",
+        "name": "Home from Mason Hill park ",
+        "path": "bike/Home_from_Mason_Hill_park.json",
+        "snippet": ""
+     },
+     {
+        "Distance": 11.1,
         "StartCoord": {"lat": 43.6231080, "lng": -79.3780598},
         "date": "2016/06/04",
-        "name": "Toronto Islands",
+        "name": "Track 001",
         "path": "bike/TorontoIsland.json",
         "snippet": ""
      },
@@ -117,6 +149,14 @@
  },
  {
   "data": [
+     {
+        "Distance": "6.47 miles",
+        "StartCoord": {"lat": 47.6569136, "lng": -122.5604627},
+        "date": "2016/12/05",
+        "name": "Grand forest Bainbridge Island",
+        "path": "hike/Grand_forest_Bainbridge_Island.json",
+        "snippet": "with Janet "
+     },
      {
         "Distance": "0.85 miles",
         "StartCoord": {"lat": 42.4636173, "lng": -71.3525424},
