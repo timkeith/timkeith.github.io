@@ -2,6 +2,10 @@
 use strict;
 use warnings;
 
+#my $DICT = '/etc/dict';
+#my $DICT_URL = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt';
+my $DICT = 'words.txt';
+
 my $WORDS_PER_LINE = 8;
 
 if(@ARGV != 1) {
@@ -11,9 +15,10 @@ my($outfile) = @ARGV;
 
 my %words = ();
 my $fh;
-open($fh, '<', '/etc/dictionaries-common/words') || die $!;
+open($fh, '<', $DICT) || die "$0: can't read $DICT: $!";
+#open($fh, '-|', "curl -s '$DICT_URL' 2>&1");
 while(<$fh>) {
-    chomp;
+    tr/\r\n//d;
     next unless /^[a-z]{4,8}$/;
     next if /^(.*e)(d)/ && $words{$1};
     next if /^(.*)(s)/ && $words{$1};

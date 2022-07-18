@@ -1,18 +1,23 @@
-#TODO: put and get options in url (see tracks)
-
-_ = require 'underscore'
-Moment = require 'moment'
 React = require 'react'
 ReactDOM = require 'react-dom'
 Words = require './words.js'
 
-{tr,td,table,tbody,a,select,option,hr,section,button,div,form,h1,h2,input,span} = require './lib/ReactDOM'
+{
+  a,
+  div,
+  h2,
+  span,
+  table,
+  tbody,
+  td,
+  tr,
+} = require './lib/ReactDOM'
 {classFactory,withKeys} = require './lib/ReactUtils'
 
 YES = 'Yes'
 NO = 'No'
 YES_NO = [YES, NO]
-SPECIAL = '! @ # $ % ^ & * ( ) _ + - = { } | [ ] : " ; < > ? , . /'.split /\s/
+SPECIAL = '!@#$'
 
 main = () =>
   ReactDOM.render(
@@ -43,13 +48,12 @@ Main = classFactory
     e.preventDefault()
     @forceUpdate()
   render: () ->
-    console.log 'Main.render'
     div {},
       h2 'Password Generator'
       table tbody {},
         tr {},
           td 'Number of words: '
-          td Selection selections: [2..5], selected: @state.numWords, set: @set('numWords')
+          td Selection selections: [2 .. 5], selected: @state.numWords, set: @set('numWords')
         tr {},
           td 'Number of digits: '
           td Selection selections: [0 .. 5], selected: @state.numDigits, set: @set('numDigits')
@@ -60,9 +64,6 @@ Main = classFactory
           td 'Include special: '
           td Selection selections: YES_NO, selected: @state.special, set: @set('special')
       table class: 'passwords', tbody {},
-        tr class: 'head',
-          td "#{@state.numPasswords} random passwords: "
-          td a href: '#', onClick: @refresh, 'refresh'
         (
           GenPassword {
             key: i
@@ -99,13 +100,16 @@ GenPassword = classFactory
     numDigits: React.PropTypes.number.isRequired
     upperCase: React.PropTypes.bool.isRequired
     special:   React.PropTypes.bool.isRequired
+  randInt: (max) ->
+    Math.floor(Math.random() * max)
   randWords: () ->
-    (Words[Math.floor(Math.random() * Words.length)] for num in [1..@props.numWords])
+    (Words[@randInt(Words.length)] for num in [1..@props.numWords])
   randDigits: () ->
-    (Math.floor(Math.random() * 10) for num in [1 .. @props.numDigits])
+    (@randInt(10) for num in [1 .. @props.numDigits])
   randSpecial: () ->
     if @props.special
-      SPECIAL[Math.floor(Math.random() * SPECIAL.length)]
+      i = @randInt(SPECIAL.length)
+      SPECIAL.substring(i, i+1)
     else
       ''
   upperCase: (word) ->
@@ -121,23 +125,21 @@ GenPassword = classFactory
     password = digits + special + (@upperCase(word) for word in words).join('')
     return tr {},
       td class: 'password', span password
-        #input type: 'text', readOnly: true, value: password
       td {},
         span class: 'part', digits
         if special then span class: 'part', special else ''
         withKeys(span class: 'part', word for word in words)
 
 encodeHash = (state) ->
-  console.log 'encodeHash:', state
   location.hash = "#!#{state.numWords},#{state.numDigits},#{state.upperCase},#{state.special}"
 
 decodeHash = () ->
   result =
     numPasswords: 4
     numWords:     2
-    numDigits:    2
+    numDigits:    1
     upperCase:    'Yes'
-    special:      'No'
+    special:      'Yes'
   hash = location.hash
   if hash
     x = hash.replace(/^#!/, '').split(',')
