@@ -1,0 +1,22 @@
+{
+  "name":        "wordle-helper",
+  "version":     "1.0.0",
+  "description": "Wordle Helper",
+  "main":        "wordle-helper.js",
+  "dependencies": {
+    "browserify":      "^13.3.0",
+    "browserify-shim": "^3.8.14",
+    "coffeeify":       "^2.1.0",
+    "prop-types":      "15.8.1",
+    "react":           "^0.14.10",
+    "react-dom":       "^0.14.10",
+    "reactify":        "^1.1.1",
+    "underscore":      "^1.13.4"
+  },
+  "scripts": {
+    "build": "./startup.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author":  "",
+  "license": ""
+}
