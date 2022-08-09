@@ -36,12 +36,13 @@ Main = classFactory
 
   getInitialState: () ->
     answers:  undefined
+    #TODO: use this for length
+    nguesses: 2  # length of complete, letters, colors
     complete: (false) for ng in GUESS_NUMS
     letters:  ([]) for ng in GUESS_NUMS
     colors:   ([]) for ng in GUESS_NUMS
 
   setLetter: (ng, nl, letter) ->
-    #console.log 'setLetter: ng:', ng, 'nl:', nl, 'letter:', letter
     @state.letters[ng][nl] = letter
     @setState letters: @state.letters
     @checkComplete(ng)
@@ -74,14 +75,10 @@ Main = classFactory
         return false
     return true
 
+  # TODO: only include guesses that are complete or the one after
   firstIncomplete: () ->
     for ng in GUESS_NUMS
       if !@isComplete(ng)
-        if ng > 0
-          if @state.answers.length is 0
-            return ng-1
-          if @state.colors[ng-1].join('') is 'ggggg'
-            return ng-1
         return ng
     return NUM_LETTERS
 
@@ -94,17 +91,19 @@ Main = classFactory
     @setState answers: answers
 
   render: () ->
-    # only list guesses 1 past last complete
+    lastGuess = @firstIncomplete()
+    if @state.answers? && @state.answers.length <= 1
+      lastGuess -= 1  # don't need another guess: have the answer (or there is no answer)
     div {},
       #ShowState state: @state
       h2 'Wordle Helper'
       table align: 'center',
         (
           tbody key: ng,
-            GuessInput \
-              ng: ng, letters: @state.letters[ng], colors: @state.colors[ng], setLetter: @setLetter
+            GuessInput ng: ng, letters: @state.letters[ng], colors: @state.colors[ng], \
+              setLetter: @setLetter
             RadioButtons hasLetter: @hasLetter(ng), setColor: @setColor(ng)
-        ) for ng in [0 .. @firstIncomplete()]
+        ) for ng in [0 .. lastGuess]
       AnswersList answers: @state.answers
 
 GuessInput = classFactory
@@ -140,16 +139,19 @@ AnswersList = classFactory
     answers: PropTypes.array
 
   render: () ->
-    if !@props.answers?
-      div ''
-    else if @props.answers.length == 0
-      div 'No possible words'
+    answers = @props.answers
+    if !answers?
+      div 'Enter guess and result'
+    else if answers.length == 0
+      div class: 'head', 'No possible answers'
+    else if answers.length == 1
+      div class: 'head', "Answer: #{answers[0]}"
     else
       div class: 'answers',
-        div class: 'head', "#{@props.answers.length} possible words:"
+        div class: 'head', "#{answers.length} possible answers:"
         (
           div key: answer, class: 'answer', answer
-        ) for answer in @props.answers
+        ) for answer in answers
 
 # Create set of checkboxes with given background color
 RadioButtons = classFactory

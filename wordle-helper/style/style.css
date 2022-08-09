@@ -61,7 +61,7 @@ td.radio-buttons {
   transform: scale(1);
 }
 
-.answers div.head {
+div.head {
   padding-top: 0.5em;
   font-weight: bold;
 }

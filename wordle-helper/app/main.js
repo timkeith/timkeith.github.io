@@ -236,6 +236,7 @@ Main = classFactory({
     var ng;
     return {
       answers: void 0,
+      nguesses: 2,
       complete: (function() {
         var k, len, results3;
         results3 = [];
@@ -318,14 +319,6 @@ Main = classFactory({
     for (k = 0, len = GUESS_NUMS.length; k < len; k++) {
       ng = GUESS_NUMS[k];
       if (!this.isComplete(ng)) {
-        if (ng > 0) {
-          if (this.state.answers.length === 0) {
-            return ng - 1;
-          }
-          if (this.state.colors[ng - 1].join('') === 'ggggg') {
-            return ng - 1;
-          }
-        }
         return ng;
       }
     }
@@ -361,13 +354,17 @@ Main = classFactory({
     });
   },
   render: function() {
-    var ng;
+    var lastGuess, ng;
+    lastGuess = this.firstIncomplete();
+    if ((this.state.answers != null) && this.state.answers.length <= 1) {
+      lastGuess -= 1;
+    }
     return div({}, h2('Wordle Helper'), table({
       align: 'center'
     }, (function() {
       var k, ref5, results3;
       results3 = [];
-      for (ng = k = 0, ref5 = this.firstIncomplete(); 0 <= ref5 ? k <= ref5 : k >= ref5; ng = 0 <= ref5 ? ++k : --k) {
+      for (ng = k = 0, ref5 = lastGuess; 0 <= ref5 ? k <= ref5 : k >= ref5; ng = 0 <= ref5 ? ++k : --k) {
         results3.push(tbody({
           key: ng
         }, GuessInput({
@@ -441,29 +438,35 @@ AnswersList = classFactory({
     answers: PropTypes.array
   },
   render: function() {
-    var answer;
-    if (this.props.answers == null) {
-      return div('');
-    } else if (this.props.answers.length === 0) {
-      return div('No possible words');
+    var answer, answers;
+    answers = this.props.answers;
+    if (answers == null) {
+      return div('Enter guess and result');
+    } else if (answers.length === 0) {
+      return div({
+        "class": 'head'
+      }, 'No possible answers');
+    } else if (answers.length === 1) {
+      return div({
+        "class": 'head'
+      }, "Answer: " + answers[0]);
     } else {
       return div({
         "class": 'answers'
       }, div({
         "class": 'head'
-      }, this.props.answers.length + " possible words:"), (function() {
-        var k, len, ref5, results3;
-        ref5 = this.props.answers;
+      }, answers.length + " possible answers:"), (function() {
+        var k, len, results3;
         results3 = [];
-        for (k = 0, len = ref5.length; k < len; k++) {
-          answer = ref5[k];
+        for (k = 0, len = answers.length; k < len; k++) {
+          answer = answers[k];
           results3.push(div({
             key: answer,
             "class": 'answer'
           }, answer));
         }
         return results3;
-      }).call(this));
+      })());
     }
   }
 });
