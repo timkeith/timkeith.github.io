@@ -236,7 +236,7 @@ Main = classFactory({
     var ng;
     return {
       answers: void 0,
-      nguesses: 2,
+      lastGuess: 0,
       complete: (function() {
         var k, len, results3;
         results3 = [];
@@ -268,10 +268,9 @@ Main = classFactory({
   },
   setLetter: function(ng, nl, letter) {
     this.state.letters[ng][nl] = letter;
-    this.setState({
+    return this.setState({
       letters: this.state.letters
     });
-    return this.checkComplete(ng);
   },
   hasLetter: function(ng, nl) {
     if (nl == null) {
@@ -290,7 +289,21 @@ Main = classFactory({
     this.setState({
       colors: this.state.colors
     });
-    return this.checkComplete(ng);
+    this.checkComplete(ng);
+    if (this.isComplete(ng) && ng === this.state.lastGuess) {
+      this.setState({
+        lastGuess: this.state.lastGuess + 1
+      });
+      this.setState({
+        complete: this.state.complete.concat(false)
+      });
+      this.setState({
+        letters: this.state.letters.concat([[]])
+      });
+      return this.setState({
+        colors: this.state.colors.concat([[]])
+      });
+    }
   },
   checkComplete: function(ng) {
     if (!this.state.complete[ng] && this.isComplete(ng)) {
@@ -314,23 +327,12 @@ Main = classFactory({
     }
     return true;
   },
-  firstIncomplete: function() {
-    var k, len, ng;
-    for (k = 0, len = GUESS_NUMS.length; k < len; k++) {
-      ng = GUESS_NUMS[k];
-      if (!this.isComplete(ng)) {
-        return ng;
-      }
-    }
-    return NUM_LETTERS;
-  },
   findWords: function() {
-    var answers, guesses, ng, results;
+    var guesses, ng, results;
     guesses = (function() {
-      var k, len, results3;
+      var k, ref5, results3;
       results3 = [];
-      for (k = 0, len = GUESS_NUMS.length; k < len; k++) {
-        ng = GUESS_NUMS[k];
+      for (ng = k = 0, ref5 = this.state.lastGuess; 0 <= ref5 ? k <= ref5 : k >= ref5; ng = 0 <= ref5 ? ++k : --k) {
         if (this.state.complete[ng]) {
           results3.push(this.state.letters[ng].join('').toLowerCase());
         }
@@ -338,24 +340,22 @@ Main = classFactory({
       return results3;
     }).call(this);
     results = (function() {
-      var k, len, results3;
+      var k, ref5, results3;
       results3 = [];
-      for (k = 0, len = GUESS_NUMS.length; k < len; k++) {
-        ng = GUESS_NUMS[k];
+      for (ng = k = 0, ref5 = this.state.lastGuess; 0 <= ref5 ? k <= ref5 : k >= ref5; ng = 0 <= ref5 ? ++k : --k) {
         if (this.state.complete[ng]) {
           results3.push(this.state.colors[ng].join(''));
         }
       }
       return results3;
     }).call(this);
-    answers = getMatchingAnswers(guesses, results);
     return this.setState({
-      answers: answers
+      answers: getMatchingAnswers(guesses, results)
     });
   },
   render: function() {
     var lastGuess, ng;
-    lastGuess = this.firstIncomplete();
+    lastGuess = this.state.lastGuess;
     if ((this.state.answers != null) && this.state.answers.length <= 1) {
       lastGuess -= 1;
     }
@@ -371,6 +371,7 @@ Main = classFactory({
           ng: ng,
           letters: this.state.letters[ng],
           colors: this.state.colors[ng],
+          complete: this.state.complete[ng],
           setLetter: this.setLetter
         }), RadioButtons({
           hasLetter: this.hasLetter(ng),
@@ -551,36 +552,35 @@ ShowState = classFactory({
       }
       return results3;
     })()), (function() {
-      var k, len, results3;
+      var k, ref6, results3;
       results3 = [];
-      for (k = 0, len = GUESS_NUMS.length; k < len; k++) {
-        ng = GUESS_NUMS[k];
+      for (ng = k = 0, ref6 = this.state.lastGuess; 0 <= ref6 ? k <= ref6 : k >= ref6; ng = 0 <= ref6 ? ++k : --k) {
         results3.push([
           tr(td("Guess #" + ng)), tr({}, td(''), td('Letters:'), (function() {
-            var l, len1, ref6, results4;
+            var l, len, ref7, results4;
             results4 = [];
-            for (l = 0, len1 = LETTER_NUMS.length; l < len1; l++) {
+            for (l = 0, len = LETTER_NUMS.length; l < len; l++) {
               num = LETTER_NUMS[l];
               results4.push(td({
                 key: num
-              }, (ref6 = letters[ng][num]) != null ? ref6 : '-'));
+              }, (ref7 = letters[ng][num]) != null ? ref7 : '-'));
             }
             return results4;
           })()), tr({}, td(''), td('Colors:'), (function() {
-            var l, len1, ref6, results4;
+            var l, len, ref7, results4;
             results4 = [];
-            for (l = 0, len1 = LETTER_NUMS.length; l < len1; l++) {
+            for (l = 0, len = LETTER_NUMS.length; l < len; l++) {
               num = LETTER_NUMS[l];
               results4.push(td({
                 key: num
-              }, (ref6 = colors[ng][num]) != null ? ref6 : '-'));
+              }, (ref7 = colors[ng][num]) != null ? ref7 : '-'));
             }
             return results4;
           })()), tr({}, td(''), td('Complete:'), td("" + complete))
         ]);
       }
       return results3;
-    })()));
+    }).call(this)));
   }
 });
 

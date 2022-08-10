@@ -37,7 +37,7 @@ Main = classFactory
   getInitialState: () ->
     answers:  undefined
     #TODO: use this for length
-    nguesses: 2  # length of complete, letters, colors
+    lastGuess: 0
     complete: (false) for ng in GUESS_NUMS
     letters:  ([]) for ng in GUESS_NUMS
     colors:   ([]) for ng in GUESS_NUMS
@@ -45,7 +45,7 @@ Main = classFactory
   setLetter: (ng, nl, letter) ->
     @state.letters[ng][nl] = letter
     @setState letters: @state.letters
-    @checkComplete(ng)
+    #@checkComplete(ng)
 
   hasLetter: (ng, nl) ->
     if !nl?
@@ -60,6 +60,12 @@ Main = classFactory
     @state.colors[ng][nl] = color
     @setState colors: @state.colors
     @checkComplete(ng)
+    if @isComplete(ng) and ng == @state.lastGuess
+      #TODO: combind complete,letters,colors into one map
+      @setState lastGuess: @state.lastGuess + 1
+      @setState complete: @state.complete.concat(false)
+      @setState letters: @state.letters.concat([[]])
+      @setState colors: @state.colors.concat([[]])
 
   checkComplete: (ng) ->
     if !@state.complete[ng] && @isComplete(ng)
@@ -75,23 +81,15 @@ Main = classFactory
         return false
     return true
 
-  # TODO: only include guesses that are complete or the one after
-  firstIncomplete: () ->
-    for ng in GUESS_NUMS
-      if !@isComplete(ng)
-        return ng
-    return NUM_LETTERS
-
   findWords: () ->
-    guesses = (
-      @state.letters[ng].join('').toLowerCase() for ng in GUESS_NUMS when @state.complete[ng]
-    )
-    results = (@state.colors[ng].join('') for ng in GUESS_NUMS when @state.complete[ng])
-    answers = getMatchingAnswers(guesses, results)
-    @setState answers: answers
+    guesses = (@state.letters[ng].join('').toLowerCase() \
+      for ng in [0..@state.lastGuess] when @state.complete[ng])
+    results = (@state.colors[ng].join('') \
+      for ng in [0..@state.lastGuess] when @state.complete[ng])
+    @setState answers: getMatchingAnswers(guesses, results)
 
   render: () ->
-    lastGuess = @firstIncomplete()
+    lastGuess = @state.lastGuess
     if @state.answers? && @state.answers.length <= 1
       lastGuess -= 1  # don't need another guess: have the answer (or there is no answer)
     div {},
@@ -101,7 +99,7 @@ Main = classFactory
         (
           tbody key: ng,
             GuessInput ng: ng, letters: @state.letters[ng], colors: @state.colors[ng], \
-              setLetter: @setLetter
+              complete: @state.complete[ng], setLetter: @setLetter
             RadioButtons hasLetter: @hasLetter(ng), setColor: @setColor(ng)
         ) for ng in [0 .. lastGuess]
       AnswersList answers: @state.answers
@@ -115,6 +113,7 @@ GuessInput = classFactory
 
   componentDidMount: () -> @focusInput(0, 0)
 
+  #TODO: maybe selector for current row, use that to focus?
   focusInput: (ng, nl) -> document.querySelector("input[name=letter-#{ng}-#{nl}]")?.focus()
 
   letterChanged: (event) ->
@@ -208,7 +207,7 @@ ShowState = classFactory
               td 'Complete:'
               td "#{complete}"
           ]
-        ) for ng in GUESS_NUMS
+        ) for ng in [0..@state.lastGuess]
 
 getNumFromElem = (elem) ->
   parseInt(elem.name.replace(/^.*-/, ''), 10)
