@@ -2,15 +2,6 @@ body {
   font-family: sans-serif;
 }
 
-.guess input {
-  text-align:     center;
-  text-transform: uppercase;
-  width:          1.2em;
-}
-div.checkbox {
-  display: inline-block;
-  padding: .05em .05em .05em .05em;
-}
 .color-g {
   background-color: #33dd33;
 }
@@ -21,11 +12,21 @@ div.checkbox {
   background-color: #eeeeee;
 }
 .guess input {
-  border: 1px solid black;
-  font-size: 400%;
+  text-align:     center;
+  text-transform: uppercase;
+  width:          1.2em;
+  border:         1px solid black;
+  font-size:      400%;
+  font-weight:    bold;
+}
+
+tr.head {
   font-weight: bold;
 }
 
+td {
+  padding-right: .5em;
+}
 td.radio-buttons {
   height: 1.7em;
 }
@@ -38,23 +39,23 @@ td.radio-buttons {
 .colored-radio input[type="radio"] {
   /* Remove most all native input styles */
   -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
+  appearance:    none;
+  margin:        0;
 
-  width: 2.0em;
-  height: 2.0em;
-  border: 0.15em solid black;
+  width:         2.0em;
+  height:        2.0em;
+  border:        0.15em solid black;
   border-radius: 50%;
 
-  display: inline-grid;
+  display:       inline-grid;
   place-content: center;
 }
 .colored-radio input[type="radio"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  border-radius: 50%;
-  transform: scale(0);
+  content:          "";
+  width:            0.65em;
+  height:           0.65em;
+  border-radius:    50%;
+  transform:        scale(0);
   background-color: black;
 }
 .colored-radio input[type="radio"]:checked::before {
@@ -71,62 +72,7 @@ div.head {
 .answers button {
   margin-left: 1em;
 }
-
-a {
-  text-decoration: none;
-}
-.desc {
-  font-size: 80%;
-}
-.desc2 {
-  display: block;
+.answer {
   font-family: monospace;
-  padding-left: 1em;
-}
-
-table.passwords {
-  padding-top: 1em;
-  border-collapse: separate; 
-  border-spacing: .8em;
-}
-tr.head {
-  font-weight: bold;
-}
-table.passwords td {
-  /* padding-top: .3em; */
-  padding-right: 1em;
-/*
-  padding-bottom: 1em;
-*/
-  /* height: 2em; */
-  /* border: 1px solid green; */
-}
-/*
-td.password span {
-  border: 1px solid gray;
-  padding: .2em .2em .2em .2em;
-}
-*/
-.password {
-  border: 1px solid gray;
-  font-family: monospace;
-}
-table.passwords input {
   font-size: 100%;
-}
-span.password {
-  width: 20em;
-}
-span.part {
-  padding-right: .3em;
-}
-
-td {
-  padding-right: .5em;
-}
-.selection {
-  padding-right: .5em;
-}
-span.selection {
-  font-weight: bold;
 }

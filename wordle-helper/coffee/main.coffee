@@ -4,15 +4,9 @@ PropTypes = require 'prop-types'
 React = require 'react'
 ReactDOM = require 'react-dom'
 {
-  a
-  button
   div
-  form
-  form
   h2
   input
-  label
-  p
   span
   table
   tbody
@@ -36,7 +30,6 @@ Main = classFactory
 
   getInitialState: () ->
     answers:  undefined
-    #TODO: use this for length
     lastGuess: 0
     complete: (false) for ng in GUESS_NUMS
     letters:  ([]) for ng in GUESS_NUMS
@@ -61,7 +54,8 @@ Main = classFactory
     @setState colors: @state.colors
     @checkComplete(ng)
     if @isComplete(ng) and ng == @state.lastGuess
-      #TODO: combind complete,letters,colors into one map
+      #TODO: combine complete,letters,colors into one map
+      #TODO: use length of array in place of lastGuess?
       @setState lastGuess: @state.lastGuess + 1
       @setState complete: @state.complete.concat(false)
       @setState letters: @state.letters.concat([[]])
@@ -98,8 +92,10 @@ Main = classFactory
       table align: 'center',
         (
           tbody key: ng,
-            GuessInput ng: ng, letters: @state.letters[ng], colors: @state.colors[ng], \
-              complete: @state.complete[ng], setLetter: @setLetter
+            GuessInput {
+              ng: ng, letters: @state.letters[ng], colors: @state.colors[ng],
+              setLetter: @setLetter
+            }
             RadioButtons hasLetter: @hasLetter(ng), setColor: @setColor(ng)
         ) for ng in [0 .. lastGuess]
       AnswersList answers: @state.answers
@@ -111,26 +107,29 @@ GuessInput = classFactory
     colors:    PropTypes.array.isRequired
     setLetter: PropTypes.func.isRequired
 
-  componentDidMount: () -> @focusInput(0, 0)
+  componentDidMount: () ->
+    if not @props.letters[0]?
+      @focusInput(@props.ng, 0)
 
-  #TODO: maybe selector for current row, use that to focus?
   focusInput: (ng, nl) -> document.querySelector("input[name=letter-#{ng}-#{nl}]")?.focus()
 
   letterChanged: (event) ->
     letter = event.target.value
     nl = getNumFromElem(event.target)
     @props.setLetter(@props.ng, nl, letter)
-    nl = (nl + 1) % NUM_LETTERS
-    @focusInput(@props.ng + (nl == 0 ? 1 : 0), nl)
+    @focusInput(@props.ng, nl + 1)
+    #nl = (nl + 1) % NUM_LETTERS
+    #@focusInput(@props.ng + (nl == 0 ? 1 : 0), nl)
 
   render: () ->
     tr class: 'guess',
       (
         td key: nl,
-          input \
+          input {
             name: "letter-#{@props.ng}-#{nl}", type: 'text', maxLength: 1,
             value: @props.letters[nl], class: "color-#{@props.colors[nl]}",
             onChange: @letterChanged
+          }
       ) for nl in LETTER_NUMS
 
 AnswersList = classFactory
@@ -144,7 +143,9 @@ AnswersList = classFactory
     else if answers.length == 0
       div class: 'head', 'No possible answers'
     else if answers.length == 1
-      div class: 'head', "Answer: #{answers[0]}"
+      div class: 'head',
+        "Answer: "
+        span class: 'answer', answers[0]
     else
       div class: 'answers',
         div class: 'head', "#{answers.length} possible answers:"
